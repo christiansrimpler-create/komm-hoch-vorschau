@@ -7,10 +7,19 @@ bodyClass: "seite-start"
 {% set i = inhalte %}
 
 <section class="hero">
+  <div class="hero__dachflaeche" aria-hidden="true">
+    <div class="dach">
+      {%- for reihe in range(0, 9) -%}
+        {%- for spalte in range(0, 18) -%}
+          <i style="--i:{{ reihe * 18 + spalte }};--r:{{ reihe }};--c:{{ spalte }}"></i>
+        {%- endfor -%}
+      {%- endfor -%}
+    </div>
+  </div>
   <div class="wrap hero__raster">
     <div class="hero__text">
       <p class="hero__dach">{{ i.hero.dachzeile }}</p>
-      <h1 class="hero__titel">{{ i.hero.headline | safe }}</h1>
+      <h1 class="hero__titel"><span class="zeile"><span>Dachdecker werden.</span></span><span class="zeile"><em>Wir finden dir den&nbsp;Betrieb.</em></span></h1>
       <p class="hero__lauf">{{ i.hero.text }}</p>
       <ul class="hero__fakten">
         {% for fakt in i.hero.fakten %}<li><strong>{{ fakt.zahl }}</strong> {{ fakt.text }}</li>{% endfor %}
@@ -22,14 +31,21 @@ bodyClass: "seite-start"
   </div>
 </section>
 
+<div class="laufband" aria-hidden="true">
+  <div class="laufband__spur">
+    {% set themen = ["Photovoltaik", "Schiefer", "Gründach", "Drohnenvermessung", "Flachdach", "Zink und Kupfer", "Fassade", "Denkmalschutz", "Dämmung", "Reet"] %}
+    {% for n in range(0, 2) %}{% for t in themen %}<span>{{ t }}</span>{% endfor %}{% endfor %}
+  </div>
+</div>
+
 <section class="verdienst" aria-labelledby="verdienst-titel">
   <div class="wrap">
     <h2 id="verdienst-titel" class="titel">Was du verdienst</h2>
     <p class="verdienst__text">Tarifvergütung Dachdeckerhandwerk, brutto pro Monat, Stand Oktober 2026. Steigt jedes Jahr.</p>
     <ol class="stufen" aria-label="Ausbildungsvergütung nach Lehrjahr">
-      <li class="stufen__stufe" style="--h: 0.72"><span class="stufen__betrag">1.050 €</span><span class="stufen__jahr">1. Lehrjahr</span></li>
-      <li class="stufen__stufe" style="--h: 0.82"><span class="stufen__betrag">1.200 €</span><span class="stufen__jahr">2. Lehrjahr</span></li>
-      <li class="stufen__stufe" style="--h: 1"><span class="stufen__betrag">1.460 €</span><span class="stufen__jahr">3. Lehrjahr</span></li>
+      <li class="stufen__stufe" style="--h: 0.72"><span class="stufen__betrag" data-zahl="1050">1.050 €</span><span class="stufen__jahr">1. Lehrjahr</span></li>
+      <li class="stufen__stufe" style="--h: 0.82"><span class="stufen__betrag" data-zahl="1200">1.200 €</span><span class="stufen__jahr">2. Lehrjahr</span></li>
+      <li class="stufen__stufe" style="--h: 1"><span class="stufen__betrag" data-zahl="1460">1.460 €</span><span class="stufen__jahr">3. Lehrjahr</span></li>
     </ol>
     <p class="verdienst__fuss">Danach: Gesellenlohn nach Tarif. Mit Meisterbrief eigener Betrieb oder Bauleitung.</p>
   </div>

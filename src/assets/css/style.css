@@ -287,3 +287,103 @@ section { padding-block: clamp(3rem, 8vw, 6rem); }
   background: rgba(31, 39, 48, 0.92); backdrop-filter: blur(6px);
 }
 @media (min-width: 48em) { .mobil-cta { display: none; } }
+
+/* ===== Kür: Bewegung ===== */
+
+/* Hero: Bühne */
+.hero { overflow: hidden; isolation: isolate; min-height: 100svh; display: flex; align-items: center; }
+.hero > .wrap { position: relative; z-index: 2; }
+.hero__text { text-shadow: 0 2px 24px rgba(31,39,48,0.9); }
+.hero::before { /* Schleier für Lesbarkeit */
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(180deg, rgba(43,52,64,0.2) 0%, rgba(43,52,64,0.75) 45%, rgba(43,52,64,0.35) 100%);
+}
+@media (min-width: 60em) { .hero::before { background: linear-gradient(90deg, rgba(43,52,64,0.85) 0%, rgba(43,52,64,0.45) 45%, rgba(43,52,64,0.1) 100%); } }
+.hero::after { /* Korn */
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0.18; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Das Dach: perspektivische Fläche aus Biberschwanz-Ziegeln */
+.hero__dachflaeche {
+  position: absolute; z-index: 0; pointer-events: none;
+  inset: 3rem -75% auto -75%; height: 52%;
+  perspective: 900px; perspective-origin: 50% 0%;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 72%, transparent 100%);
+          mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 72%, transparent 100%);
+  opacity: 0.55;
+}
+@media (min-width: 60em) {
+  .hero__dachflaeche { inset: auto -12% -10% -12%; height: 82%; opacity: 0.8;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 28%, #000 100%);
+            mask-image: linear-gradient(to bottom, transparent 0%, #000 28%, #000 100%); }
+}
+.dach {
+  position: absolute; inset: 0;
+  transform: rotateX(56deg) translateY(calc(var(--scroll, 0) * -60px));
+  transform-origin: 50% 100%;
+  display: grid;
+  grid-template-columns: repeat(18, 1fr);
+  grid-auto-rows: 1fr;
+}
+.dach i {
+  display: block;
+  margin: 0 2px;
+  border-radius: 0 0 50% 50% / 0 0 45% 45%;
+  background: linear-gradient(180deg, #5b6b7f 0%, #46545f 55%, #333e4a 100%);
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.12), 0 3px 0 rgba(0,0,0,0.45);
+  opacity: 0;
+  animation: legen 650ms cubic-bezier(.2,.9,.3,1.15) forwards;
+  animation-delay: calc(250ms + var(--i) * 8ms);
+}
+/* Jede zweite Reihe um eine halbe Ziegelbreite versetzt, wie beim Decken */
+.dach i:nth-child(36n+19), .dach i:nth-child(36n+20), .dach i:nth-child(36n+21), .dach i:nth-child(36n+22), .dach i:nth-child(36n+23), .dach i:nth-child(36n+24), .dach i:nth-child(36n+25), .dach i:nth-child(36n+26), .dach i:nth-child(36n+27), .dach i:nth-child(36n+28), .dach i:nth-child(36n+29), .dach i:nth-child(36n+30), .dach i:nth-child(36n+31), .dach i:nth-child(36n+32), .dach i:nth-child(36n+33), .dach i:nth-child(36n+34), .dach i:nth-child(36n+35), .dach i:nth-child(36n+36) { margin-left: 50%; margin-right: -50%; }
+/* Frisch gedeckte Ziegel in Ziegelrot */
+.dach i:nth-child(11n+4), .dach i:nth-child(23n+9) { background: linear-gradient(180deg, #e2653f 0%, var(--ziegel) 55%, var(--ziegel-dunkel) 100%); }
+@keyframes legen {
+  from { opacity: 0; transform: translateY(-120px) translateZ(60px); }
+  to   { opacity: 1; transform: translateY(0) translateZ(0); }
+}
+
+/* Headline: Zeilen fahren ein, zweite Zeile als Kontur */
+.hero__titel { font-size: clamp(3.4rem, 13.5vw, 8rem); line-height: 0.9; }
+.hero__titel .zeile { display: block; overflow: hidden; padding-bottom: 0.06em; }
+.hero__titel .zeile > * { display: inline-block; transform: translateY(110%); animation: hoch 800ms cubic-bezier(.2,.8,.2,1) forwards; }
+.hero__titel .zeile:nth-child(2) > * { animation-delay: 140ms; }
+.hero__titel em { font-style: normal; color: transparent; -webkit-text-stroke: 2px #fff; paint-order: stroke fill; }
+@supports not (-webkit-text-stroke: 1px #fff) { .hero__titel em { color: #fff; } }
+@keyframes hoch { to { transform: translateY(0); } }
+.hero__dach, .hero__lauf, .hero__fakten, .hero__formular { opacity: 0; animation: auf 700ms ease-out forwards; }
+.hero__dach { animation-delay: 50ms; } .hero__lauf { animation-delay: 350ms; } .hero__fakten { animation-delay: 500ms; } .hero__formular { animation-delay: 450ms; }
+@keyframes auf { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@media (min-width: 60em) { .hero__titel { font-size: clamp(4rem, 7.2vw, 7.5rem); } .hero__formular { max-width: 32rem; justify-self: end; } }
+
+/* Laufband */
+.laufband { background: var(--ziegel); color: #fff; overflow: hidden; padding: 0.7rem 0; font-family: var(--display); font-weight: 800; font-size: clamp(1.3rem, 3vw, 2rem); position: relative; z-index: 3; margin-top: calc(var(--dach) * -1 + 1px); }
+.laufband__spur { display: flex; gap: 0; width: max-content; animation: lauf 40s linear infinite; }
+.laufband__spur span { padding: 0 1.25rem; white-space: nowrap; position: relative; }
+.laufband__spur span::after { content: ""; position: absolute; right: -0.3rem; top: 50%; width: 0.55rem; height: 0.55rem; background: var(--schiefer-tief); transform: translateY(-50%) rotate(45deg); }
+@keyframes lauf { to { transform: translateX(-50%); } }
+.laufband:hover .laufband__spur { animation-play-state: paused; }
+
+/* Scroll-Momente: Stufen wachsen, Überschriften schieben sich ein */
+@supports (animation-timeline: view()) {
+  .stufen__stufe { transform-origin: bottom; animation: wachsen 1s ease-out both; animation-timeline: view(); animation-range: entry 10% entry 70%; }
+  @keyframes wachsen { from { transform: scaleY(0.08); } to { transform: scaleY(1); } }
+  .titel:not(.hero .titel), .grund, .schritt, .stimme, .eltern__liste > div, .frage {
+    animation: einschieben 1s ease-out both; animation-timeline: view(); animation-range: entry 0% entry 45%;
+  }
+  @keyframes einschieben { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
+}
+
+/* Knöpfe mit Nachdruck */
+.knopf { position: relative; overflow: hidden; transition: transform 150ms, background 150ms; }
+.knopf:hover { transform: translateY(-2px); }
+.knopf:active { transform: translateY(0); }
+
+/* Reduzierte Bewegung: alles sofort sichtbar, nichts läuft */
+@media (prefers-reduced-motion: reduce) {
+  .dach i, .hero__titel .zeile > *, .hero__dach, .hero__lauf, .hero__fakten, .hero__formular { opacity: 1; transform: none; animation: none; }
+  .laufband__spur { animation: none; }
+  .stufen__stufe, .titel, .grund, .schritt, .stimme, .eltern__liste > div, .frage { animation: none; }
+}

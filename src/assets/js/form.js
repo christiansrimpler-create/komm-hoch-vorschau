@@ -70,3 +70,39 @@
     }
   }
 })();
+
+/* Beträge hochzählen, sobald sie sichtbar werden */
+(function () {
+  const reduziert = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const ziele = document.querySelectorAll("[data-zahl]");
+  if (!ziele.length || reduziert || !("IntersectionObserver" in window)) return;
+  const fmt = (n) => n.toLocaleString("de-DE") + " €";
+  const io = new IntersectionObserver((eintraege) => {
+    eintraege.forEach((e) => {
+      if (!e.isIntersecting) return;
+      io.unobserve(e.target);
+      const ziel = +e.target.dataset.zahl, start = performance.now(), dauer = 1100;
+      const tick = (t) => {
+        const p = Math.min(1, (t - start) / dauer), k = 1 - Math.pow(1 - p, 3);
+        e.target.textContent = fmt(Math.round(ziel * k));
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+  }, { threshold: 0.6 });
+  ziele.forEach((z) => { z.textContent = fmt(0); io.observe(z); });
+})();
+
+/* Dach-Parallaxe im Hero */
+(function () {
+  const dach = document.querySelector(".dach");
+  if (!dach || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  let ticking = false;
+  addEventListener("scroll", () => {
+    if (ticking) return; ticking = true;
+    requestAnimationFrame(() => {
+      dach.style.setProperty("--scroll", Math.min(1, scrollY / innerHeight).toFixed(3));
+      ticking = false;
+    });
+  }, { passive: true });
+})();
