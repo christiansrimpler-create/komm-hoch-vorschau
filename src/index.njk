@@ -21,9 +21,12 @@ bodyClass: "seite-start"
       <p class="hero__dach">{{ i.hero.dachzeile }}</p>
       <h1 class="hero__titel"><span class="zeile"><span>Dachdecker werden.</span></span><span class="zeile"><em>Wir finden dir den&nbsp;Betrieb.</em></span></h1>
       <p class="hero__lauf">{{ i.hero.text }}</p>
-      <ul class="hero__fakten">
-        {% for fakt in i.hero.fakten %}<li><strong>{{ fakt.zahl }}</strong> {{ fakt.text }}</li>{% endfor %}
-      </ul>
+      <div class="sticker-wand" aria-label="Kurz gesagt">
+        <span class="sticker sticker--rot" style="--neig:-4deg">1.050 € im 1. Jahr</span>
+        <span class="sticker" style="--neig:3deg">Betrieb in deiner Nähe</span>
+        <span class="sticker sticker--hell" style="--neig:-2deg">0 € Infopaket</span>
+        <span class="sticker" style="--neig:5deg">Meldung in 48 h</span>
+      </div>
     </div>
     <div class="hero__formular">
       {% set fid = 'a' %}{% include "formular.njk" %}
@@ -51,6 +54,17 @@ bodyClass: "seite-start"
   </div>
 </section>
 
+<section class="nichtdas" aria-labelledby="nichtdas-titel">
+  <div class="wrap">
+    <h2 id="nichtdas-titel" class="sr-only">Was du nicht machen musst</h2>
+    <p class="streich"><span>Bürojob.</span></p>
+    <p class="streich"><span>Warteschleife an der Uni.</span></p>
+    <p class="streich"><span>Praktikum für lau.</span></p>
+    <p class="streich"><span>Noch ein Jahr Schule.</span></p>
+    <p class="dasda">Dachdecker.</p>
+  </div>
+</section>
+
 <section class="gruende" aria-labelledby="gruende-titel">
   <div class="wrap">
     <h2 id="gruende-titel" class="titel">{{ i.gruende.titel }}</h2>
@@ -65,17 +79,52 @@ bodyClass: "seite-start"
   </div>
 </section>
 
+<section class="reel" aria-labelledby="reel-titel">
+  <div class="wrap reel__raster">
+    <div class="reel__text">
+      <h2 id="reel-titel" class="titel">Ein Tag auf dem Dach</h2>
+      <p>Kein Büro, kein Hörsaal. Früh raus, früh fertig, und abends steht da etwas, das du gemacht hast.</p>
+      <p class="todo">TODO: Slides durch Handyvideos vom Dreh ersetzen (9:16, ohne Ton, 4 bis 6 Sekunden)</p>
+      <a class="knopf" href="#formular">Infopaket holen</a>
+    </div>
+    <div class="handy" data-reel>
+      <div class="handy__balken" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="handy__slides">
+        <figure class="slide slide--1 aktiv"><figcaption><strong>06:45. Baustelle. Kaffee.</strong><span>Früh raus. Dafür um 16 Uhr fertig.</span></figcaption></figure>
+        <figure class="slide slide--2"><figcaption><strong>Heute: 140 m² Schiefer.</strong><span>Du siehst am Abend, was du gemacht hast.</span></figcaption></figure>
+        <figure class="slide slide--3"><figcaption><strong>Lohn ist da. 1.050 €.</strong><span>Tarif. Kein Taschengeld.</span></figcaption></figure>
+        <figure class="slide slide--4"><figcaption><strong>Blockwoche in Eslohe.</strong><span>Fünf Wochen mit Azubis aus ganz Westfalen. Wohnheim inklusive.</span></figcaption></figure>
+        <figure class="slide slide--5"><figcaption><strong>Bock?</strong><span>Infopaket holen, wir finden dir den Betrieb.</span><a class="knopf knopf--klein" href="#formular">Los</a></figcaption></figure>
+      </div>
+      <button class="handy__tipp handy__tipp--links" type="button" aria-label="Zurück"></button>
+      <button class="handy__tipp handy__tipp--rechts" type="button" aria-label="Weiter"></button>
+    </div>
+  </div>
+</section>
+
 <section class="ablauf" aria-labelledby="ablauf-titel">
-  <div class="wrap">
-    <h2 id="ablauf-titel" class="titel">{{ i.ablauf.titel }}</h2>
-    <ol class="schritte">
-      {% for s in i.ablauf.schritte %}
-      <li class="schritt">
-        <h3>{{ s.titel }}</h3>
-        <p>{{ s.text }}</p>
-      </li>
-      {% endfor %}
-    </ol>
+  <div class="wrap ablauf__raster">
+    <div>
+      <h2 id="ablauf-titel" class="titel">So läuft das Nachfassen.<br>Echt jetzt.</h2>
+      <ol class="schritte schritte--eng">
+        {% for s in i.ablauf.schritte %}
+        <li class="schritt"><h3>{{ s.titel }}</h3><p>{{ s.text }}</p></li>
+        {% endfor %}
+      </ol>
+    </div>
+    <div class="chat" data-chat aria-label="Beispiel-Chat">
+      <div class="chat__kopf"><span class="chat__avatar"></span><span><strong>Jan, Dachdeckerhandwerk Westfalen</strong><br><small>online</small></span></div>
+      <div class="chat__verlauf">
+        <p class="blase blase--sie">Hey Leon, hier ist Jan vom Dachdeckerhandwerk Westfalen. Du hast dir das Infopaket geholt. Schon reingeschaut?</p>
+        <p class="blase blase--ich">ja, klingt gut. hab aber noch keinen betrieb</p>
+        <p class="blase blase--sie">Dafür bin ich da. PLZ 59872, richtig? Ich hab drei Innungsbetriebe bei dir, die ab Sommer ausbilden.</p>
+        <p class="blase blase--ich">nice. wie läuft das ab?</p>
+        <p class="blase blase--sie">Ich stell den Kontakt her, du machst zwei, drei Tage Probearbeiten. Wenn's passt: Vertrag. Wann hast du Zeit zum Telefonieren?</p>
+        <p class="blase blase--ich">morgen nach der schule?</p>
+        <p class="blase blase--sie">Passt. 14 Uhr. Bis morgen.</p>
+      </div>
+      <p class="chat__hinweis">Beispiel. Namen erfunden, Ablauf echt.</p>
+    </div>
   </div>
 </section>
 

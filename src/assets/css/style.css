@@ -291,7 +291,8 @@ section { padding-block: clamp(3rem, 8vw, 6rem); }
 /* ===== Kür: Bewegung ===== */
 
 /* Hero: Bühne */
-.hero { overflow: hidden; isolation: isolate; min-height: 100svh; display: flex; align-items: center; }
+.hero { overflow: hidden; isolation: isolate; }
+@media (min-width: 60em) { .hero { min-height: 100svh; display: flex; align-items: center; } }
 .hero > .wrap { position: relative; z-index: 2; }
 .hero__text { text-shadow: 0 2px 24px rgba(31,39,48,0.9); }
 .hero::before { /* Schleier für Lesbarkeit */
@@ -387,3 +388,120 @@ section { padding-block: clamp(3rem, 8vw, 6rem); }
   .laufband__spur { animation: none; }
   .stufen__stufe, .titel, .grund, .schritt, .stimme, .eltern__liste > div, .frage { animation: none; }
 }
+
+/* ===== Social-first Umbau ===== */
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Sticker im Hero */
+.sticker-wand { display: flex; flex-wrap: wrap; gap: 0.6rem 0.5rem; margin-top: 1.5rem; max-width: 30rem; }
+.sticker {
+  display: inline-block; transform: rotate(var(--neig, 0deg));
+  font-family: var(--display); font-weight: 800; font-size: 1.25rem; line-height: 1;
+  padding: 0.55em 0.8em; background: #fff; color: var(--schiefer-tief);
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.35); text-shadow: none;
+}
+.sticker--rot { background: var(--ziegel); color: #fff; }
+.sticker--hell { background: #ffd84d; }
+.sticker:nth-child(1) { animation: kleben 500ms 700ms cubic-bezier(.2,1.4,.4,1) both; }
+.sticker:nth-child(2) { animation: kleben 500ms 850ms cubic-bezier(.2,1.4,.4,1) both; }
+.sticker:nth-child(3) { animation: kleben 500ms 1000ms cubic-bezier(.2,1.4,.4,1) both; }
+.sticker:nth-child(4) { animation: kleben 500ms 1150ms cubic-bezier(.2,1.4,.4,1) both; }
+@keyframes kleben { from { opacity: 0; transform: rotate(var(--neig, 0deg)) scale(1.6); } to { opacity: 1; transform: rotate(var(--neig, 0deg)) scale(1); } }
+@media (min-width: 60em) { .sticker { font-size: 1.5rem; } }
+
+/* Formular in Schritten */
+.formular__kopf { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+.fortschritt { flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.35rem; }
+.fortschritt i { height: 0.4rem; background: var(--putz-dunkel); border-radius: 2px; transition: background 250ms; }
+.fortschritt i.voll { background: var(--ziegel); }
+.formular__schrittzahl { margin: 0; font-family: var(--display); font-weight: 700; color: var(--tinte-mittel); }
+.fs { border: 0; padding: 0; margin: 0; min-width: 0; }
+.fs[hidden] { display: none; }
+.fs__frage { font-family: var(--display); font-weight: 800; font-size: 2rem; line-height: 0.95; padding: 0; margin-bottom: 0.2em; float: left; width: 100%; }
+.fs__frage--klein { font-size: 1.25rem; margin: 1.25rem 0 0.5rem; float: none; }
+.fs__unter { clear: both; color: var(--tinte-mittel); margin-bottom: 1rem; }
+.fs__knoepfe { display: flex; gap: 0.75rem; margin-top: 0.5rem; }
+.fs__knoepfe .knopf:last-child { flex: 1; text-align: center; }
+.knopf--leise { background: transparent; color: var(--tinte); border: 2px solid var(--putz-dunkel); }
+.knopf--leise:hover { background: var(--putz); color: var(--tinte); }
+.fs .feld input::placeholder { color: #b4bcc5; }
+.fs.einblenden { animation: fs-rein 300ms ease-out; }
+@keyframes fs-rein { from { opacity: 0; transform: translateX(24px); } to { opacity: 1; transform: none; } }
+
+/* Auswahl-Chips statt Dropdowns */
+.wahl { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.wahl__option { position: relative; }
+.wahl__option input { position: absolute; opacity: 0; inset: 0; }
+.wahl__option span {
+  display: inline-block; padding: 0.7em 1em; border: 2px solid var(--putz-dunkel); border-radius: 999px;
+  font-weight: 600; cursor: pointer; transition: background 150ms, border-color 150ms, transform 150ms;
+}
+.wahl__option input:checked + span { background: var(--schiefer-tief); color: #fff; border-color: var(--schiefer-tief); }
+.wahl__option input:focus-visible + span { outline: 3px solid var(--ziegel); outline-offset: 2px; }
+.wahl__option:active span { transform: scale(0.96); }
+
+/* "Nicht das. Das." */
+.nichtdas { background: var(--putz); padding-block: clamp(3rem, 10vw, 7rem); }
+.streich { font-family: var(--display); font-weight: 800; font-size: clamp(2.2rem, 8vw, 5.5rem); line-height: 1; margin: 0 0 0.1em; color: var(--zink); max-width: none; }
+.streich span { position: relative; display: inline-block; }
+.streich span::after { content: ""; position: absolute; left: -0.1em; right: -0.1em; top: 52%; height: 0.12em; background: var(--ziegel); transform: scaleX(0); transform-origin: left; }
+.dasda { font-family: var(--display); font-weight: 800; font-size: clamp(4rem, 17vw, 13rem); line-height: 0.85; margin: 0.15em 0 0; color: var(--ziegel); letter-spacing: -0.02em; max-width: none; }
+@supports (animation-timeline: view()) {
+  .streich span::after { animation: streichen 1s linear both; animation-timeline: view(); animation-range: entry 60% cover 40%; }
+  @keyframes streichen { to { transform: scaleX(1); } }
+  .dasda { animation: stempel 1s cubic-bezier(.2,1.3,.4,1) both; animation-timeline: view(); animation-range: entry 10% entry 60%; }
+  @keyframes stempel { from { opacity: 0; transform: scale(1.4) rotate(-3deg); } to { opacity: 1; transform: none; } }
+}
+@supports not (animation-timeline: view()) { .streich span::after { transform: none; } }
+
+/* Reel im Handy-Rahmen */
+.reel { background: var(--schiefer-tief); color: var(--tinte-hell); overflow: hidden; }
+.reel .titel { color: #fff; }
+.reel__raster { display: grid; gap: 2.5rem; align-items: center; }
+.reel__text p { color: #d9dee3; }
+@media (min-width: 60em) { .reel__raster { grid-template-columns: 1fr 1fr; gap: 4rem; } .reel__text { order: 1; } }
+.handy {
+  position: relative; width: min(100%, 22rem); aspect-ratio: 9 / 17; margin-inline: auto;
+  border-radius: 2.2rem; background: #000; padding: 0.6rem; box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 0 2px #333;
+  user-select: none; -webkit-user-select: none; touch-action: manipulation;
+}
+.handy__balken { position: absolute; z-index: 3; left: 1.4rem; right: 1.4rem; top: 1.3rem; display: grid; grid-auto-flow: column; gap: 0.3rem; }
+.handy__balken i { height: 3px; background: rgba(255,255,255,0.35); border-radius: 2px; overflow: hidden; position: relative; }
+.handy__balken i::after { content: ""; position: absolute; inset: 0; background: #fff; transform: scaleX(0); transform-origin: left; }
+.handy__balken i.voll::after { transform: scaleX(1); }
+.handy__balken i.laeuft::after { animation: balken var(--dauer, 4000ms) linear forwards; }
+.handy[data-pause] .handy__balken i.laeuft::after { animation-play-state: paused; }
+@keyframes balken { to { transform: scaleX(1); } }
+.handy__slides { position: absolute; inset: 0.6rem; border-radius: 1.7rem; overflow: hidden; }
+.slide { position: absolute; inset: 0; margin: 0; opacity: 0; transition: opacity 350ms; display: flex; align-items: flex-end; padding: 1.5rem; background-color: var(--schiefer); }
+.slide.aktiv { opacity: 1; }
+.slide::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(circle at 50% 100%, rgba(0,0,0,0.25) 38%, transparent 40%), radial-gradient(circle at 0% 50%, rgba(0,0,0,0.25) 38%, transparent 40%), radial-gradient(circle at 100% 50%, rgba(0,0,0,0.25) 38%, transparent 40%); background-size: 2.6rem 2.6rem; }
+.slide::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.1) 30%, rgba(0,0,0,0.75) 100%); }
+.slide--1 { background-color: #3a4654; } .slide--2 { background-color: #2b3440; } .slide--3 { background-color: var(--ziegel-dunkel); } .slide--4 { background-color: #1f2730; } .slide--5 { background-color: var(--ziegel); }
+.slide figcaption { position: relative; z-index: 1; color: #fff; display: grid; gap: 0.5rem; justify-items: start; }
+.slide strong { font-family: var(--display); font-weight: 800; font-size: 2.2rem; line-height: 0.95; }
+.slide span { font-size: 1rem; color: #e6e9ec; }
+.slide.aktiv strong { animation: auf 400ms ease-out both; }
+.slide.aktiv span { animation: auf 400ms 120ms ease-out both; }
+.handy__tipp { position: absolute; top: 0; bottom: 0; width: 50%; background: transparent; border: 0; cursor: pointer; z-index: 2; }
+.handy__tipp--links { left: 0; } .handy__tipp--rechts { right: 0; }
+.handy__tipp:focus-visible { outline: 3px solid var(--ziegel); outline-offset: -6px; border-radius: 1.5rem; }
+
+/* Chat */
+.ablauf__raster { display: grid; gap: 2.5rem; align-items: start; }
+@media (min-width: 60em) { .ablauf__raster { grid-template-columns: 1fr 1fr; gap: 4rem; } }
+.schritte--eng { grid-template-columns: 1fr; gap: 1.25rem; margin-top: 1rem; }
+.chat { background: #e5ddd5; color: #111; border-radius: 1rem; overflow: hidden; max-width: 26rem; margin-inline: auto; width: 100%; box-shadow: 0 20px 50px rgba(0,0,0,0.35); font-size: 0.95rem; }
+.chat__kopf { display: flex; align-items: center; gap: 0.75rem; background: #075e54; color: #fff; padding: 0.75rem 1rem; line-height: 1.2; }
+.chat__kopf small { opacity: 0.8; }
+.chat__avatar { width: 2.4rem; height: 2.4rem; border-radius: 50%; background: var(--ziegel); flex: none; }
+.chat__verlauf { padding: 1rem 0.75rem; display: grid; gap: 0.5rem; min-height: 22rem; align-content: start; }
+.blase { margin: 0; max-width: 85%; padding: 0.5rem 0.75rem; border-radius: 0.6rem; background: #fff; box-shadow: 0 1px 1px rgba(0,0,0,0.1); opacity: 0; transform: translateY(8px); transition: opacity 250ms, transform 250ms; line-height: 1.35; }
+.blase.da { opacity: 1; transform: none; }
+.blase--ich { background: #dcf8c6; justify-self: end; }
+.blase--tippt { width: 3.2rem; height: 2rem; display: grid; place-items: center; grid-auto-flow: column; gap: 0.25rem; }
+.blase--tippt i { width: 0.4rem; height: 0.4rem; border-radius: 50%; background: #999; animation: punkt 1s infinite; }
+.blase--tippt i:nth-child(2) { animation-delay: 150ms; } .blase--tippt i:nth-child(3) { animation-delay: 300ms; }
+@keyframes punkt { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-4px); } }
+.chat__hinweis { margin: 0; padding: 0.5rem 1rem 0.75rem; font-size: 0.8rem; color: #555; background: #f0ebe4; }
+@media (prefers-reduced-motion: reduce) { .blase { opacity: 1; transform: none; } .sticker { animation: none; } .streich span::after { transform: none; animation: none; } .dasda { animation: none; } }

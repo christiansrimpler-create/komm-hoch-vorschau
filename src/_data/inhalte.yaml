@@ -60,11 +60,11 @@ ablauf:
   titel: "So geht's weiter"
   schritte:
     - titel: "Infopaket anfordern"
-      text: "Du bekommst alles Wichtige als PDF per E-Mail: Gehalt, Ablauf, Schule, Wohnheim, Voraussetzungen."
+      text: "Alles Wichtige als PDF per E-Mail."
     - titel: "Wir melden uns"
-      text: "Innerhalb von zwei Werktagen meldet sich jemand vom Dachdeckerhandwerk Westfalen bei dir. Kein Callcenter, sondern Leute, die den Beruf kennen."
+      text: "Innerhalb von 48 Stunden, per WhatsApp oder Anruf. Leute, die den Beruf kennen."
     - titel: "Betrieb kennenlernen"
-      text: "Wir schlagen dir Innungsbetriebe in deiner Nähe vor, die ausbilden. Probearbeiten, schauen ob es passt, Vertrag unterschreiben."
+      text: "Innungsbetriebe in deiner Nähe, Probearbeiten, Vertrag."
 
 schule:
   titel: "Berufsschule in Eslohe"
