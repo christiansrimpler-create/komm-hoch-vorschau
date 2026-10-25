@@ -1,0 +1,21 @@
+name: "Dachdecker werden"
+claim: "Dachdecker werden. Wir finden dir den Betrieb."
+url: "https://dachdecker-werden.example"   # TODO: echte Domain
+sprache: "de"
+beschreibung: "Infos zur Dachdecker-Ausbildung in Westfalen: Gehalt ab 1.050 €, Berufsschule in Eslohe, Schulabschluss nachholen. Material anfordern, Ausbildungsbetrieb in deiner Nähe finden."
+
+# Absender (Impressum/Fußzeile) – TODO: mit Verband/Schule klären, wer Verantwortlicher ist
+absender:
+  name: "Lorenz-Burmann-Schule – Berufskolleg des Dachdeckerhandwerks Westfalen"
+  traeger: "Innungsverband des Dachdeckerhandwerks Westfalen"
+  strasse: "Böttenbergstraße 20"
+  ort: "59889 Eslohe"
+  telefon: "02973 97090"
+  email: "info@dachdeckerschule.de"
+  web: "https://dachdeckerschule.de"
+
+# Formular-Backend. Im Pilot z. B. Brevo-Formular-Endpoint oder eigener Endpoint.
+# Leer = Demo-Modus (keine Übertragung, Weiterleitung auf /danke/)
+formular:
+  endpoint: ""
+  danke: "/danke/"

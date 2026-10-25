@@ -1,0 +1,134 @@
+---
+layout: base.njk
+permalink: /
+mitFormular: true
+bodyClass: "seite-start"
+---
+{% set i = inhalte %}
+
+<section class="hero">
+  <div class="wrap hero__raster">
+    <div class="hero__text">
+      <p class="hero__dach">{{ i.hero.dachzeile }}</p>
+      <h1 class="hero__titel">{{ i.hero.headline | safe }}</h1>
+      <p class="hero__lauf">{{ i.hero.text }}</p>
+      <ul class="hero__fakten">
+        {% for fakt in i.hero.fakten %}<li><strong>{{ fakt.zahl }}</strong> {{ fakt.text }}</li>{% endfor %}
+      </ul>
+    </div>
+    <div class="hero__formular">
+      {% set fid = 'a' %}{% include "formular.njk" %}
+    </div>
+  </div>
+</section>
+
+<section class="verdienst" aria-labelledby="verdienst-titel">
+  <div class="wrap">
+    <h2 id="verdienst-titel" class="titel">Was du verdienst</h2>
+    <p class="verdienst__text">Tarifvergütung Dachdeckerhandwerk, brutto pro Monat, Stand Oktober 2026. Steigt jedes Jahr.</p>
+    <ol class="stufen" aria-label="Ausbildungsvergütung nach Lehrjahr">
+      <li class="stufen__stufe" style="--h: 0.72"><span class="stufen__betrag">1.050 €</span><span class="stufen__jahr">1. Lehrjahr</span></li>
+      <li class="stufen__stufe" style="--h: 0.82"><span class="stufen__betrag">1.200 €</span><span class="stufen__jahr">2. Lehrjahr</span></li>
+      <li class="stufen__stufe" style="--h: 1"><span class="stufen__betrag">1.460 €</span><span class="stufen__jahr">3. Lehrjahr</span></li>
+    </ol>
+    <p class="verdienst__fuss">Danach: Gesellenlohn nach Tarif. Mit Meisterbrief eigener Betrieb oder Bauleitung.</p>
+  </div>
+</section>
+
+<section class="gruende" aria-labelledby="gruende-titel">
+  <div class="wrap">
+    <h2 id="gruende-titel" class="titel">{{ i.gruende.titel }}</h2>
+    <div class="gruende__liste">
+      {% for g in i.gruende.liste %}
+      <div class="grund">
+        <h3>{{ g.titel }}</h3>
+        <p>{{ g.text }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="ablauf" aria-labelledby="ablauf-titel">
+  <div class="wrap">
+    <h2 id="ablauf-titel" class="titel">{{ i.ablauf.titel }}</h2>
+    <ol class="schritte">
+      {% for s in i.ablauf.schritte %}
+      <li class="schritt">
+        <h3>{{ s.titel }}</h3>
+        <p>{{ s.text }}</p>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
+<section class="schule" aria-labelledby="schule-titel">
+  <div class="wrap schule__raster">
+    <figure class="bild bild--hoch">
+      <figcaption>Foto: Werkhalle oder Wohnheim in Eslohe</figcaption>
+    </figure>
+    <div>
+      <h2 id="schule-titel" class="titel">{{ i.schule.titel }}</h2>
+      <p>{{ i.schule.text }}</p>
+      <ul class="haken">
+        {% for p in i.schule.punkte %}<li>{{ p }}</li>{% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="stimmen" aria-labelledby="stimmen-titel">
+  <div class="wrap">
+    <h2 id="stimmen-titel" class="titel">{{ i.stimmen.titel }}</h2>
+    <p class="todo">{{ i.stimmen.hinweis }}</p>
+    <div class="stimmen__liste">
+      {% for s in i.stimmen.liste %}
+      <figure class="stimme">
+        <figure class="bild bild--rund" aria-hidden="true"></figure>
+        <blockquote>{{ s.zitat }}</blockquote>
+        <figcaption><strong>{{ s.name }}</strong><br>{{ s.rolle }}</figcaption>
+      </figure>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="eltern" id="eltern" aria-labelledby="eltern-titel">
+  <div class="wrap">
+    <h2 id="eltern-titel" class="titel">{{ i.eltern.titel }}</h2>
+    <p class="eltern__einleitung">{{ i.eltern.text }}</p>
+    <dl class="eltern__liste">
+      {% for p in i.eltern.punkte %}
+      <div><dt>{{ p.titel }}</dt><dd>{{ p.text | safe }}</dd></div>
+      {% endfor %}
+    </dl>
+    <p>Sie können das Infopaket auch an Ihre eigene E-Mail-Adresse anfordern. <a href="#formular">Zum Formular</a>, bei „Ich frage an als“ einfach „Elternteil“ wählen.</p>
+  </div>
+</section>
+
+<section class="faq" id="faq" aria-labelledby="faq-titel">
+  <div class="wrap">
+    <h2 id="faq-titel" class="titel">{{ i.faq.titel }}</h2>
+    <div class="faq__liste">
+      {% for q in i.faq.liste %}
+      <details class="frage">
+        <summary>{{ q.frage }}</summary>
+        <p>{{ q.antwort }}</p>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="abschluss" aria-labelledby="abschluss-titel">
+  <div class="wrap abschluss__raster">
+    <div>
+      <h2 id="abschluss-titel" class="titel">{{ i.abschluss.titel }}</h2>
+      <p>{{ i.abschluss.text }}</p>
+    </div>
+    <div class="abschluss__formular">
+      {% set fid = 'b' %}{% include "formular.njk" %}
+    </div>
+  </div>
+</section>

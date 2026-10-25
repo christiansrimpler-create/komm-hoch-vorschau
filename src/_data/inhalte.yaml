@@ -1,0 +1,125 @@
+# Alle Texte der Landingpage. "TODO" markiert Angaben, die Schule/Verband liefern müssen.
+
+hero:
+  dachzeile: "Ausbildung im Dachdeckerhandwerk, Westfalen"
+  headline: "Dachdecker werden.<br>Wir finden dir den Betrieb."
+  text: "Hol dir das Infopaket zur Ausbildung: Was du verdienst, wie die Ausbildung läuft, was dich in Eslohe erwartet. Danach melden wir uns und suchen mit dir einen Ausbildungsbetrieb in deiner Nähe."
+  fakten:
+    - zahl: "1.050 €"
+      text: "schon im 1. Lehrjahr"
+    - zahl: "3 Jahre"
+      text: "dann Geselle, später Meister"
+    - zahl: "0 €"
+      text: "kostet dich das Infopaket"
+
+formular:
+  titel: "Infopaket anfordern"
+  untertitel: "Dauert eine Minute. Kommt per E-Mail."
+  button: "Infopaket schicken"
+  felder:
+    vorname: "Vorname"
+    email: "E-Mail"
+    plz: "Postleitzahl"
+    plz_hinweis: "Damit wir Betriebe in deiner Nähe finden"
+    geburtsjahr: "Geburtsjahr"
+    handy: "Handynummer (freiwillig)"
+    handy_hinweis: "Für Rückfragen per WhatsApp oder Anruf"
+    start: "Wann willst du starten?"
+    start_optionen:
+      - "Sofort"
+      - "Sommer 2027"
+      - "Sommer 2028"
+      - "Noch offen"
+    rolle: "Ich frage an als"
+    rolle_optionen:
+      - wert: "jugendlich"
+        label: "Schüler:in"
+      - wert: "eltern"
+        label: "Elternteil"
+      - wert: "quereinstieg"
+        label: "Quereinsteiger:in"
+  einwilligung_datenschutz: "Ich habe die <a href=\"/datenschutz/\">Datenschutzhinweise</a> gelesen. Meine Angaben werden zur Zusendung des Infopakets und zur Vermittlung an Ausbildungsbetriebe verwendet."
+  einwilligung_kontakt: "Ja, ihr dürft mich per E-Mail, Telefon oder WhatsApp zur Dachdecker-Ausbildung kontaktieren. Ich kann das jederzeit widerrufen."
+  unter16_hinweis: "Du bist unter 16? Dann brauchen wir die Einwilligung eines Elternteils. Trag unten einfach die E-Mail-Adresse deiner Eltern ein, wir schicken das Infopaket dorthin."
+  eltern_email: "E-Mail eines Elternteils"
+  sicherheit: "Keine Werbung von Dritten. Keine Weitergabe ohne dein Okay."
+
+gruende:
+  titel: "Warum Dachdecker?"
+  liste:
+    - titel: "Du verdienst ab Tag eins."
+      text: "1.050 € im ersten, 1.200 € im zweiten, 1.460 € im dritten Lehrjahr. Tarif, kein Taschengeld. Eine der höchsten Ausbildungsvergütungen im Handwerk."
+    - titel: "Du siehst, was du geschafft hast."
+      text: "Abends steht da ein Dach, das du gebaut hast. Keine Schicht am Bildschirm, kein Warten auf Feedback. Dein Ergebnis steht auf der Straße."
+    - titel: "Solar, Gründach, Drohne."
+      text: "Dachdecker montieren Photovoltaik, dämmen Häuser, begrünen Dächer und vermessen mit Drohnen. Der Beruf ist das Gegenteil von alt."
+    - titel: "Dein Weg geht weiter."
+      text: "Geselle, dann Meister, dann eigener Betrieb oder Bauleitung. Die Meisterschule ist direkt in Eslohe. Viele Betriebe suchen Nachfolger."
+
+ablauf:
+  titel: "So geht's weiter"
+  schritte:
+    - titel: "Infopaket anfordern"
+      text: "Du bekommst alles Wichtige als PDF per E-Mail: Gehalt, Ablauf, Schule, Wohnheim, Voraussetzungen."
+    - titel: "Wir melden uns"
+      text: "Innerhalb von zwei Werktagen meldet sich jemand vom Dachdeckerhandwerk Westfalen bei dir. Kein Callcenter, sondern Leute, die den Beruf kennen."
+    - titel: "Betrieb kennenlernen"
+      text: "Wir schlagen dir Innungsbetriebe in deiner Nähe vor, die ausbilden. Probearbeiten, schauen ob es passt, Vertrag unterschreiben."
+
+schule:
+  titel: "Berufsschule in Eslohe"
+  text: "Die Theorie lernst du nicht irgendwo, sondern an der Lorenz-Burmann-Schule im Sauerland, der Berufsschule des westfälischen Dachdeckerhandwerks. Zweimal im Jahr fünf Wochen am Stück, zusammen mit Azubis aus ganz Westfalen."
+  punkte:
+    - "Eigenes Wohnheim direkt an der Schule, Mensa inklusive"
+    - "Werkhallen für die überbetrieblichen Lehrgänge auf demselben Gelände"
+    - "Schulabschluss nachholen: Hauptschulabschluss, mittlerer Abschluss, sogar Oberstufen-Berechtigung"
+    - "Meisterschule am selben Ort, wenn du später weitermachen willst"
+
+eltern:
+  titel: "Für Eltern"
+  text: "Sie fragen sich, ob das Handwerk eine sichere Entscheidung ist? Ein paar Fakten."
+  punkte:
+    - titel: "Sichere Perspektive"
+      text: "Dachdecker fehlen überall. Wer die Gesellenprüfung besteht, hat eine Stelle. Fast jeder Betrieb übernimmt seine Azubis. <span class=\"todo\">TODO: Übernahmequote vom Verband</span>"
+    - titel: "Abschluss nachholen"
+      text: "Am Berufskolleg in Eslohe kann Ihr Kind parallel den Hauptschulabschluss oder die Fachoberschulreife erwerben. Bei guten Noten sogar die Berechtigung zur gymnasialen Oberstufe."
+    - titel: "Betreut wohnen"
+      text: "Während der Blockphasen wohnen die Azubis im schuleigenen Wohnheim mit Heimleitung und eigenem Sicherheitsdienst. <span class=\"todo\">TODO: Kosten und Kostenträger</span>"
+    - titel: "Ein Beruf, der bleibt"
+      text: "Dächer lassen sich nicht ins Ausland verlagern und nicht automatisieren. Mit dem Meister ist der eigene Betrieb möglich."
+
+stimmen:
+  titel: "Leute, die es gemacht haben"
+  hinweis: "TODO: Echte Zitate und Fotos von Azubis und Ausbildern der Schule. Platzhalter."
+  liste:
+    - zitat: "Ich wollte nie den ganzen Tag drinnen sitzen. Jetzt bin ich im zweiten Lehrjahr, hab mein eigenes Geld und weiß, dass mein Chef mich übernehmen will."
+      name: "Platzhalter, 17"
+      rolle: "Azubi, 2. Lehrjahr"
+    - zitat: "Die Blockwochen in Eslohe sind das Beste. Man lernt Leute aus ganz Westfalen kennen und abends ist immer was los."
+      name: "Platzhalter, 19"
+      rolle: "Azubi, 3. Lehrjahr"
+    - zitat: "Wir bilden aus, weil wir unsere Leute selbst am besten ausbilden können. Wer Bock hat, hat bei uns einen Platz."
+      name: "Platzhalter"
+      rolle: "Dachdeckermeister, Innungsbetrieb"
+
+faq:
+  titel: "Häufige Fragen"
+  liste:
+    - frage: "Welchen Schulabschluss brauche ich?"
+      antwort: "Keinen bestimmten. Viele Azubis starten mit Hauptschulabschluss, manche ohne. Am Berufskolleg in Eslohe kannst du Abschlüsse während der Ausbildung nachholen."
+    - frage: "Wie lange dauert die Ausbildung?"
+      antwort: "Drei Jahre. Bei guten Leistungen kannst du die Gesellenprüfung vorziehen. Nach dem zweiten Lehrjahr gibt es eine Zwischenprüfung."
+    - frage: "Was verdiene ich?"
+      antwort: "Nach Tarif 1.050 € im ersten, 1.200 € im zweiten und 1.460 € im dritten Lehrjahr, brutto pro Monat. Als Geselle deutlich mehr, als Meister noch einmal mehr."
+    - frage: "Muss ich nach Eslohe ziehen?"
+      antwort: "Nein. Du arbeitest in einem Betrieb in deiner Nähe. Nur für die Berufsschule bist du zweimal im Jahr für fünf Wochen in Eslohe und wohnst dann im Wohnheim."
+    - frage: "Ist das nicht gefährlich?"
+      antwort: "Du arbeitest in der Höhe, ja. Deshalb lernst du von Anfang an Absturzsicherung, und auf Baustellen gilt Gerüstpflicht. Sicherheit ist Teil der Ausbildung, nicht Nebensache."
+    - frage: "Ich habe noch keinen Betrieb. Was jetzt?"
+      antwort: "Genau dafür ist diese Seite. Fordere das Infopaket an, wir melden uns und schlagen dir Ausbildungsbetriebe in deiner Nähe vor."
+    - frage: "Was passiert mit meinen Daten?"
+      antwort: "Wir nutzen sie, um dir das Infopaket zu schicken und dich zu Ausbildungsbetrieben zu beraten. An Betriebe geben wir deine Daten erst weiter, wenn du das ausdrücklich willst. Details in den Datenschutzhinweisen."
+
+abschluss:
+  titel: "Bereit? Dann hol dir das Infopaket."
+  text: "Kostenlos, unverbindlich, per E-Mail. Und danach helfen wir dir, den passenden Betrieb zu finden."

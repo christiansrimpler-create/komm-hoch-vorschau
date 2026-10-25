@@ -1,0 +1,14 @@
+{
+  "name": "dachdecker-werden",
+  "private": true,
+  "description": "Lead-Landingpage: Dachdecker-Ausbildung in Westfalen – Infomaterial anfordern, Betrieb finden. Für die Lorenz-Burmann-Schule Eslohe / Innungsverband des Dachdeckerhandwerks Westfalen.",
+  "scripts": {
+    "build": "eleventy",
+    "serve": "eleventy --serve"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "js-yaml": "^4.1.0"
+  },
+  "type": "module"
+}

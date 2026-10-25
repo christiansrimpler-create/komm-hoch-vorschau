@@ -1,0 +1,75 @@
+{# Lead-Formular. Parameter: fid (eindeutiges Präfix pro Instanz), kompakt (bool) #}
+{% set f = inhalte.formular %}
+<form class="formular" id="{{ 'formular' if fid == 'a' else 'formular-' + fid }}" method="post" action="{{ site.formular.endpoint or '#' }}" data-endpoint="{{ site.formular.endpoint }}" data-danke="{{ site.formular.danke | url }}" novalidate>
+  <div class="formular__kopf">
+    <h2 class="formular__titel" id="{{ fid }}-titel">{{ f.titel }}</h2>
+    <p class="formular__unter">{{ f.untertitel }}</p>
+  </div>
+
+  <div class="feld">
+    <label for="{{ fid }}-vorname">{{ f.felder.vorname }}</label>
+    <input id="{{ fid }}-vorname" name="vorname" type="text" autocomplete="given-name" required maxlength="60">
+  </div>
+
+  <div class="feld">
+    <label for="{{ fid }}-email">{{ f.felder.email }}</label>
+    <input id="{{ fid }}-email" name="email" type="email" autocomplete="email" inputmode="email" required>
+  </div>
+
+  <div class="feld-reihe">
+    <div class="feld">
+      <label for="{{ fid }}-plz">{{ f.felder.plz }}</label>
+      <input id="{{ fid }}-plz" name="plz" type="text" inputmode="numeric" pattern="[0-9]{5}" autocomplete="postal-code" required maxlength="5">
+      <p class="feld__hinweis">{{ f.felder.plz_hinweis }}</p>
+    </div>
+    <div class="feld">
+      <label for="{{ fid }}-geburtsjahr">{{ f.felder.geburtsjahr }}</label>
+      <input id="{{ fid }}-geburtsjahr" name="geburtsjahr" type="text" inputmode="numeric" pattern="(19|20)[0-9]{2}" required maxlength="4" data-alter>
+    </div>
+  </div>
+
+  <div class="feld feld--eltern" hidden>
+    <p class="feld__box">{{ f.unter16_hinweis }}</p>
+    <label for="{{ fid }}-eltern-email">{{ f.eltern_email }}</label>
+    <input id="{{ fid }}-eltern-email" name="eltern_email" type="email" inputmode="email" autocomplete="off">
+  </div>
+
+  <div class="feld">
+    <label for="{{ fid }}-handy">{{ f.felder.handy }}</label>
+    <input id="{{ fid }}-handy" name="handy" type="tel" inputmode="tel" autocomplete="tel">
+    <p class="feld__hinweis">{{ f.felder.handy_hinweis }}</p>
+  </div>
+
+  <div class="feld-reihe">
+    <div class="feld">
+      <label for="{{ fid }}-start">{{ f.felder.start }}</label>
+      <select id="{{ fid }}-start" name="start">
+        {% for o in f.felder.start_optionen %}<option>{{ o }}</option>{% endfor %}
+      </select>
+    </div>
+    <div class="feld">
+      <label for="{{ fid }}-rolle">{{ f.felder.rolle }}</label>
+      <select id="{{ fid }}-rolle" name="rolle">
+        {% for o in f.felder.rolle_optionen %}<option value="{{ o.wert }}">{{ o.label }}</option>{% endfor %}
+      </select>
+    </div>
+  </div>
+
+  <div class="feld feld--check">
+    <input id="{{ fid }}-ds" name="einwilligung_datenschutz" type="checkbox" value="ja" required>
+    <label for="{{ fid }}-ds">{{ f.einwilligung_datenschutz | safe }}</label>
+  </div>
+  <div class="feld feld--check">
+    <input id="{{ fid }}-kontakt" name="einwilligung_kontakt" type="checkbox" value="ja">
+    <label for="{{ fid }}-kontakt">{{ f.einwilligung_kontakt }}</label>
+  </div>
+
+  {# Honeypot gegen Bots #}
+  <div class="feld feld--firma" aria-hidden="true"><label for="{{ fid }}-firma">Firma</label><input id="{{ fid }}-firma" name="firma" type="text" tabindex="-1" autocomplete="off"></div>
+  <input type="hidden" name="quelle" value="">
+  <input type="hidden" name="variante" value="{{ variante or 'jugendliche' }}">
+
+  <button class="knopf knopf--voll" type="submit">{{ f.button }}</button>
+  <p class="formular__status" role="status" aria-live="polite"></p>
+  <p class="formular__sicher">{{ f.sicherheit }}</p>
+</form>

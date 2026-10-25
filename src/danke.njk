@@ -1,0 +1,19 @@
+---
+layout: base.njk
+permalink: /danke/
+titel: "Fast geschafft – bitte E-Mail bestätigen"
+noindex: true
+---
+<section class="danke">
+  <div class="wrap danke__inhalt">
+    <h1 class="hero__titel">Fast geschafft.</h1>
+    <p class="danke__lauf">Wir haben dir gerade eine E-Mail geschickt. Klick dort auf den Bestätigungslink, dann kommt das Infopaket sofort hinterher.</p>
+    <ol class="schritte schritte--hell">
+      <li class="schritt"><h3>E-Mail bestätigen</h3><p>Schau auch im Spam-Ordner nach, falls nichts ankommt. Absender: {{ site.absender.email }}</p></li>
+      <li class="schritt"><h3>Infopaket lesen</h3><p>Das PDF hat alles Wichtige drin: Gehalt, Ablauf, Schule, Wohnheim.</p></li>
+      <li class="schritt"><h3>Wir melden uns</h3><p>Wenn du uns dein Okay gegeben hast, meldet sich innerhalb von zwei Werktagen jemand bei dir und wir suchen gemeinsam einen Betrieb.</p></li>
+    </ol>
+    <p class="danke__kontakt">Fragen schon jetzt? <a href="tel:{{ site.absender.telefon | replace(' ', '') }}">{{ site.absender.telefon }}</a> <span class="todo">TODO: WhatsApp-Link des Verbands</span></p>
+    <p><a href="{{ '/' | url }}">Zurück zur Startseite</a></p>
+  </div>
+</section>
