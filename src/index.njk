@@ -49,13 +49,31 @@ bodyClass: "seite-start"
     <div class="schraege" data-schraege aria-label="Ausbildungsvergütung nach Lehrjahr, danach Geselle und Meister">
       <svg class="schraege__svg" viewBox="0 0 800 420" preserveAspectRatio="none" aria-hidden="true">
         <defs>
-          <pattern id="latten" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(-28)">
+          <pattern id="latten" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(-27.25)">
             <rect width="40" height="6" fill="rgba(255,255,255,0.07)"/>
           </pattern>
+          <path id="ziegel" d="M-15,-24 h30 v16 a15,10 0 0 1 -30,0 z"/>
         </defs>
-        <polygon class="schraege__flaeche" points="40,380 700,40 700,380" fill="url(#latten)"/>
+        {# Haus: Pultdach, Wände, Tür, Fenster, Schornstein #}
+        <g class="haus">
+          <polygon points="40,380 700,40 700,380" fill="url(#latten)" class="schraege__flaeche"/>
+          <polyline points="40,380 40,300" vector-effect="non-scaling-stroke"/>
+          <polyline points="700,380 700,40" vector-effect="non-scaling-stroke"/>
+          <rect x="560" y="305" width="44" height="75" vector-effect="non-scaling-stroke"/>
+          <rect x="430" y="240" width="48" height="44" vector-effect="non-scaling-stroke"/>
+          <polyline points="430,262 478,262 454,240 454,284" vector-effect="non-scaling-stroke" opacity="0.5"/>
+          <rect class="schornstein" x="636" y="8" width="30" height="70" vector-effect="non-scaling-stroke"/>
+          <rect class="schornstein" x="630" y="2" width="42" height="10" vector-effect="non-scaling-stroke"/>
+        </g>
         <polyline class="schraege__boden" points="0,380 800,380" vector-effect="non-scaling-stroke"/>
         <polyline class="schraege__dach" pathLength="1" points="40,380 700,40" vector-effect="non-scaling-stroke"/>
+        {# Ziegelreihe entlang der Schräge, wird von unten nach oben gedeckt #}
+        <g class="ziegelreihe">
+          {%- for k in range(0, 23) -%}
+            {%- set t = (k + 0.5) / 23 -%}
+            <use href="#ziegel" style="--k:{{ k }}" transform="translate({{ (40 + 660 * t) | round(1) }} {{ (380 - 340 * t) | round(1) }}) rotate(-27.25)"/>
+          {%- endfor -%}
+        </g>
       </svg>
       <div class="marke" style="--x:19.85%;--y:75.9%;--d:0.55s"><i class="punkt"></i><div class="marke__box"><strong data-zahl="1050">1.050 €</strong><span>1. Lehrjahr</span></div></div>
       <div class="marke" style="--x:38%;--y:58.1%;--d:0.8s"><i class="punkt"></i><div class="marke__box"><strong data-zahl="1200">1.200 €</strong><span>2. Lehrjahr</span></div></div>

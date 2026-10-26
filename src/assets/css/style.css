@@ -623,3 +623,13 @@ section { padding-block: clamp(3rem, 8vw, 6rem); }
 @media (prefers-reduced-motion: reduce) {
   .schraege__dach { stroke-dashoffset: 0; animation: none; } .schraege__flaeche { opacity: 1; } .marke { opacity: 1; transform: translate(-50%, -50%); animation: none; }
 }
+
+/* Haus und Ziegel auf der Gehaltsschräge */
+.haus { fill: rgba(255,255,255,0.06); stroke: rgba(255,255,255,0.7); stroke-width: 2; }
+.haus .schraege__flaeche { stroke: none; }
+.haus .schornstein { fill: var(--schiefer-tief); stroke: #fff; }
+.ziegelreihe use { fill: var(--schiefer-tief); stroke: #fff; stroke-width: 1.5; vector-effect: non-scaling-stroke; opacity: 0; transform-box: fill-box; }
+.an .ziegelreihe use { animation: decken 380ms calc(0.35s + var(--k) * 55ms) cubic-bezier(.2,1.2,.4,1) forwards; }
+@keyframes decken { from { opacity: 0; translate: 0 -30px; } to { opacity: 1; translate: 0 0; } }
+.ziegelreihe use:nth-child(6n+2) { fill: #ffd84d; }
+@media (prefers-reduced-motion: reduce) { .ziegelreihe use { opacity: 1; animation: none; } }
