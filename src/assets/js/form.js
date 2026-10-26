@@ -206,3 +206,12 @@
   const io = new IntersectionObserver((e) => { if (e[0].isIntersecting) { el.classList.add("an"); io.disconnect(); } }, { threshold: 0.4 });
   io.observe(el);
 })();
+
+/* Eltern-Knopf: im Formular "Elternteil" vorauswählen */
+(function () {
+  document.querySelectorAll("[data-rolle]").forEach((a) => {
+    a.addEventListener("click", () => {
+      document.querySelectorAll('input[name="rolle"][value="' + a.dataset.rolle + '"]').forEach((r) => { r.checked = true; });
+    });
+  });
+})();

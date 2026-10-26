@@ -190,14 +190,24 @@ bodyClass: "seite-start"
 
 <section class="eltern" id="eltern" aria-labelledby="eltern-titel">
   <div class="wrap">
-    <h2 id="eltern-titel" class="titel">{{ i.eltern.titel }}</h2>
-    <p class="eltern__einleitung">{{ i.eltern.text }}</p>
-    <dl class="eltern__liste">
-      {% for p in i.eltern.punkte %}
-      <div><dt>{{ p.titel }}</dt><dd>{{ p.text | safe }}</dd></div>
-      {% endfor %}
-    </dl>
-    <p>Sie können das Infopaket auch an Ihre eigene E-Mail-Adresse anfordern. <a href="#formular">Zum Formular</a>, bei „Ich frage an als“ einfach „Elternteil“ wählen.</p>
+    <p class="eltern__kicker">{{ i.eltern.kicker }}</p>
+    <div class="eltern__kopf">
+      <h2 id="eltern-titel" class="titel">{{ i.eltern.titel | safe }}</h2>
+      <p class="eltern__einleitung">{{ i.eltern.text }}</p>
+    </div>
+    <div class="eltern__raster">
+      <dl class="eltern__fragen">
+        {% for f in i.eltern.fragen %}
+        <div class="eltern__frage"><dt>{{ f.frage }}</dt><dd>{{ f.antwort | safe }}</dd></div>
+        {% endfor %}
+      </dl>
+      <aside class="eltern__cta">
+        <h3>{{ i.eltern.cta_titel }}</h3>
+        <p>{{ i.eltern.cta_text }}</p>
+        <a class="knopf knopf--voll" href="#formular" data-rolle="eltern">{{ i.eltern.cta_button }}</a>
+        <p class="eltern__tel">Oder anrufen: <a href="tel:{{ site.absender.telefon | replace(' ', '') }}">{{ site.absender.telefon }}</a><br><small>Lorenz-Burmann-Schule, Eslohe</small></p>
+      </aside>
+    </div>
   </div>
 </section>
 

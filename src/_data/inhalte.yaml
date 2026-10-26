@@ -80,17 +80,25 @@ schule:
     - "Meisterschule am selben Ort, wenn du später weitermachen willst"
 
 eltern:
-  titel: "Für Eltern"
-  text: "Sie fragen sich, ob das Handwerk eine sichere Entscheidung ist? Ein paar Fakten."
-  punkte:
-    - titel: "Sichere Perspektive"
-      text: "Dachdecker:innen fehlen überall. Wer die Gesellenprüfung besteht, hat eine Stelle. Fast jeder Betrieb übernimmt seine Azubis. <span class=\"todo\">TODO: Übernahmequote vom Verband</span>"
-    - titel: "Abschluss nachholen"
-      text: "Am Berufskolleg in Eslohe kann Ihr Kind parallel den Hauptschulabschluss oder die Fachoberschulreife erwerben. Bei guten Noten sogar die Berechtigung zur gymnasialen Oberstufe."
-    - titel: "Betreut wohnen"
-      text: "Während der Blockphasen wohnen die Azubis im schuleigenen Wohnheim mit Heimleitung und eigenem Sicherheitsdienst. <span class=\"todo\">TODO: Kosten und Kostenträger</span>"
-    - titel: "Ein Beruf, der bleibt"
-      text: "Dächer lassen sich nicht ins Ausland verlagern und nicht automatisieren. Mit dem Meisterbrief ist der eigene Betrieb möglich."
+  kicker: "Für Eltern"
+  titel: "Ihr Kind will aufs Dach.<br>Gute Entscheidung."
+  text: "Dachdecker:in ist ein Beruf mit Tarifvertrag, Zukunft und einem klaren Weg nach oben. Hier die Antworten auf die Fragen, die Eltern uns am häufigsten stellen."
+  fragen:
+    - frage: "Ist das nicht gefährlich?"
+      antwort: "Die Arbeit in der Höhe ist Teil des Berufs, deshalb ist Absturzsicherung Ausbildungsinhalt vom ersten Tag an und Prüfungsstoff. Auf Baustellen gilt Gerüstpflicht. Sicherheit ist hier kein Appell, sondern Handwerk."
+    - frage: "Was ist mit dem Schulabschluss?"
+      antwort: "Am Berufskolleg in Eslohe kann Ihr Kind parallel zur Ausbildung den Hauptschulabschluss nachholen. Mit Berufsschulnote 3,0 gibt es die Fachoberschulreife, ab 2,5 die Berechtigung zur gymnasialen Oberstufe."
+    - frage: "Wie läuft das mit Eslohe?"
+      antwort: "Zweimal im Jahr fünf Wochen Blockunterricht. Die Azubis wohnen im schuleigenen Wohnheim mit Heimleitung und Sicherheitsdienst, Mensa inklusive. <span class=\"todo\">TODO: Kosten und Kostenträger</span>"
+    - frage: "Hat der Beruf Zukunft?"
+      antwort: "Photovoltaik, Dämmung, Gründächer: Die Energiewende findet auf dem Dach statt. Dächer lassen sich weder ins Ausland verlagern noch automatisieren. Dachdecker:innen werden heute gesucht und in zehn Jahren erst recht."
+    - frage: "Was verdient mein Kind?"
+      antwort: "Ab dem ersten Lehrjahr 1.050 € brutto im Monat nach Tarif, im dritten 1.460 €. Eine der höchsten Ausbildungsvergütungen im Handwerk. Danach Gesellenlohn nach Tarif."
+    - frage: "Und danach?"
+      antwort: "1.100 Innungsbetriebe allein in Westfalen, viele davon suchen Nachfolger:innen. Die Meisterschule ist direkt in Eslohe. <span class=\"todo\">TODO: Übernahmequote vom Verband</span>"
+  cta_titel: "Lieber erst selbst lesen?"
+  cta_text: "Fordern Sie das Infopaket an Ihre eigene E-Mail-Adresse an. Oder rufen Sie an, die Schule beantwortet Elternfragen gern persönlich."
+  cta_button: "Infopaket an mich"
 
 stimmen:
   titel: "Leute, die es gemacht haben"

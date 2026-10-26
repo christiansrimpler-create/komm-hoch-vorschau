@@ -234,13 +234,6 @@ section { padding-block: clamp(3rem, 8vw, 6rem); }
 .stimme figcaption { font-size: 0.9rem; color: var(--tinte-mittel); }
 @media (min-width: 48em) { .stimmen__liste { grid-template-columns: repeat(3, 1fr); } }
 
-/* Eltern – bewusst ruhiger */
-.eltern { background: var(--putz-dunkel); }
-.eltern__einleitung { font-size: 1.15rem; }
-.eltern__liste { margin: 0 0 1.5rem; display: grid; gap: 1.5rem; }
-.eltern__liste dt { font-family: var(--display); font-weight: 700; font-size: 1.5rem; line-height: 1.05; margin-bottom: 0.25em; }
-.eltern__liste dd { margin: 0; }
-@media (min-width: 48em) { .eltern__liste { grid-template-columns: 1fr 1fr; gap: 2rem 3rem; } }
 
 /* FAQ */
 .faq__liste { max-width: 44rem; }
@@ -376,14 +369,14 @@ section { padding-block: clamp(3rem, 8vw, 6rem); }
 @supports (animation-timeline: view()) {
   .stufen__stufe { transform-origin: bottom; animation: wachsen 1s ease-out both; animation-timeline: view(); animation-range: entry 10% entry 70%; }
   @keyframes wachsen { from { transform: scaleY(0.08); } to { transform: scaleY(1); } }
-  .titel:not(.hero .titel), .grund, .schritt, .stimme, .eltern__liste > div, .frage, .verdienst__text, .verdienst__danach, .reel__text p, .ablauf__einleitung, .schule__text, .eltern__einleitung {
+  .titel:not(.hero .titel), .grund, .schritt, .stimme, .eltern__frage, .eltern__cta, .frage, .verdienst__text, .verdienst__danach, .reel__text p, .ablauf__einleitung, .schule__text, .eltern__einleitung {
     animation: einschieben 1s cubic-bezier(.2,.7,.2,1) both; animation-timeline: view(); animation-range: entry 0% entry 55%;
   }
   @keyframes einschieben { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
   /* Staffelung in Rastern: jedes weitere Element kommt etwas später */
-  .grund:nth-child(2), .stimme:nth-child(2), .eltern__liste > div:nth-child(2), .schritt:nth-child(2) { animation-range: entry 10% entry 65%; }
-  .grund:nth-child(3), .stimme:nth-child(3), .eltern__liste > div:nth-child(3), .schritt:nth-child(3) { animation-range: entry 20% entry 75%; }
-  .grund:nth-child(4), .eltern__liste > div:nth-child(4) { animation-range: entry 30% entry 85%; }
+  .grund:nth-child(2), .stimme:nth-child(2), .eltern__frage:nth-child(2), .eltern__frage:nth-child(5), .schritt:nth-child(2) { animation-range: entry 10% entry 65%; }
+  .grund:nth-child(3), .stimme:nth-child(3), .eltern__frage:nth-child(3), .eltern__frage:nth-child(6), .schritt:nth-child(3) { animation-range: entry 20% entry 75%; }
+  .grund:nth-child(4) { animation-range: entry 30% entry 85%; }
   /* Leichte Parallaxe auf den Objekten */
   .handy, .polaroid, .chat, .pushs, .kommentar { animation: schweben linear both; animation-timeline: view(); animation-range: cover 0% cover 100%; }
   @keyframes schweben { from { translate: 0 36px; } to { translate: 0 -36px; } }
@@ -579,12 +572,6 @@ section { padding-block: clamp(3rem, 8vw, 6rem); }
 .kommentar__fuss { display: flex; gap: 1rem; font-size: 0.85rem; color: var(--tinte-mittel); font-weight: 600; }
 .kommentar__fuss span:first-child { color: var(--ziegel); }
 
-/* Eltern: hell und ruhig, mit Rahmen */
-.eltern { background: #fff; }
-.eltern .wrap { border: 3px solid var(--schiefer-tief); padding: clamp(1.5rem, 4vw, 3rem); }
-.eltern .titel::before { content: "Für Eltern"; display: block; font-size: 1rem; font-weight: 700; color: var(--ziegel); margin-bottom: 0.75rem; letter-spacing: 0; }
-.eltern .titel { font-size: clamp(2rem, 5vw, 3rem); }
-.eltern .titel::before { content: "Lesen Sie das, bevor Ihr Kind fragt." ; }
 
 /* FAQ auf Schiefer-hell */
 .faq { background: var(--putz-dunkel); }
@@ -642,3 +629,23 @@ section { padding-block: clamp(3rem, 8vw, 6rem); }
 .wahl--gross .wahl__option { flex: 1 1 12rem; }
 .wahl--gross .wahl__option span { display: block; text-align: center; padding: 0.9em 1em; border-radius: var(--radius); font-family: var(--display); font-weight: 700; font-size: 1.15rem; }
 .wahl--gross .wahl__option input:checked + span { background: var(--ziegel); border-color: var(--ziegel); }
+
+/* ===== Eltern, neu ===== */
+.eltern { background: #fff; color: var(--tinte); }
+.eltern__kicker { font-family: var(--display); font-weight: 700; font-size: 1.1rem; color: var(--ziegel); text-transform: uppercase; letter-spacing: 0.04em; margin: 0 0 0.5rem; }
+.eltern__kopf { max-width: 44rem; margin-bottom: 2.5rem; }
+.eltern .titel { font-size: clamp(2.2rem, 5.5vw, 3.6rem); }
+.eltern__einleitung { font-size: 1.15rem; color: var(--tinte-mittel); margin: 0; }
+.eltern__raster { display: grid; gap: 2.5rem; align-items: start; }
+.eltern__fragen { margin: 0; display: grid; gap: 1.75rem 3rem; }
+.eltern__frage { border-top: 3px solid var(--schiefer-tief); padding-top: 0.9rem; }
+.eltern__frage dt { font-family: var(--display); font-weight: 700; font-size: 1.45rem; line-height: 1.05; margin-bottom: 0.4em; }
+.eltern__frage dd { margin: 0; font-size: 1rem; line-height: 1.55; }
+.eltern__cta { background: var(--putz); padding: 1.75rem; border-top: 8px solid var(--ziegel); }
+.eltern__cta h3 { font-size: 1.7rem; margin-bottom: 0.4em; }
+.eltern__cta p { font-size: 1rem; }
+.eltern__tel { margin: 1.25rem 0 0; font-weight: 600; }
+.eltern__tel a { color: var(--ziegel); }
+.eltern__tel small { font-weight: 400; color: var(--tinte-mittel); }
+@media (min-width: 48em) { .eltern__fragen { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 60em) { .eltern__raster { grid-template-columns: 2fr 1fr; gap: 4rem; } .eltern__cta { position: sticky; top: 1.5rem; } }
