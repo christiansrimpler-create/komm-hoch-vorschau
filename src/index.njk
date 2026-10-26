@@ -43,14 +43,28 @@ bodyClass: "seite-start"
 
 <section class="verdienst" aria-labelledby="verdienst-titel">
   <div class="wrap">
-    <h2 id="verdienst-titel" class="titel">Was du verdienst</h2>
-    <p class="verdienst__text">Tarifvergütung Dachdeckerhandwerk, brutto pro Monat, Stand Oktober 2026. Steigt jedes Jahr.</p>
-    <ol class="stufen" aria-label="Ausbildungsvergütung nach Lehrjahr">
-      <li class="stufen__stufe" style="--h: 0.72"><span class="stufen__betrag" data-zahl="1050">1.050 €</span><span class="stufen__jahr">1. Lehrjahr</span></li>
-      <li class="stufen__stufe" style="--h: 0.82"><span class="stufen__betrag" data-zahl="1200">1.200 €</span><span class="stufen__jahr">2. Lehrjahr</span></li>
-      <li class="stufen__stufe" style="--h: 1"><span class="stufen__betrag" data-zahl="1460">1.460 €</span><span class="stufen__jahr">3. Lehrjahr</span></li>
-    </ol>
-    <p class="verdienst__fuss"><span class="sticker sticker--hell" style="--neig:-3deg">+ 410 € in drei Jahren</span> Danach Gesellenlohn nach Tarif. Mit Meisterbrief eigener Betrieb oder Bauleitung.</p>
+    <h2 id="verdienst-titel" class="titel">Dein Lohn geht die Schräge hoch.</h2>
+    <p class="verdienst__text">Tarifvergütung Dachdeckerhandwerk, brutto pro Monat, Stand Oktober 2026. Jedes Jahr eine Reihe höher.</p>
+
+    <div class="schraege" data-schraege aria-label="Ausbildungsvergütung nach Lehrjahr, danach Geselle und Meister">
+      <svg class="schraege__svg" viewBox="0 0 800 420" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <pattern id="latten" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(-28)">
+            <rect width="40" height="6" fill="rgba(255,255,255,0.07)"/>
+          </pattern>
+        </defs>
+        <polygon class="schraege__flaeche" points="40,380 640,60 780,200 780,380" fill="url(#latten)"/>
+        <polyline class="schraege__boden" points="0,380 800,380" vector-effect="non-scaling-stroke"/>
+        <polyline class="schraege__dach" pathLength="1" points="40,380 640,60 780,200" vector-effect="non-scaling-stroke"/>
+      </svg>
+      <div class="marke" style="--x:18.5%;--y:76.8%;--d:0.55s"><i class="punkt"></i><div class="marke__box"><strong data-zahl="1050">1.050 €</strong><span>1. Lehrjahr</span></div></div>
+      <div class="marke" style="--x:36.5%;--y:58.5%;--d:0.8s"><i class="punkt"></i><div class="marke__box"><strong data-zahl="1200">1.200 €</strong><span>2. Lehrjahr</span></div></div>
+      <div class="marke" style="--x:54.5%;--y:40.2%;--d:1.05s"><i class="punkt"></i><div class="marke__box"><strong data-zahl="1460">1.460 €</strong><span>3. Lehrjahr</span></div></div>
+      <div class="marke marke--still" style="--x:69.5%;--y:25%;--d:1.3s"><i class="punkt"></i><div class="marke__box"><strong>Geselle</strong><span>Tariflohn, volle Stelle</span></div></div>
+      <div class="marke marke--first" style="--x:80%;--y:14.3%;--d:1.55s"><i class="punkt punkt--first"></i><div class="marke__box"><strong>Meister</strong><span>eigener Betrieb oder Bauleitung</span></div></div>
+    </div>
+
+    <p class="verdienst__fuss"><span class="sticker sticker--hell" style="--neig:-3deg">+ 410 € in drei Jahren</span> Die Meisterschule ist direkt in Eslohe.</p>
   </div>
 </section>
 

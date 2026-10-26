@@ -196,3 +196,12 @@
   }, { threshold: 0.4 });
   io.observe(chat);
 })();
+
+/* Dachschräge zeichnet sich, sobald sichtbar */
+(function () {
+  const el = document.querySelector("[data-schraege]");
+  if (!el) return;
+  if (!("IntersectionObserver" in window)) { el.classList.add("an"); return; }
+  const io = new IntersectionObserver((e) => { if (e[0].isIntersecting) { el.classList.add("an"); io.disconnect(); } }, { threshold: 0.4 });
+  io.observe(el);
+})();
