@@ -60,7 +60,7 @@
     </div>
     <div class="feld">
       <label for="{{ fid }}-handy">{{ f.felder.handy }}</label>
-      <input id="{{ fid }}-handy" name="handy" type="tel" inputmode="tel" autocomplete="tel">
+      <input id="{{ fid }}-handy" name="handy" type="tel" inputmode="tel" autocomplete="tel" required minlength="8" pattern="[0-9+ /()-]{8,20}" placeholder="0171 2345678">
       <p class="feld__hinweis">{{ f.felder.handy_hinweis }}</p>
     </div>
     <div class="feld feld--check">

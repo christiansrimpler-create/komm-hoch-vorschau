@@ -22,8 +22,8 @@ formular:
     plz: "Postleitzahl"
     plz_hinweis: "Damit wir Betriebe in deiner Nähe finden"
     geburtsjahr: "Geburtsjahr"
-    handy: "Handynummer (freiwillig)"
-    handy_hinweis: "Für Rückfragen per WhatsApp oder Anruf"
+    handy: "Handynummer"
+    handy_hinweis: "Darüber melden wir uns, per WhatsApp oder Anruf."
     start: "Wann willst du starten?"
     start_optionen:
       - "Sofort"
