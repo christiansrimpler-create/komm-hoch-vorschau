@@ -209,13 +209,15 @@
 })();
 
 
-/* Dachschräge zeichnet sich, sobald sichtbar */
+/* Gehaltsbenachrichtigungen: jede Karte startet, sobald sie den mittleren Bildschirmbereich erreicht */
 (function () {
-  const el = document.querySelector("[data-schraege], [data-pushs]");
-  if (!el) return;
-  if (!("IntersectionObserver" in window)) { el.classList.add("an"); return; }
-  const io = new IntersectionObserver((e) => { if (e[0].isIntersecting) { el.classList.add("an"); io.disconnect(); } }, { threshold: 0.4 });
-  io.observe(el);
+  const karten = document.querySelectorAll("[data-pushs] .push, [data-pushs] .pushs__sticker");
+  if (!karten.length) return;
+  if (!("IntersectionObserver" in window) || matchMedia("(prefers-reduced-motion: reduce)").matches) { karten.forEach((k) => k.classList.add("da")); return; }
+  const io = new IntersectionObserver((eintraege) => {
+    eintraege.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("da"); io.unobserve(e.target); } });
+  }, { rootMargin: "-30% 0px -30% 0px", threshold: 0 });
+  karten.forEach((k) => io.observe(k));
 })();
 
 /* Eltern-Knopf: im Formular "Elternteil" vorauswählen */
