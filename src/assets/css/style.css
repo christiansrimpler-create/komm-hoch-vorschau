@@ -43,7 +43,7 @@ a:hover { color: var(--ziegel); }
 :focus-visible { outline: 3px solid var(--ziegel); outline-offset: 3px; }
 p { margin: 0 0 1em; max-width: 38em; }
 h1, h2, h3 { font-family: var(--display); font-weight: 800; line-height: 0.95; letter-spacing: 0; margin: 0 0 0.5em; text-wrap: balance; }
-h1, .titel, .dasda, .abschluss__titel, .schule__titel, .fs__frage, .formular__titel { text-transform: uppercase; }
+h1, .titel, .abschluss__titel, .schule__titel, .fs__frage, .formular__titel { text-transform: uppercase; }
 h3 { font-size: 1.5rem; font-weight: 700; line-height: 1.05; }
 .titel { font-size: clamp(2.25rem, 6vw, 3.5rem); margin-bottom: 0.6em; }
 .wrap { width: min(100% - 2 * var(--rand), var(--wrap)); margin-inline: auto; }
