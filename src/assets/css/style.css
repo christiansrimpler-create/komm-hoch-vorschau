@@ -625,3 +625,13 @@ section { padding-block: clamp(3rem, 8vw, 6rem); }
   .pushs__sticker, .an .pushs__sticker { animation: kleben linear both; animation-timeline: view(); animation-range: entry 30% entry 100%; }
 }
 @media (prefers-reduced-motion: reduce) { .push, .pushs__sticker { animation: none !important; opacity: 1; } }
+
+/* Zwischen-CTAs */
+.cta-zeile { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.25rem; margin: 2rem 0 0; max-width: none; }
+.cta-zeile__hinweis { font-size: 0.95rem; color: var(--tinte-mittel); }
+.verdienst .cta-zeile__hinweis, .schule .cta-zeile__hinweis { color: rgba(255,255,255,0.8); }
+.stimmen .cta-zeile__hinweis { color: var(--schiefer); }
+.knopf--dunkel { background: var(--schiefer-tief); color: #fff; }
+.knopf--dunkel:hover { background: #000; color: #fff; }
+.nichtdas .cta-zeile { margin-top: 1.5rem; }
+.ablauf .cta-zeile { margin-top: 2rem; }

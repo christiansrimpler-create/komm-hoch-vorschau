@@ -1,0 +1,5 @@
+{# Zwischen-CTA. Parameter: label, hinweis (optional), dunkel (bool: Knopf in Dunkel statt Rot) #}
+<p class="cta-zeile">
+  <a class="knopf{% if dunkel %} knopf--dunkel{% endif %}" href="#formular">{{ label }}</a>
+  {% if hinweis %}<span class="cta-zeile__hinweis">{{ hinweis }}</span>{% endif %}
+</p>

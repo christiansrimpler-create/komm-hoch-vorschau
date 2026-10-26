@@ -48,6 +48,7 @@ bodyClass: "seite-start"
       <p class="verdienst__lauf">1.050 € im Monat, schon im ersten Lehrjahr. Nach Tarif, brutto, jeden Monat auf deinem Konto. Mit 16 kannst du anfangen.</p>
       <p class="verdienst__danach">Als Gesell:in mehr. Mit Meisterbrief dein eigener Laden.</p>
       <p class="verdienst__quelle">Tarifvertrag Dachdeckerhandwerk, Stand Oktober 2026</p>
+      {% set label = "Infopaket holen" %}{% set hinweis = "Mit allen Zahlen zum Gehalt." %}{% set dunkel = true %}{% include "cta.njk" %}
     </div>
     <div class="pushs" data-pushs aria-label="Gehaltseingänge in den drei Lehrjahren">
       <div class="push" style="--neig:-2deg;--d:0s">
@@ -81,6 +82,7 @@ bodyClass: "seite-start"
     <p class="streich"><span>Praktikum für lau.</span></p>
     <p class="streich"><span>Noch ein Jahr Schule.</span></p>
     <p class="dasda">Dachdecker:in.</p>
+    {% set label = "Dachdecker:in werden" %}{% set hinweis = "" %}{% set dunkel = false %}{% include "cta.njk" %}
   </div>
 </section>
 
@@ -97,6 +99,7 @@ bodyClass: "seite-start"
       </div>
       {% endfor %}
     </div>
+    {% set label = "Infopaket anfordern" %}{% set hinweis = "Kostenlos, dauert eine Minute." %}{% set dunkel = false %}{% include "cta.njk" %}
   </div>
 </section>
 
@@ -110,8 +113,8 @@ bodyClass: "seite-start"
         <li class="schritt"><h3>{{ s.titel }}</h3><p>{{ s.text }}</p></li>
         {% endfor %}
       </ol>
-    </div>
-    <div class="chat" data-chat aria-label="Beispiel-Chat">
+      {% set label = "Los geht's" %}{% set hinweis = "Eintragen, dann melden wir uns." %}{% set dunkel = false %}{% include "cta.njk" %}
+      <div class="chat" data-chat aria-label="Beispiel-Chat">
       <div class="chat__kopf"><span class="chat__avatar"></span><span><strong>Jan, Dachdeckerhandwerk Westfalen</strong><br><small>online</small></span></div>
       <div class="chat__verlauf">
         <p class="blase blase--sie">Hey Leon, hier ist Jan vom Dachdeckerhandwerk Westfalen. Du hast dir das Infopaket geholt. Schon reingeschaut?</p>
@@ -145,6 +148,7 @@ bodyClass: "seite-start"
         <ul class="haken haken--hell">
           {% for p in i.schule.punkte %}<li>{{ p }}</li>{% endfor %}
         </ul>
+        {% set label = "Infopaket holen" %}{% set hinweis = "Mit allen Infos zu Schule und Wohnheim." %}{% set dunkel = false %}{% include "cta.njk" %}
       </div>
     </div>
   </div>
@@ -162,6 +166,7 @@ bodyClass: "seite-start"
       </figure>
       {% endfor %}
     </div>
+    {% set label = "Auch Bock? Infopaket holen" %}{% set hinweis = "" %}{% set dunkel = true %}{% include "cta.njk" %}
   </div>
 </section>
 
@@ -171,8 +176,7 @@ bodyClass: "seite-start"
     <div class="eltern__kopf">
       <h2 id="eltern-titel" class="titel">{{ i.eltern.titel | safe }}</h2>
       <p class="eltern__einleitung">{{ i.eltern.text }}</p>
-    </div>
-    <div class="eltern__raster">
+      <div class="eltern__raster">
       <dl class="eltern__fragen">
         {% for f in i.eltern.fragen %}
         <div class="eltern__frage"><dt>{{ f.frage }}</dt><dd>{{ f.antwort | safe }}</dd></div>
@@ -199,6 +203,7 @@ bodyClass: "seite-start"
       </details>
       {% endfor %}
     </div>
+    {% set label = "Infopaket anfordern" %}{% set hinweis = "Deine Frage war nicht dabei? Steht im Infopaket, oder du fragst uns direkt." %}{% set dunkel = false %}{% include "cta.njk" %}
   </div>
 </section>
 
@@ -208,8 +213,7 @@ bodyClass: "seite-start"
       <h2 id="abschluss-titel" class="titel abschluss__titel">Bock?</h2>
       <p class="abschluss__text">{{ i.abschluss.text }}</p>
       <div class="sticker-wand"><span class="sticker" style="--neig:-3deg">1 Minute</span><span class="sticker sticker--hell" style="--neig:2deg">0 €</span><span class="sticker" style="--neig:-1deg">Kein Spam</span></div>
-    </div>
-    <div class="abschluss__formular">
+      <div class="abschluss__formular">
       {% set fid = 'b' %}{% include "formular.njk" %}
     </div>
   </div>
