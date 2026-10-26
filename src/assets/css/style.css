@@ -582,7 +582,8 @@ section { padding-block: clamp(3rem, 8vw, 6rem); }
 
 /* Abschluss */
 .abschluss { background: var(--ziegel); color: #fff; }
-.abschluss__titel { font-size: clamp(5rem, 20vw, 14rem); line-height: 0.8; color: #fff; margin-bottom: 0.15em; }
+.abschluss__raster > div:first-child { container-type: inline-size; }
+.abschluss__titel { font-size: clamp(5rem, 30cqi, 13rem); line-height: 0.8; color: #fff; margin-bottom: 0.15em; }
 .abschluss__text { font-size: 1.2rem; color: #ffe3db; }
 .abschluss .sticker-wand { margin-top: 1rem; }
 .abschluss .sticker { animation: none; }
