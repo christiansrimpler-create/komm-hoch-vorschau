@@ -14,7 +14,7 @@
       <label class="wahl__option"><input type="radio" name="ziel" value="betrieb"><span>Direkt einen Betrieb finden</span></label>
     </div>
     <p class="fs__frage fs__frage--klein">{{ f.felder.start }}</p>
-    <div class="wahl" role="group" aria-label="{{ f.felder.start }}">
+    <div class="wahl wahl--raster" role="group" aria-label="{{ f.felder.start }}">
       {% for o in f.felder.start_optionen %}
       <label class="wahl__option"><input type="radio" name="start" value="{{ o }}" {% if loop.first %}checked{% endif %}><span>{{ o }}</span></label>
       {% endfor %}

@@ -614,3 +614,11 @@ section { padding-block: clamp(3rem, 8vw, 6rem); }
 .knopf--dunkel { background: var(--schiefer-tief); color: #fff; }
 .knopf--dunkel:hover { background: #000; color: #fff; }
 .ablauf .cta-zeile { margin-top: 2rem; }
+
+/* Formular: Abstände */
+.fs > .knopf--voll, .fs__knoepfe { margin-top: 1.5rem; }
+.fs__frage--klein { margin-top: 1.5rem; }
+.wahl:not(.wahl--gross) .wahl__option span { padding: 0.6em 0.85em; font-size: 0.95rem; }
+.wahl--gross { margin-bottom: 0; }
+.wahl--raster { display: grid; grid-template-columns: 1fr 1fr; }
+.wahl--raster .wahl__option span { display: block; text-align: center; width: 100%; }
