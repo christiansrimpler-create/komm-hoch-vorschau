@@ -74,10 +74,9 @@ schule:
   titel: "Berufsschule in Eslohe"
   text: "Die Theorie lernst du nicht irgendwo, sondern an der Lorenz-Burmann-Schule im Sauerland, der Berufsschule des westfälischen Dachdeckerhandwerks. Zweimal im Jahr fünf Wochen am Stück, zusammen mit Azubis aus ganz Westfalen."
   punkte:
-    - "Eigenes Wohnheim direkt an der Schule, Mensa inklusive"
-    - "Werkhallen für die überbetrieblichen Lehrgänge auf demselben Gelände"
+    - "Werkhallen für die überbetrieblichen Lehrgänge direkt auf dem Gelände"
     - "Schulabschluss nachholen: Hauptschulabschluss, mittlerer Abschluss, sogar Oberstufen-Berechtigung"
-    - "Meisterschule am selben Ort, wenn du später weitermachen willst"
+    - "Mensa, Freizeitangebote und abends Leute aus ganz Westfalen"
 
 eltern:
   kicker: "Für Eltern"

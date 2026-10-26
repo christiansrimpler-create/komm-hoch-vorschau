@@ -119,26 +119,26 @@ bodyClass: "seite-start"
 </section>
 
 <section class="schule" aria-labelledby="schule-titel">
-  <div class="wrap">
-    <h2 id="schule-titel" class="titel schule__titel">Eslohe.<br><span>Berufsschule, Werkhalle, Wohnheim. Alles auf einem Berg.</span></h2>
-    <div class="schule__raster">
+  <div class="wrap schule__raster">
+    <div class="schule__links">
+      <h2 id="schule-titel" class="titel schule__titel">Eslohe.<br><span>Berufsschule, Werkhalle, Wohnheim. Alles auf einem Berg.</span></h2>
       <div class="polaroid" style="--neig:-3deg">
         <figure class="bild bild--polaroid"><figcaption>Foto: Werkhalle oder Wohnheim</figcaption></figure>
         <p class="polaroid__text">Lorenz-Burmann-Schule, Sauerland</p>
         <i class="tape"></i>
       </div>
-      <div class="schule__text">
-        <p>{{ i.schule.text }}</p>
-        <dl class="zahlen">
-          <div><dt>2 × 5</dt><dd>Wochen Block pro Jahr</dd></div>
-          <div><dt>320</dt><dd>Betten im Wohnheim</dd></div>
-          <div><dt>0 km</dt><dd>bis zur Meisterschule</dd></div>
-        </dl>
-        <ul class="haken haken--hell">
-          {% for p in i.schule.punkte %}<li>{{ p }}</li>{% endfor %}
-        </ul>
-        {% set label = "Infopaket holen" %}{% set hinweis = "Mit allen Infos zu Schule und Wohnheim." %}{% set dunkel = false %}{% include "cta.njk" %}
-      </div>
+    </div>
+    <div class="schule__text">
+      <p>{{ i.schule.text }}</p>
+      <dl class="zahlen">
+        <div><dt>2 × 5</dt><dd>Wochen Block pro Jahr</dd></div>
+        <div><dt>320</dt><dd>Betten im Wohnheim</dd></div>
+        <div><dt>0 km</dt><dd>bis zur Meisterschule</dd></div>
+      </dl>
+      <ul class="haken haken--hell">
+        {% for p in i.schule.punkte %}<li>{{ p }}</li>{% endfor %}
+      </ul>
+      {% set label = "Infopaket holen" %}{% set hinweis = "Mit allen Infos zu Schule und Wohnheim." %}{% set dunkel = false %}{% include "cta.njk" %}
     </div>
   </div>
 </section>

@@ -501,8 +501,9 @@ section { padding-block: clamp(3rem, 8vw, 6rem); }
 .schule__titel { color: #fff; font-size: clamp(3.5rem, 14vw, 9rem); line-height: 0.85; margin-bottom: 0.4em; }
 .schule__titel span { display: block; text-transform: none; font-size: clamp(1.4rem, 3.2vw, 2.2rem); font-weight: 700; color: #c9d0d7; margin-top: 0.4em; line-height: 1.1; max-width: 22em; }
 .schule__raster { display: grid; gap: 2.5rem; align-items: center; }
+.schule__links { display: grid; gap: 2rem; }
 .schule__text p { color: #d9dee3; }
-.polaroid { position: relative; background: #fff; padding: 0.75rem 0.75rem 1rem; transform: rotate(var(--neig)); box-shadow: 0 20px 40px rgba(0,0,0,0.4); max-width: 22rem; margin-inline: auto; }
+.polaroid { position: relative; background: #fff; padding: 0.75rem 0.75rem 1rem; transform: rotate(var(--neig)); box-shadow: 0 20px 40px rgba(0,0,0,0.4); max-width: 26rem; margin: 0.5rem auto 0; width: 100%; }
 .bild--polaroid { aspect-ratio: 1; border-radius: 0; }
 .polaroid__text { margin: 0.75rem 0 0; color: var(--schiefer-tief); font-family: var(--display); font-weight: 700; font-size: 1.2rem; text-align: center; }
 .tape { position: absolute; left: 50%; top: -0.7rem; width: 6rem; height: 1.6rem; background: rgba(144,200,234,0.85); transform: translateX(-50%) rotate(-2deg); }
@@ -510,7 +511,7 @@ section { padding-block: clamp(3rem, 8vw, 6rem); }
 .zahlen dt { font-family: var(--display); font-weight: 800; font-size: clamp(1.8rem, 6vw, 3rem); line-height: 1; color: var(--himmel); }
 .zahlen dd { margin: 0.2rem 0 0; font-size: 0.9rem; color: #c9d0d7; }
 .haken--hell li { color: #e6e9ec; }
-@media (min-width: 60em) { .schule__raster { grid-template-columns: 2fr 3fr; gap: 4rem; } }
+@media (min-width: 60em) { .schule__raster { grid-template-columns: 5fr 6fr; gap: 5rem; align-items: center; } .polaroid { margin-left: 1rem; } }
 
 /* Stimmen auf Gelb */
 .stimmen { background: var(--himmel); color: var(--schiefer-tief); overflow: hidden; }
