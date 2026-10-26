@@ -480,9 +480,6 @@ section { padding-block: clamp(3rem, 8vw, 6rem); }
 .tippt i { width: 0.4rem; height: 0.4rem; border-radius: 50%; background: #999; animation: punkt 1s infinite; }
 .tippt i:nth-child(2) { animation-delay: 150ms; } .tippt i:nth-child(3) { animation-delay: 300ms; }
 .blase--ich { background: #dcf8c6; justify-self: end; }
-.blase--tippt { width: 3.2rem; height: 2rem; display: grid; place-items: center; grid-auto-flow: column; gap: 0.25rem; }
-.blase--tippt i { width: 0.4rem; height: 0.4rem; border-radius: 50%; background: #999; animation: punkt 1s infinite; }
-.blase--tippt i:nth-child(2) { animation-delay: 150ms; } .blase--tippt i:nth-child(3) { animation-delay: 300ms; }
 @keyframes punkt { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-4px); } }
 .chat__hinweis { margin: 0; padding: 0.5rem 1rem 0.75rem; font-size: 0.8rem; color: #555; background: #f0ebe4; }
 @media (prefers-reduced-motion: reduce) { .blase { visibility: visible; transform: none; } .sticker { animation: none; } .streich span::after { transform: none; animation: none; } .dasda { animation: none; } }

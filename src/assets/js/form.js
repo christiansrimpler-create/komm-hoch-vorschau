@@ -208,32 +208,6 @@
   });
 })();
 
-/* Chat tippt sich selbst, sobald sichtbar */
-(function () {
-  const chat = document.querySelector("[data-chat]");
-  if (!chat) return;
-  const verlauf = chat.querySelector(".chat__verlauf");
-  const blasen = [...verlauf.querySelectorAll(".blase")];
-  if (matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) { blasen.forEach((b) => b.classList.add("da")); return; }
-  const tippt = document.createElement("p"); tippt.className = "blase blase--tippt"; tippt.innerHTML = "<i></i><i></i><i></i>";
-  let gestartet = false;
-  const io = new IntersectionObserver((e) => {
-    if (!e[0].isIntersecting || gestartet) return; gestartet = true; io.disconnect();
-    let k = 0;
-    const naechste = () => {
-      if (k >= blasen.length) return;
-      const b = blasen[k];
-      const vonIhnen = b.classList.contains("blase--sie");
-      if (vonIhnen) { tippt.classList.remove("blase--ich"); verlauf.insertBefore(tippt, b); tippt.classList.add("da"); }
-      setTimeout(() => {
-        tippt.remove(); b.classList.add("da"); k++;
-        setTimeout(naechste, 350);
-      }, vonIhnen ? 450 + Math.min(b.textContent.length * 5, 600) : 300);
-    };
-    naechste();
-  }, { threshold: 0.4 });
-  io.observe(chat);
-})();
 
 /* Dachschräge zeichnet sich, sobald sichtbar */
 (function () {
