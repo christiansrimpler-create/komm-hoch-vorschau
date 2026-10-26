@@ -505,3 +505,88 @@ section { padding-block: clamp(3rem, 8vw, 6rem); }
 @keyframes punkt { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-4px); } }
 .chat__hinweis { margin: 0; padding: 0.5rem 1rem 0.75rem; font-size: 0.8rem; color: #555; background: #f0ebe4; }
 @media (prefers-reduced-motion: reduce) { .blase { opacity: 1; transform: none; } .sticker { animation: none; } .streich span::after { transform: none; animation: none; } .dasda { animation: none; } }
+
+/* ===== Farbrhythmus Mittelteil ===== */
+
+/* Gehalt auf Ziegelrot */
+.verdienst { background: var(--ziegel); color: #fff; }
+.verdienst .titel { color: #fff; }
+.verdienst__text { color: #ffd9cf; }
+.verdienst .stufen__stufe { background: var(--schiefer-tief); border-top-color: #ffd84d; }
+.verdienst .stufen__stufe:last-child { background: #fff; color: var(--schiefer-tief); }
+.verdienst .stufen__stufe:last-child .stufen__jahr { color: var(--tinte-mittel); }
+.verdienst .stufen__betrag { font-size: clamp(2rem, 7vw, 3.5rem); }
+.verdienst__fuss { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1rem; color: #fff; max-width: none; }
+
+/* Gründe als Kacheln */
+.gruende { background: var(--putz); }
+.gruende__liste { gap: 1.25rem; }
+.grund { position: relative; padding: 1.5rem; min-height: 15rem; display: flex; flex-direction: column; justify-content: flex-end; transform: rotate(var(--neig, 0deg)); transition: transform 200ms; }
+.grund:hover { transform: rotate(0deg) scale(1.02); }
+.grund h3 { font-size: clamp(2rem, 5vw, 2.6rem); line-height: 0.95; }
+.grund__nr { position: absolute; top: 1rem; right: 1rem; font-family: var(--display); font-weight: 700; opacity: 0.6; }
+.grund--ziegel { background: var(--ziegel); color: #fff; }
+.grund--hell { background: #fff; color: var(--schiefer-tief); box-shadow: 4px 4px 0 var(--schiefer-tief); }
+.grund--gelb { background: #ffd84d; color: var(--schiefer-tief); }
+.grund--schiefer { background: var(--schiefer-tief); color: #fff; }
+.grund--schiefer p, .grund--ziegel p { color: rgba(255,255,255,0.88); }
+@media (min-width: 48em) { .gruende__liste { gap: 1.5rem 2rem; } .grund { padding: 2rem; min-height: 18rem; } }
+
+/* Eslohe auf Schiefer */
+.schule { background: var(--schiefer); color: var(--tinte-hell); overflow: hidden; }
+.schule__titel { color: #fff; font-size: clamp(3.5rem, 14vw, 9rem); line-height: 0.85; margin-bottom: 0.4em; }
+.schule__titel span { display: block; font-size: clamp(1.4rem, 3.2vw, 2.2rem); font-weight: 700; color: #c9d0d7; margin-top: 0.4em; line-height: 1.1; max-width: 22em; }
+.schule__raster { display: grid; gap: 2.5rem; align-items: center; }
+.schule__text p { color: #d9dee3; }
+.polaroid { position: relative; background: #fff; padding: 0.75rem 0.75rem 1rem; transform: rotate(var(--neig)); box-shadow: 0 20px 40px rgba(0,0,0,0.4); max-width: 22rem; margin-inline: auto; }
+.bild--polaroid { aspect-ratio: 1; border-radius: 0; }
+.polaroid__text { margin: 0.75rem 0 0; color: var(--schiefer-tief); font-family: var(--display); font-weight: 700; font-size: 1.2rem; text-align: center; }
+.tape { position: absolute; left: 50%; top: -0.7rem; width: 6rem; height: 1.6rem; background: rgba(255,216,77,0.85); transform: translateX(-50%) rotate(-2deg); }
+.zahlen { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0; }
+.zahlen dt { font-family: var(--display); font-weight: 800; font-size: clamp(1.8rem, 6vw, 3rem); line-height: 1; color: #ffd84d; }
+.zahlen dd { margin: 0.2rem 0 0; font-size: 0.9rem; color: #c9d0d7; }
+.haken--hell li { color: #e6e9ec; }
+@media (min-width: 60em) { .schule__raster { grid-template-columns: 2fr 3fr; gap: 4rem; } }
+
+/* Stimmen auf Gelb */
+.stimmen { background: #ffd84d; color: var(--schiefer-tief); overflow: hidden; }
+.stimmen__liste { gap: 1.5rem; align-items: start; }
+.kommentar { margin: 0; background: #fff; padding: 1.25rem; transform: rotate(var(--neig)); box-shadow: 5px 5px 0 var(--schiefer-tief); display: grid; gap: 0.75rem; }
+.kommentar__kopf { display: flex; align-items: center; gap: 0.6rem; line-height: 1.2; }
+.kommentar__kopf small { color: var(--tinte-mittel); }
+.kommentar__avatar { width: 2.4rem; height: 2.4rem; border-radius: 50%; background: var(--a); flex: none; }
+.kommentar blockquote { margin: 0; font-family: var(--display); font-weight: 700; font-size: 1.35rem; line-height: 1.15; }
+.kommentar blockquote::before, .kommentar blockquote::after { content: none; }
+.kommentar__fuss { display: flex; gap: 1rem; font-size: 0.85rem; color: var(--tinte-mittel); font-weight: 600; }
+.kommentar__fuss span:first-child { color: var(--ziegel); }
+
+/* Eltern: hell und ruhig, mit Rahmen */
+.eltern { background: #fff; }
+.eltern .wrap { border: 3px solid var(--schiefer-tief); padding: clamp(1.5rem, 4vw, 3rem); }
+.eltern .titel::before { content: "Für Eltern"; display: block; font-size: 1rem; font-weight: 700; color: var(--ziegel); margin-bottom: 0.75rem; letter-spacing: 0; }
+.eltern .titel { font-size: clamp(2rem, 5vw, 3rem); }
+.eltern .titel::before { content: "Lesen Sie das, bevor Ihr Kind fragt." ; }
+
+/* FAQ auf Schiefer-hell */
+.faq { background: var(--putz-dunkel); }
+.frage { border-top-color: var(--schiefer-tief); }
+.frage:last-child { border-bottom-color: var(--schiefer-tief); }
+.frage summary { font-size: 1.55rem; }
+.frage[open] summary { color: var(--ziegel); }
+
+/* Abschluss */
+.abschluss { background: var(--ziegel); color: #fff; }
+.abschluss__titel { font-size: clamp(5rem, 20vw, 14rem); line-height: 0.8; color: #fff; margin-bottom: 0.15em; }
+.abschluss__text { font-size: 1.2rem; color: #ffe3db; }
+.abschluss .sticker-wand { margin-top: 1rem; }
+.abschluss .sticker { animation: none; }
+.abschluss .formular { border-top-color: var(--schiefer-tief); }
+.abschluss .fortschritt i.voll { background: var(--schiefer-tief); }
+.abschluss .knopf:not(.knopf--leise) { background: var(--schiefer-tief); }
+.abschluss .knopf:not(.knopf--leise):hover { background: #000; }
+
+/* Chat-Sektion hell, damit nicht drei dunkle Blöcke aufeinander folgen */
+.ablauf { background: var(--putz); color: var(--tinte); }
+.ablauf .titel { color: var(--tinte); }
+.ablauf .schritt h3 { color: var(--tinte); }
+.ablauf .schritt p { color: var(--tinte-mittel); }

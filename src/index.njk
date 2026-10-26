@@ -50,7 +50,7 @@ bodyClass: "seite-start"
       <li class="stufen__stufe" style="--h: 0.82"><span class="stufen__betrag" data-zahl="1200">1.200 €</span><span class="stufen__jahr">2. Lehrjahr</span></li>
       <li class="stufen__stufe" style="--h: 1"><span class="stufen__betrag" data-zahl="1460">1.460 €</span><span class="stufen__jahr">3. Lehrjahr</span></li>
     </ol>
-    <p class="verdienst__fuss">Danach: Gesellenlohn nach Tarif. Mit Meisterbrief eigener Betrieb oder Bauleitung.</p>
+    <p class="verdienst__fuss"><span class="sticker sticker--hell" style="--neig:-3deg">+ 410 € in drei Jahren</span> Danach Gesellenlohn nach Tarif. Mit Meisterbrief eigener Betrieb oder Bauleitung.</p>
   </div>
 </section>
 
@@ -69,8 +69,10 @@ bodyClass: "seite-start"
   <div class="wrap">
     <h2 id="gruende-titel" class="titel">{{ i.gruende.titel }}</h2>
     <div class="gruende__liste">
+      {% set farben = ["grund--ziegel", "grund--hell", "grund--gelb", "grund--schiefer"] %}
       {% for g in i.gruende.liste %}
-      <div class="grund">
+      <div class="grund {{ farben[loop.index0] }}" style="--neig:{{ ['-1.2deg','0.8deg','-0.6deg','1.1deg'][loop.index0] }}">
+        <span class="grund__nr">{{ loop.index }}/4</span>
         <h3>{{ g.titel }}</h3>
         <p>{{ g.text }}</p>
       </div>
@@ -129,16 +131,25 @@ bodyClass: "seite-start"
 </section>
 
 <section class="schule" aria-labelledby="schule-titel">
-  <div class="wrap schule__raster">
-    <figure class="bild bild--hoch">
-      <figcaption>Foto: Werkhalle oder Wohnheim in Eslohe</figcaption>
-    </figure>
-    <div>
-      <h2 id="schule-titel" class="titel">{{ i.schule.titel }}</h2>
-      <p>{{ i.schule.text }}</p>
-      <ul class="haken">
-        {% for p in i.schule.punkte %}<li>{{ p }}</li>{% endfor %}
-      </ul>
+  <div class="wrap">
+    <h2 id="schule-titel" class="titel schule__titel">Eslohe.<br><span>Berufsschule, Werkhalle, Wohnheim. Alles auf einem Berg.</span></h2>
+    <div class="schule__raster">
+      <div class="polaroid" style="--neig:-3deg">
+        <figure class="bild bild--polaroid"><figcaption>Foto: Werkhalle oder Wohnheim</figcaption></figure>
+        <p class="polaroid__text">Lorenz-Burmann-Schule, Sauerland</p>
+        <i class="tape"></i>
+      </div>
+      <div class="schule__text">
+        <p>{{ i.schule.text }}</p>
+        <dl class="zahlen">
+          <div><dt>2 × 5</dt><dd>Wochen Block pro Jahr</dd></div>
+          <div><dt>320</dt><dd>Betten im Wohnheim</dd></div>
+          <div><dt>0 km</dt><dd>bis zur Meisterschule</dd></div>
+        </dl>
+        <ul class="haken haken--hell">
+          {% for p in i.schule.punkte %}<li>{{ p }}</li>{% endfor %}
+        </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -149,10 +160,9 @@ bodyClass: "seite-start"
     <p class="todo">{{ i.stimmen.hinweis }}</p>
     <div class="stimmen__liste">
       {% for s in i.stimmen.liste %}
-      <figure class="stimme">
-        <figure class="bild bild--rund" aria-hidden="true"></figure>
+      <figure class="kommentar" style="--neig:{{ ['-2deg','1.5deg','-1deg'][loop.index0] }}">
+        <div class="kommentar__kopf"><i class="kommentar__avatar" style="--a:{{ ['#c4371f','#2b3440','#8c98a4'][loop.index0] }}"></i><span><strong>{{ s.name }}</strong><br><small>{{ s.rolle }}</small></span></div>
         <blockquote>{{ s.zitat }}</blockquote>
-        <figcaption><strong>{{ s.name }}</strong><br>{{ s.rolle }}</figcaption>
       </figure>
       {% endfor %}
     </div>
@@ -189,8 +199,9 @@ bodyClass: "seite-start"
 <section class="abschluss" aria-labelledby="abschluss-titel">
   <div class="wrap abschluss__raster">
     <div>
-      <h2 id="abschluss-titel" class="titel">{{ i.abschluss.titel }}</h2>
-      <p>{{ i.abschluss.text }}</p>
+      <h2 id="abschluss-titel" class="titel abschluss__titel">Bock?</h2>
+      <p class="abschluss__text">{{ i.abschluss.text }}</p>
+      <div class="sticker-wand"><span class="sticker" style="--neig:-3deg">1 Minute</span><span class="sticker sticker--hell" style="--neig:2deg">0 €</span><span class="sticker" style="--neig:-1deg">Kein Spam</span></div>
     </div>
     <div class="abschluss__formular">
       {% set fid = 'b' %}{% include "formular.njk" %}
