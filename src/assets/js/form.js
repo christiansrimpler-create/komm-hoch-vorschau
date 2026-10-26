@@ -145,6 +145,69 @@
   });
 })();
 
+/* Chat tippt sich selbst, sobald sichtbar. Blasen reservieren ihren Platz von Anfang an. */
+(function () {
+  const chat = document.querySelector("[data-chat]");
+  if (!chat) return;
+  const blasen = [...chat.querySelectorAll(".blase")];
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) { blasen.forEach((b) => b.classList.add("da")); return; }
+  const tippt = document.createElement("span"); tippt.className = "tippt"; tippt.innerHTML = "<i></i><i></i><i></i>";
+  let gestartet = false;
+  const io = new IntersectionObserver((e) => {
+    if (!e[0].isIntersecting || gestartet) return; gestartet = true; io.disconnect();
+    let k = 0;
+    const naechste = () => {
+      if (k >= blasen.length) return;
+      const b = blasen[k];
+      const vonIhnen = b.classList.contains("blase--sie");
+      if (vonIhnen) b.appendChild(tippt);
+      setTimeout(() => {
+        tippt.remove(); b.classList.add("da"); k++;
+        setTimeout(naechste, 350);
+      }, vonIhnen ? 450 + Math.min(b.textContent.length * 5, 600) : 300);
+    };
+    naechste();
+  }, { threshold: 0.4 });
+  io.observe(chat);
+})();
+
+/* Formular in Schritten */
+(function () {
+  document.querySelectorAll("form.formular").forEach((form) => {
+    const schritte = [...form.querySelectorAll(".fs")];
+    const balken = [...form.querySelectorAll(".fortschritt i")];
+    const nr = form.querySelector("[data-schritt-nr]");
+    let aktuell = 0;
+    const zeige = (n, richtung) => {
+      aktuell = n;
+      schritte.forEach((fs, i) => { fs.hidden = i !== n; fs.classList.toggle("einblenden", i === n && richtung > 0); });
+      balken.forEach((b, i) => b.classList.toggle("voll", i <= n));
+      nr.textContent = n + 1;
+      const erstes = schritte[n].querySelector("input:not([type=radio]):not([type=hidden])");
+      if (erstes && richtung > 0 && matchMedia("(min-width: 60em)").matches) erstes.focus();
+    };
+    const gueltig = (fs) => {
+      let ok = true;
+      fs.querySelectorAll("input").forEach((el) => { if (!el.hidden && el.offsetParent !== null && !el.checkValidity()) { ok = false; } });
+      form.classList.add("formular--geprueft");
+      if (!ok) { const e = fs.querySelector(":invalid"); e && e.focus(); }
+      return ok;
+    };
+    form.querySelectorAll("[data-weiter]").forEach((k) => k.addEventListener("click", () => { if (gueltig(schritte[aktuell])) zeige(aktuell + 1, 1); }));
+    form.querySelectorAll("[data-zurueck]").forEach((k) => k.addEventListener("click", () => zeige(aktuell - 1, -1)));
+    // Enter in Schritt 1/2 = Weiter statt Absenden
+    form.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" && aktuell < schritte.length - 1 && e.target.tagName === "INPUT") { e.preventDefault(); if (gueltig(schritte[aktuell])) zeige(aktuell + 1, 1); }
+    });
+    // Beim Absenden alle Schritte prüfen, ggf. zurückspringen
+    form.addEventListener("submit", (e) => {
+      const kaputt = schritte.findIndex((fs) => [...fs.querySelectorAll("input")].some((el) => el.offsetParent !== null && !el.checkValidity()));
+      if (kaputt > -1 && kaputt !== aktuell) { e.stopImmediatePropagation(); e.preventDefault(); zeige(kaputt, -1); }
+    }, true);
+    zeige(0, 0);
+  });
+})();
+
 /* Chat tippt sich selbst, sobald sichtbar */
 (function () {
   const chat = document.querySelector("[data-chat]");

@@ -114,7 +114,8 @@ bodyClass: "seite-start"
         {% endfor %}
       </ol>
       {% set label = "Los geht's" %}{% set hinweis = "Eintragen, dann melden wir uns." %}{% set dunkel = false %}{% include "cta.njk" %}
-      <div class="chat" data-chat aria-label="Beispiel-Chat">
+    </div>
+    <div class="chat" data-chat aria-label="Beispiel-Chat">
       <div class="chat__kopf"><span class="chat__avatar"></span><span><strong>Jan, Dachdeckerhandwerk Westfalen</strong><br><small>online</small></span></div>
       <div class="chat__verlauf">
         <p class="blase blase--sie">Hey Leon, hier ist Jan vom Dachdeckerhandwerk Westfalen. Du hast dir das Infopaket geholt. Schon reingeschaut?</p>
@@ -176,7 +177,8 @@ bodyClass: "seite-start"
     <div class="eltern__kopf">
       <h2 id="eltern-titel" class="titel">{{ i.eltern.titel | safe }}</h2>
       <p class="eltern__einleitung">{{ i.eltern.text }}</p>
-      <div class="eltern__raster">
+    </div>
+    <div class="eltern__raster">
       <dl class="eltern__fragen">
         {% for f in i.eltern.fragen %}
         <div class="eltern__frage"><dt>{{ f.frage }}</dt><dd>{{ f.antwort | safe }}</dd></div>
@@ -213,7 +215,8 @@ bodyClass: "seite-start"
       <h2 id="abschluss-titel" class="titel abschluss__titel">Bock?</h2>
       <p class="abschluss__text">{{ i.abschluss.text }}</p>
       <div class="sticker-wand"><span class="sticker" style="--neig:-3deg">1 Minute</span><span class="sticker sticker--hell" style="--neig:2deg">0 €</span><span class="sticker" style="--neig:-1deg">Kein Spam</span></div>
-      <div class="abschluss__formular">
+    </div>
+    <div class="abschluss__formular">
       {% set fid = 'b' %}{% include "formular.njk" %}
     </div>
   </div>

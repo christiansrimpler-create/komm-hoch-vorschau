@@ -474,15 +474,18 @@ section { padding-block: clamp(3rem, 8vw, 6rem); }
 .chat__kopf small { opacity: 0.8; }
 .chat__avatar { width: 2.4rem; height: 2.4rem; border-radius: 50%; background: var(--ziegel); flex: none; }
 .chat__verlauf { padding: 1rem 0.75rem; display: grid; gap: 0.5rem; min-height: 22rem; align-content: start; }
-.blase { margin: 0; max-width: 85%; padding: 0.5rem 0.75rem; border-radius: 0.6rem; background: #fff; box-shadow: 0 1px 1px rgba(0,0,0,0.1); opacity: 0; transform: translateY(8px); transition: opacity 250ms, transform 250ms; line-height: 1.35; }
-.blase.da { opacity: 1; transform: none; }
+.blase { position: relative; margin: 0; max-width: 85%; padding: 0.5rem 0.75rem; border-radius: 0.6rem; background: #fff; box-shadow: 0 1px 1px rgba(0,0,0,0.1); visibility: hidden; transform: translateY(8px); transition: transform 250ms, visibility 0s 250ms; line-height: 1.35; }
+.blase.da { visibility: visible; transform: none; transition: transform 250ms; }
+.tippt { position: absolute; left: 0; top: 0; visibility: visible; width: 3.2rem; height: 2rem; border-radius: 0.6rem; background: #fff; box-shadow: 0 1px 1px rgba(0,0,0,0.1); display: grid; place-items: center; grid-auto-flow: column; gap: 0.25rem; }
+.tippt i { width: 0.4rem; height: 0.4rem; border-radius: 50%; background: #999; animation: punkt 1s infinite; }
+.tippt i:nth-child(2) { animation-delay: 150ms; } .tippt i:nth-child(3) { animation-delay: 300ms; }
 .blase--ich { background: #dcf8c6; justify-self: end; }
 .blase--tippt { width: 3.2rem; height: 2rem; display: grid; place-items: center; grid-auto-flow: column; gap: 0.25rem; }
 .blase--tippt i { width: 0.4rem; height: 0.4rem; border-radius: 50%; background: #999; animation: punkt 1s infinite; }
 .blase--tippt i:nth-child(2) { animation-delay: 150ms; } .blase--tippt i:nth-child(3) { animation-delay: 300ms; }
 @keyframes punkt { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-4px); } }
 .chat__hinweis { margin: 0; padding: 0.5rem 1rem 0.75rem; font-size: 0.8rem; color: #555; background: #f0ebe4; }
-@media (prefers-reduced-motion: reduce) { .blase { opacity: 1; transform: none; } .sticker { animation: none; } .streich span::after { transform: none; animation: none; } .dasda { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .blase { visibility: visible; transform: none; } .sticker { animation: none; } .streich span::after { transform: none; animation: none; } .dasda { animation: none; } }
 
 /* ===== Farbrhythmus Mittelteil ===== */
 
