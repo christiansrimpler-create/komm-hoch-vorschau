@@ -206,3 +206,28 @@
   const io = new IntersectionObserver((e) => { if (e[0].isIntersecting) { el.classList.add("an"); io.disconnect(); } }, { threshold: 0.4 });
   io.observe(el);
 })();
+
+/* Sanftes Scrollen mit Trägheit, nur Desktop mit Maus/Trackpad */
+(function () {
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  if (!matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+  let ziel = scrollY, ist = scrollY, raf = null;
+  const max = () => document.documentElement.scrollHeight - innerHeight;
+  addEventListener("wheel", (e) => {
+    if (e.ctrlKey || e.defaultPrevented) return;
+    const inner = e.target.closest && e.target.closest("select, textarea, [data-eigenes-scrollen]");
+    if (inner) return;
+    e.preventDefault();
+    const delta = e.deltaMode === 1 ? e.deltaY * 16 : e.deltaMode === 2 ? e.deltaY * innerHeight : e.deltaY;
+    ziel = Math.max(0, Math.min(max(), ziel + delta));
+    if (!raf) raf = requestAnimationFrame(tick);
+  }, { passive: false });
+  function tick() {
+    ist += (ziel - ist) * 0.11;
+    if (Math.abs(ziel - ist) < 0.4) { ist = ziel; scrollTo({ top: ist, behavior: "instant" }); raf = null; return; }
+    scrollTo({ top: ist, behavior: "instant" });
+    raf = requestAnimationFrame(tick);
+  }
+  // Tastatur, Anker, Scrollbalken: Position übernehmen, nicht dagegen arbeiten
+  addEventListener("scroll", () => { if (!raf) ziel = ist = scrollY; }, { passive: true });
+})();
