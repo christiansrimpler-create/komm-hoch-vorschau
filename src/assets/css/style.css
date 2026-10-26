@@ -369,7 +369,7 @@ section { padding-block: clamp(3rem, 8vw, 6rem); }
 @supports (animation-timeline: view()) {
   .stufen__stufe { transform-origin: bottom; animation: wachsen 1s ease-out both; animation-timeline: view(); animation-range: entry 10% entry 70%; }
   @keyframes wachsen { from { transform: scaleY(0.08); } to { transform: scaleY(1); } }
-  .titel:not(.hero .titel), .grund, .schritt, .stimme, .eltern__frage, .eltern__cta, .frage, .verdienst__text, .verdienst__danach, .reel__text p, .ablauf__einleitung, .schule__text, .eltern__einleitung {
+  .titel:not(.hero .titel), .grund, .schritt, .stimme, .eltern__frage, .eltern__cta, .frage, .verdienst__text, .verdienst__danach, .ablauf__einleitung, .schule__text, .eltern__einleitung {
     animation: einschieben 1s cubic-bezier(.2,.7,.2,1) both; animation-timeline: view(); animation-range: entry 0% entry 55%;
   }
   @keyframes einschieben { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
@@ -378,7 +378,7 @@ section { padding-block: clamp(3rem, 8vw, 6rem); }
   .grund:nth-child(3), .stimme:nth-child(3), .eltern__frage:nth-child(3), .eltern__frage:nth-child(6), .schritt:nth-child(3) { animation-range: entry 20% entry 75%; }
   .grund:nth-child(4) { animation-range: entry 30% entry 85%; }
   /* Leichte Parallaxe auf den Objekten */
-  .handy, .polaroid, .chat, .pushs, .kommentar { animation: schweben linear both; animation-timeline: view(); animation-range: cover 0% cover 100%; }
+  .polaroid, .chat, .pushs, .kommentar { animation: schweben linear both; animation-timeline: view(); animation-range: cover 0% cover 100%; }
   @keyframes schweben { from { translate: 0 36px; } to { translate: 0 -36px; } }
   .kommentar { animation-name: schweben-leicht; }
   @keyframes schweben-leicht { from { translate: 0 14px; } to { translate: 0 -14px; } }
@@ -464,39 +464,6 @@ section { padding-block: clamp(3rem, 8vw, 6rem); }
   @keyframes stempel { from { opacity: 0; transform: scale(1.4) rotate(-3deg); } to { opacity: 1; transform: none; } }
 }
 @supports not (animation-timeline: view()) { .streich span::after { transform: none; } .seitenfortschritt { display: none; } }
-
-/* Reel im Handy-Rahmen */
-.reel { background: var(--schiefer-tief); color: var(--tinte-hell); overflow: hidden; }
-.reel .titel { color: #fff; }
-.reel__raster { display: grid; gap: 2.5rem; align-items: center; }
-.reel__text p { color: #d9dee3; }
-@media (min-width: 60em) { .reel__raster { grid-template-columns: 1fr 1fr; gap: 4rem; } .reel__text { order: 1; } }
-.handy {
-  position: relative; width: min(100%, 22rem); aspect-ratio: 9 / 17; margin-inline: auto;
-  border-radius: 2.2rem; background: #000; padding: 0.6rem; box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 0 2px #333;
-  user-select: none; -webkit-user-select: none; touch-action: manipulation;
-}
-.handy__balken { position: absolute; z-index: 3; left: 1.4rem; right: 1.4rem; top: 1.3rem; display: grid; grid-auto-flow: column; gap: 0.3rem; }
-.handy__balken i { height: 3px; background: rgba(255,255,255,0.35); border-radius: 2px; overflow: hidden; position: relative; }
-.handy__balken i::after { content: ""; position: absolute; inset: 0; background: #fff; transform: scaleX(0); transform-origin: left; }
-.handy__balken i.voll::after { transform: scaleX(1); }
-.handy__balken i.laeuft::after { animation: balken var(--dauer, 4000ms) linear forwards; }
-.handy[data-pause] .handy__balken i.laeuft::after { animation-play-state: paused; }
-@keyframes balken { to { transform: scaleX(1); } }
-.handy__slides { position: absolute; inset: 0.6rem; border-radius: 1.7rem; overflow: hidden; }
-.slide { position: absolute; inset: 0; margin: 0; opacity: 0; transition: opacity 350ms; display: flex; align-items: flex-end; padding: 1.5rem; background-color: var(--schiefer); }
-.slide.aktiv { opacity: 1; }
-.slide::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(circle at 50% 100%, rgba(0,0,0,0.25) 38%, transparent 40%), radial-gradient(circle at 0% 50%, rgba(0,0,0,0.25) 38%, transparent 40%), radial-gradient(circle at 100% 50%, rgba(0,0,0,0.25) 38%, transparent 40%); background-size: 2.6rem 2.6rem; }
-.slide::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.1) 30%, rgba(0,0,0,0.75) 100%); }
-.slide--1 { background-color: #3a4654; } .slide--2 { background-color: #2b3440; } .slide--3 { background-color: var(--ziegel-dunkel); } .slide--4 { background-color: #1f2730; } .slide--5 { background-color: var(--ziegel); }
-.slide figcaption { position: relative; z-index: 1; color: #fff; display: grid; gap: 0.5rem; justify-items: start; }
-.slide strong { font-family: var(--display); font-weight: 800; font-size: 2.2rem; line-height: 0.95; }
-.slide span { font-size: 1rem; color: #e6e9ec; }
-.slide.aktiv strong { animation: auf 400ms ease-out both; }
-.slide.aktiv span { animation: auf 400ms 120ms ease-out both; }
-.handy__tipp { position: absolute; top: 0; bottom: 0; width: 50%; background: transparent; border: 0; cursor: pointer; z-index: 2; }
-.handy__tipp--links { left: 0; } .handy__tipp--rechts { right: 0; }
-.handy__tipp:focus-visible { outline: 3px solid var(--ziegel); outline-offset: -6px; border-radius: 1.5rem; }
 
 /* Chat */
 .ablauf__raster { display: grid; gap: 2.5rem; align-items: start; }
@@ -622,7 +589,7 @@ section { padding-block: clamp(3rem, 8vw, 6rem); }
 .push--neu { box-shadow: 0 24px 50px rgba(0,0,0,0.4), 0 0 0 3px var(--himmel); }
 .pushs__sticker { position: absolute; right: -0.5rem; bottom: -1.2rem; font-size: 1.1rem; opacity: 0; }
 .an .pushs__sticker { animation: kleben 500ms 2.7s cubic-bezier(.2,1.4,.4,1) both; }
-@media (prefers-reduced-motion: reduce) { .push, .pushs__sticker { opacity: 1; animation: none; } .seitenfortschritt { display: none; } .handy, .polaroid, .chat, .pushs, .kommentar { animation: none; translate: none; } }
+@media (prefers-reduced-motion: reduce) { .push, .pushs__sticker { opacity: 1; animation: none; } .seitenfortschritt { display: none; } .polaroid, .chat, .pushs, .kommentar { animation: none; translate: none; } }
 .ablauf__einleitung { font-size: 1.15rem; color: var(--tinte-mittel); margin-top: -0.5rem; }
 
 .wahl--gross { margin-bottom: 0.5rem; }

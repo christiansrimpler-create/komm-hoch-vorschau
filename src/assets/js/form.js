@@ -145,32 +145,6 @@
   });
 })();
 
-/* Reel: Slides laufen automatisch, Tippen links/rechts, Halten pausiert */
-(function () {
-  const handy = document.querySelector("[data-reel]");
-  if (!handy) return;
-  const slides = [...handy.querySelectorAll(".slide")];
-  const balken = [...handy.querySelectorAll(".handy__balken i")];
-  const dauer = 4000;
-  const reduziert = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  let i = 0, timer = null, sichtbar = false;
-  function zeige(n) {
-    i = (n + slides.length) % slides.length;
-    slides.forEach((s, k) => s.classList.toggle("aktiv", k === i));
-    balken.forEach((b, k) => { b.classList.remove("laeuft", "voll"); void b.offsetWidth; if (k < i) b.classList.add("voll"); if (k === i) b.classList.add("laeuft"); });
-    plan();
-  }
-  function plan() { clearTimeout(timer); if (sichtbar && !reduziert && !handy.hasAttribute("data-pause")) timer = setTimeout(() => zeige(i + 1), dauer); }
-  handy.querySelector(".handy__tipp--links").addEventListener("click", () => zeige(i - 1));
-  handy.querySelector(".handy__tipp--rechts").addEventListener("click", () => zeige(i + 1));
-  ["pointerdown"].forEach((ev) => handy.addEventListener(ev, () => { handy.setAttribute("data-pause", ""); clearTimeout(timer); }));
-  ["pointerup", "pointerleave", "pointercancel"].forEach((ev) => handy.addEventListener(ev, () => { handy.removeAttribute("data-pause"); plan(); }));
-  handy.style.setProperty("--dauer", dauer + "ms");
-  if ("IntersectionObserver" in window) {
-    new IntersectionObserver((e) => { sichtbar = e[0].isIntersecting; if (sichtbar) zeige(i); else clearTimeout(timer); }, { threshold: 0.5 }).observe(handy);
-  } else { sichtbar = true; zeige(0); }
-})();
-
 /* Chat tippt sich selbst, sobald sichtbar */
 (function () {
   const chat = document.querySelector("[data-chat]");
