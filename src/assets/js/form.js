@@ -56,7 +56,8 @@
           await new Promise((r) => setTimeout(r, 600));
           console.info("Demo-Modus: Formulardaten", Object.fromEntries(new FormData(form)));
         }
-        location.href = form.dataset.danke;
+        const ziel = (form.querySelector('[name="ziel"]:checked') || {}).value;
+        location.href = form.dataset.danke + (ziel === "betrieb" ? "?ziel=betrieb" : "");
       } catch (err) {
         knopf.disabled = false;
         knopf.textContent = alt;

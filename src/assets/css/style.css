@@ -624,3 +624,8 @@ section { padding-block: clamp(3rem, 8vw, 6rem); }
 .an .pushs__sticker { animation: kleben 500ms 2.7s cubic-bezier(.2,1.4,.4,1) both; }
 @media (prefers-reduced-motion: reduce) { .push, .pushs__sticker { opacity: 1; animation: none; } }
 .ablauf__einleitung { font-size: 1.15rem; color: var(--tinte-mittel); margin-top: -0.5rem; }
+
+.wahl--gross { margin-bottom: 0.5rem; }
+.wahl--gross .wahl__option { flex: 1 1 12rem; }
+.wahl--gross .wahl__option span { display: block; text-align: center; padding: 0.9em 1em; border-radius: var(--radius); font-family: var(--display); font-weight: 700; font-size: 1.15rem; }
+.wahl--gross .wahl__option input:checked + span { background: var(--ziegel); border-color: var(--ziegel); }

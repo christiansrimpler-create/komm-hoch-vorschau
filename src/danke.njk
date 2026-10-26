@@ -7,7 +7,8 @@ noindex: true
 <section class="danke">
   <div class="wrap danke__inhalt">
     <h1 class="hero__titel">Fast geschafft.</h1>
-    <p class="danke__lauf">Wir haben dir gerade eine E-Mail geschickt. Klick dort auf den Bestätigungslink, dann kommt das Infopaket sofort hinterher.</p>
+    <p class="danke__lauf" data-ziel="infopaket">Wir haben dir gerade eine E-Mail geschickt. Klick dort auf den Bestätigungslink, dann kommt das Infopaket sofort hinterher.</p>
+    <p class="danke__lauf" data-ziel="betrieb" hidden>Verstanden, du willst direkt loslegen. Bestätige kurz deine E-Mail, dann meldet sich innerhalb von 48 Stunden jemand bei dir und ihr sprecht über Betriebe in deiner Nähe. Das Infopaket schicken wir trotzdem mit, zum Nachlesen.</p>
     <ol class="schritte schritte--hell">
       <li class="schritt"><h3>E-Mail bestätigen</h3><p>Schau auch im Spam-Ordner nach, falls nichts ankommt. Absender: {{ site.absender.email }}</p></li>
       <li class="schritt"><h3>Infopaket lesen</h3><p>Das PDF hat alles Wichtige drin: Gehalt, Ablauf, Schule, Wohnheim.</p></li>
@@ -17,3 +18,8 @@ noindex: true
     <p><a href="{{ '/' | url }}">Zurück zur Startseite</a></p>
   </div>
 </section>
+<script>
+  if (new URLSearchParams(location.search).get("ziel") === "betrieb") {
+    document.querySelectorAll("[data-ziel]").forEach((el) => { el.hidden = el.dataset.ziel !== "betrieb"; });
+  }
+</script>

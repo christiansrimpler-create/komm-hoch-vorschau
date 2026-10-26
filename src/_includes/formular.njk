@@ -28,8 +28,13 @@
   </fieldset>
 
   <fieldset class="fs" data-fs="2" hidden>
-    <legend class="fs__frage">Wann geht's los?</legend>
-    <p class="fs__unter">Grob reicht. Ändern geht immer.</p>
+    <legend class="fs__frage">Was willst du?</legend>
+    <p class="fs__unter">Beides geht. Sag uns nur, wie schnell.</p>
+    <div class="wahl wahl--gross" role="group" aria-label="Was willst du?">
+      <label class="wahl__option"><input type="radio" name="ziel" value="infopaket" checked><span>Erstmal das Infopaket</span></label>
+      <label class="wahl__option"><input type="radio" name="ziel" value="betrieb"><span>Direkt einen Betrieb finden</span></label>
+    </div>
+    <p class="fs__frage fs__frage--klein">Wann geht's los?</p>
     <div class="wahl" role="group" aria-label="{{ f.felder.start }}">
       {% for o in f.felder.start_optionen %}
       <label class="wahl__option"><input type="radio" name="start" value="{{ o }}" {% if loop.first %}checked{% endif %}><span>{{ o }}</span></label>
