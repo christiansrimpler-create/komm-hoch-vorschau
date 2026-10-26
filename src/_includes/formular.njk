@@ -7,40 +7,29 @@
   </div>
 
   <fieldset class="fs" data-fs="1">
-    <legend class="fs__frage">Wo wohnst du?</legend>
-    <p class="fs__unter">Damit wir Betriebe in deiner Nähe finden.</p>
-    <div class="feld-reihe">
-      <div class="feld">
-        <label for="{{ fid }}-plz">{{ f.felder.plz }}</label>
-        <input id="{{ fid }}-plz" name="plz" type="text" inputmode="numeric" pattern="[0-9]{5}" autocomplete="postal-code" required maxlength="5" placeholder="59889">
-      </div>
-      <div class="feld">
-        <label for="{{ fid }}-geburtsjahr">{{ f.felder.geburtsjahr }}</label>
-        <input id="{{ fid }}-geburtsjahr" name="geburtsjahr" type="text" inputmode="numeric" pattern="(19|20)[0-9]{2}" required maxlength="4" placeholder="2010" data-alter>
-      </div>
-    </div>
-    <div class="feld feld--eltern" hidden>
-      <p class="feld__box">{{ f.unter16_hinweis }}</p>
-      <label for="{{ fid }}-eltern-email">{{ f.eltern_email }}</label>
-      <input id="{{ fid }}-eltern-email" name="eltern_email" type="email" inputmode="email" autocomplete="off">
-    </div>
-    <button class="knopf knopf--voll" type="button" data-weiter>Weiter</button>
-  </fieldset>
-
-  <fieldset class="fs" data-fs="2" hidden>
     <legend class="fs__frage">Was willst du?</legend>
     <p class="fs__unter">Beides geht. Sag uns nur, wie schnell.</p>
     <div class="wahl wahl--gross" role="group" aria-label="Was willst du?">
       <label class="wahl__option"><input type="radio" name="ziel" value="infopaket" checked><span>Erstmal das Infopaket</span></label>
       <label class="wahl__option"><input type="radio" name="ziel" value="betrieb"><span>Direkt einen Betrieb finden</span></label>
     </div>
-    <p class="fs__frage fs__frage--klein">Wann geht's los?</p>
+    <p class="fs__frage fs__frage--klein">{{ f.felder.start }}</p>
     <div class="wahl" role="group" aria-label="{{ f.felder.start }}">
       {% for o in f.felder.start_optionen %}
       <label class="wahl__option"><input type="radio" name="start" value="{{ o }}" {% if loop.first %}checked{% endif %}><span>{{ o }}</span></label>
       {% endfor %}
     </div>
-    <p class="fs__frage fs__frage--klein">Ich frage an als</p>
+    <button class="knopf knopf--voll" type="button" data-weiter>Weiter</button>
+  </fieldset>
+
+  <fieldset class="fs" data-fs="2" hidden>
+    <legend class="fs__frage">Wo wohnst du?</legend>
+    <p class="fs__unter">{{ f.felder.plz_hinweis }}. Mehr brauchen wir nicht.</p>
+    <div class="feld">
+      <label for="{{ fid }}-plz">{{ f.felder.plz }}</label>
+      <input id="{{ fid }}-plz" name="plz" type="text" inputmode="numeric" pattern="[0-9]{5}" autocomplete="postal-code" required maxlength="5" placeholder="59889">
+    </div>
+    <p class="fs__frage fs__frage--klein">{{ f.felder.rolle }}</p>
     <div class="wahl" role="group" aria-label="{{ f.felder.rolle }}">
       {% for o in f.felder.rolle_optionen %}
       <label class="wahl__option"><input type="radio" name="rolle" value="{{ o.wert }}" {% if loop.first %}checked{% endif %}><span>{{ o.label }}</span></label>
@@ -55,9 +44,20 @@
   <fieldset class="fs" data-fs="3" hidden>
     <legend class="fs__frage">Wohin soll das Infopaket?</legend>
     <p class="fs__unter">Kommt als PDF per E-Mail. Sofort.</p>
-    <div class="feld">
-      <label for="{{ fid }}-vorname">{{ f.felder.vorname }}</label>
-      <input id="{{ fid }}-vorname" name="vorname" type="text" autocomplete="given-name" required maxlength="60">
+    <div class="feld-reihe">
+      <div class="feld">
+        <label for="{{ fid }}-vorname">{{ f.felder.vorname }}</label>
+        <input id="{{ fid }}-vorname" name="vorname" type="text" autocomplete="given-name" required maxlength="60">
+      </div>
+      <div class="feld">
+        <label for="{{ fid }}-geburtsjahr">{{ f.felder.geburtsjahr }}</label>
+        <input id="{{ fid }}-geburtsjahr" name="geburtsjahr" type="text" inputmode="numeric" pattern="(19|20)[0-9]{2}" required maxlength="4" placeholder="2010" data-alter>
+      </div>
+    </div>
+    <div class="feld feld--eltern" hidden>
+      <p class="feld__box">{{ f.unter16_hinweis }}</p>
+      <label for="{{ fid }}-eltern-email">{{ f.eltern_email }}</label>
+      <input id="{{ fid }}-eltern-email" name="eltern_email" type="email" inputmode="email" autocomplete="off">
     </div>
     <div class="feld">
       <label for="{{ fid }}-email">{{ f.felder.email }}</label>
