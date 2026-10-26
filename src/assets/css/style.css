@@ -1,21 +1,22 @@
 /* Dachdecker werden – Landingpage
    Material-Palette: Schiefer (Flächen), Putz (Papier), Ziegel (Akzent), Zink (gedämpft) */
 :root {
-  --schiefer: #2b3440;
-  --schiefer-tief: #1f2730;
-  --schiefer-hell: #3a4654;
+  --schiefer: #202c38;      /* KOMM HOCH! Dunkel */
+  --schiefer-tief: #161f28;
+  --schiefer-hell: #32414f;
   --putz: #eef0f2;
   --putz-dunkel: #dfe3e7;
   --weiss: #fbfbfc;
-  --ziegel: #c4371f;
-  --ziegel-dunkel: #a02c18;
+  --ziegel: #e22028;        /* KOMM HOCH! Rot */
+  --ziegel-dunkel: #b8161d;
+  --himmel: #90c8ea;        /* KOMM HOCH! Hellblau, ersetzt Gelb */
   --zink: #8c98a4;
   --tinte: var(--schiefer-tief);
   --tinte-hell: #f2f4f6;
   --tinte-mittel: #4d5968;
 
-  --display: "Barlow Condensed", "Arial Narrow", sans-serif;
-  --text: "Barlow", system-ui, sans-serif;
+  --display: "Roboto Condensed", "Arial Narrow", sans-serif;
+  --text: "Roboto", system-ui, sans-serif;
 
   --wrap: 72rem;
   --rand: 1rem;
@@ -41,7 +42,8 @@ a { color: inherit; text-decoration-color: var(--ziegel); text-decoration-thickn
 a:hover { color: var(--ziegel); }
 :focus-visible { outline: 3px solid var(--ziegel); outline-offset: 3px; }
 p { margin: 0 0 1em; max-width: 38em; }
-h1, h2, h3 { font-family: var(--display); font-weight: 800; line-height: 0.95; letter-spacing: -0.01em; margin: 0 0 0.5em; text-wrap: balance; }
+h1, h2, h3 { font-family: var(--display); font-weight: 800; line-height: 0.95; letter-spacing: 0; margin: 0 0 0.5em; text-wrap: balance; }
+h1, .titel, .dasda, .abschluss__titel, .schule__titel, .fs__frage, .formular__titel { text-transform: uppercase; }
 h3 { font-size: 1.5rem; font-weight: 700; line-height: 1.05; }
 .titel { font-size: clamp(2.25rem, 6vw, 3.5rem); margin-bottom: 0.6em; }
 .wrap { width: min(100% - 2 * var(--rand), var(--wrap)); margin-inline: auto; }
@@ -74,14 +76,16 @@ section { padding-block: clamp(3rem, 8vw, 6rem); }
 .knopf--klein { font-size: 1.05rem; padding: 0.65em 1em; }
 
 /* Kopf */
-.kopf { background: var(--schiefer-tief); color: var(--tinte-hell); }
+.kopf { background: #fff; color: var(--schiefer); border-bottom: 1px solid var(--putz-dunkel); }
 .kopf__zeile { display: flex; align-items: center; justify-content: space-between; min-height: 4rem; gap: 1rem; }
-.marke { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; font-family: var(--display); font-weight: 800; font-size: 1.15rem; line-height: 0.9; }
+.marke { display: flex; align-items: center; text-decoration: none; }
+.marke__logo { height: 3.1rem; width: auto; }
+@media (min-width: 48em) { .marke__logo { height: 4.2rem; } .kopf__zeile { min-height: 5.5rem; } }
 .marke__zeichen { width: 2rem; height: 2rem; fill: var(--ziegel); }
 .marke__zeichen path:first-child { fill: var(--tinte-hell); }
 .kopf__nav { display: flex; align-items: center; gap: 1.25rem; }
 .kopf__nav a:not(.knopf) { text-decoration: none; font-weight: 600; font-size: 0.95rem; }
-.kopf__nav a:not(.knopf):hover { color: #fff; text-decoration: underline; }
+.kopf__nav a:not(.knopf):hover { color: var(--ziegel); text-decoration: underline; }
 @media (max-width: 37.5em) { .kopf__nav a:not(.knopf) { display: none; } }
 
 /* Hero mit Dachschräge */
@@ -284,7 +288,7 @@ section { padding-block: clamp(3rem, 8vw, 6rem); }
 .mobil-cta {
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
   padding: 0.6rem var(--rand) calc(0.6rem + env(safe-area-inset-bottom));
-  background: rgba(31, 39, 48, 0.92); backdrop-filter: blur(6px);
+  background: rgba(22, 31, 40, 0.92); backdrop-filter: blur(6px);
 }
 @media (min-width: 48em) { .mobil-cta { display: none; } }
 
@@ -294,12 +298,12 @@ section { padding-block: clamp(3rem, 8vw, 6rem); }
 .hero { overflow: hidden; isolation: isolate; }
 @media (min-width: 60em) { .hero { min-height: 100svh; display: flex; align-items: center; } }
 .hero > .wrap { position: relative; z-index: 2; }
-.hero__text { text-shadow: 0 2px 24px rgba(31,39,48,0.9); }
+.hero__text { text-shadow: 0 2px 24px rgba(22,31,40,0.9); }
 .hero::before { /* Schleier für Lesbarkeit */
   content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
-  background: linear-gradient(180deg, rgba(43,52,64,0.2) 0%, rgba(43,52,64,0.75) 45%, rgba(43,52,64,0.35) 100%);
+  background: linear-gradient(180deg, rgba(32,44,56,0.2) 0%, rgba(32,44,56,0.75) 45%, rgba(32,44,56,0.35) 100%);
 }
-@media (min-width: 60em) { .hero::before { background: linear-gradient(90deg, rgba(43,52,64,0.85) 0%, rgba(43,52,64,0.45) 45%, rgba(43,52,64,0.1) 100%); } }
+@media (min-width: 60em) { .hero::before { background: linear-gradient(90deg, rgba(32,44,56,0.85) 0%, rgba(32,44,56,0.45) 45%, rgba(32,44,56,0.1) 100%); } }
 .hero::after { /* Korn */
   content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0.18; mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
@@ -340,7 +344,7 @@ section { padding-block: clamp(3rem, 8vw, 6rem); }
 /* Jede zweite Reihe um eine halbe Ziegelbreite versetzt, wie beim Decken */
 .dach i:nth-child(36n+19), .dach i:nth-child(36n+20), .dach i:nth-child(36n+21), .dach i:nth-child(36n+22), .dach i:nth-child(36n+23), .dach i:nth-child(36n+24), .dach i:nth-child(36n+25), .dach i:nth-child(36n+26), .dach i:nth-child(36n+27), .dach i:nth-child(36n+28), .dach i:nth-child(36n+29), .dach i:nth-child(36n+30), .dach i:nth-child(36n+31), .dach i:nth-child(36n+32), .dach i:nth-child(36n+33), .dach i:nth-child(36n+34), .dach i:nth-child(36n+35), .dach i:nth-child(36n+36) { margin-left: 50%; margin-right: -50%; }
 /* Frisch gedeckte Ziegel in Ziegelrot */
-.dach i:nth-child(11n+4), .dach i:nth-child(23n+9) { background: linear-gradient(180deg, #e2653f 0%, var(--ziegel) 55%, var(--ziegel-dunkel) 100%); }
+.dach i:nth-child(11n+4), .dach i:nth-child(23n+9) { background: linear-gradient(180deg, #f04a50 0%, var(--ziegel) 55%, var(--ziegel-dunkel) 100%); }
 @keyframes legen {
   from { opacity: 0; transform: translateY(-120px) translateZ(60px); }
   to   { opacity: 1; transform: translateY(0) translateZ(0); }
@@ -401,7 +405,7 @@ section { padding-block: clamp(3rem, 8vw, 6rem); }
   box-shadow: 3px 3px 0 rgba(0,0,0,0.35); text-shadow: none;
 }
 .sticker--rot { background: var(--ziegel); color: #fff; }
-.sticker--hell { background: #ffd84d; }
+.sticker--hell { background: var(--himmel); }
 .sticker:nth-child(1) { animation: kleben 500ms 700ms cubic-bezier(.2,1.4,.4,1) both; }
 .sticker:nth-child(2) { animation: kleben 500ms 850ms cubic-bezier(.2,1.4,.4,1) both; }
 .sticker:nth-child(3) { animation: kleben 500ms 1000ms cubic-bezier(.2,1.4,.4,1) both; }
@@ -512,7 +516,7 @@ section { padding-block: clamp(3rem, 8vw, 6rem); }
 .verdienst { background: var(--ziegel); color: #fff; }
 .verdienst .titel { color: #fff; }
 .verdienst__text { color: #ffd9cf; }
-.verdienst .stufen__stufe { background: var(--schiefer-tief); border-top-color: #ffd84d; }
+.verdienst .stufen__stufe { background: var(--schiefer-tief); border-top-color: var(--himmel); }
 .verdienst .stufen__stufe:last-child { background: #fff; color: var(--schiefer-tief); }
 .verdienst .stufen__stufe:last-child .stufen__jahr { color: var(--tinte-mittel); }
 .verdienst .stufen__betrag { font-size: clamp(2rem, 7vw, 3.5rem); }
@@ -525,10 +529,10 @@ section { padding-block: clamp(3rem, 8vw, 6rem); }
 .grund:hover { transform: rotate(0deg) scale(1.02); }
 .grund h3 { font-size: clamp(2rem, 5vw, 2.6rem); line-height: 0.95; }
 .grund__kick { font-family: var(--display); font-weight: 800; font-size: clamp(4rem, 9vw, 7rem); line-height: 0.8; letter-spacing: -0.03em; margin: 0 0 0.6rem -0.04em; opacity: 0.92; }
-.grund--hell .grund__kick { color: var(--ziegel); } .grund--gelb .grund__kick { color: var(--ziegel); } .grund--ziegel .grund__kick { color: #ffd84d; } .grund--schiefer .grund__kick { color: #ffd84d; }
+.grund--hell .grund__kick { color: var(--ziegel); } .grund--gelb .grund__kick { color: var(--ziegel); } .grund--ziegel .grund__kick { color: var(--himmel); } .grund--schiefer .grund__kick { color: var(--himmel); }
 .grund--ziegel { background: var(--ziegel); color: #fff; }
 .grund--hell { background: #fff; color: var(--schiefer-tief); box-shadow: 4px 4px 0 var(--schiefer-tief); }
-.grund--gelb { background: #ffd84d; color: var(--schiefer-tief); }
+.grund--gelb { background: var(--himmel); color: var(--schiefer-tief); }
 .grund--schiefer { background: var(--schiefer-tief); color: #fff; }
 .grund--schiefer p, .grund--ziegel p { color: rgba(255,255,255,0.88); }
 @media (min-width: 48em) { .gruende__liste { gap: 1.5rem 2rem; } .grund { padding: 2rem; } }
@@ -536,21 +540,21 @@ section { padding-block: clamp(3rem, 8vw, 6rem); }
 /* Eslohe auf Schiefer */
 .schule { background: var(--schiefer); color: var(--tinte-hell); overflow: hidden; }
 .schule__titel { color: #fff; font-size: clamp(3.5rem, 14vw, 9rem); line-height: 0.85; margin-bottom: 0.4em; }
-.schule__titel span { display: block; font-size: clamp(1.4rem, 3.2vw, 2.2rem); font-weight: 700; color: #c9d0d7; margin-top: 0.4em; line-height: 1.1; max-width: 22em; }
+.schule__titel span { display: block; text-transform: none; font-size: clamp(1.4rem, 3.2vw, 2.2rem); font-weight: 700; color: #c9d0d7; margin-top: 0.4em; line-height: 1.1; max-width: 22em; }
 .schule__raster { display: grid; gap: 2.5rem; align-items: center; }
 .schule__text p { color: #d9dee3; }
 .polaroid { position: relative; background: #fff; padding: 0.75rem 0.75rem 1rem; transform: rotate(var(--neig)); box-shadow: 0 20px 40px rgba(0,0,0,0.4); max-width: 22rem; margin-inline: auto; }
 .bild--polaroid { aspect-ratio: 1; border-radius: 0; }
 .polaroid__text { margin: 0.75rem 0 0; color: var(--schiefer-tief); font-family: var(--display); font-weight: 700; font-size: 1.2rem; text-align: center; }
-.tape { position: absolute; left: 50%; top: -0.7rem; width: 6rem; height: 1.6rem; background: rgba(255,216,77,0.85); transform: translateX(-50%) rotate(-2deg); }
+.tape { position: absolute; left: 50%; top: -0.7rem; width: 6rem; height: 1.6rem; background: rgba(144,200,234,0.85); transform: translateX(-50%) rotate(-2deg); }
 .zahlen { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0; }
-.zahlen dt { font-family: var(--display); font-weight: 800; font-size: clamp(1.8rem, 6vw, 3rem); line-height: 1; color: #ffd84d; }
+.zahlen dt { font-family: var(--display); font-weight: 800; font-size: clamp(1.8rem, 6vw, 3rem); line-height: 1; color: var(--himmel); }
 .zahlen dd { margin: 0.2rem 0 0; font-size: 0.9rem; color: #c9d0d7; }
 .haken--hell li { color: #e6e9ec; }
 @media (min-width: 60em) { .schule__raster { grid-template-columns: 2fr 3fr; gap: 4rem; } }
 
 /* Stimmen auf Gelb */
-.stimmen { background: #ffd84d; color: var(--schiefer-tief); overflow: hidden; }
+.stimmen { background: var(--himmel); color: var(--schiefer-tief); overflow: hidden; }
 .stimmen__liste { gap: 1.5rem; align-items: start; }
 .kommentar { margin: 0; background: #fff; padding: 1.25rem; transform: rotate(var(--neig)); box-shadow: 5px 5px 0 var(--schiefer-tief); display: grid; gap: 0.75rem; }
 .kommentar__kopf { display: flex; align-items: center; gap: 0.6rem; line-height: 1.2; }
@@ -613,7 +617,7 @@ section { padding-block: clamp(3rem, 8vw, 6rem); }
 .push__titel { grid-column: 1 / -1; font-size: 1rem; font-weight: 600; margin-top: 0.2rem; }
 .push__text { grid-column: 1; font-size: 0.85rem; color: #555; }
 .push__betrag { grid-column: 1 / -1; font-family: var(--display); font-weight: 800; font-size: 2.4rem; line-height: 1; color: #1a7f37; margin-top: 0.3rem; font-variant-numeric: tabular-nums; }
-.push--neu { box-shadow: 0 24px 50px rgba(0,0,0,0.4), 0 0 0 3px #ffd84d; }
+.push--neu { box-shadow: 0 24px 50px rgba(0,0,0,0.4), 0 0 0 3px var(--himmel); }
 .pushs__sticker { position: absolute; right: -0.5rem; bottom: -1.2rem; font-size: 1.1rem; opacity: 0; }
 .an .pushs__sticker { animation: kleben 500ms 2.7s cubic-bezier(.2,1.4,.4,1) both; }
 @media (prefers-reduced-motion: reduce) { .push, .pushs__sticker { opacity: 1; animation: none; } }
