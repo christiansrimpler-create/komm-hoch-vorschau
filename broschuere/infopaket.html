@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Infopaket Dachdecker:in werden</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: 148mm 210mm; margin: 0; }
+  :root {
+    --rot: #e22028; --dunkel: #202c38; --tief: #161f28; --putz: #eef0f2; --himmel: #90c8ea; --zink: #8c98a4; --tinte: #1a232e;
+    --display: "Roboto Condensed", "Arial Narrow", sans-serif; --text: "Roboto", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: var(--text); color: var(--tinte); font-size: 10.5pt; line-height: 1.45; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .seite { width: 148mm; height: 210mm; padding: 14mm 13mm 16mm; position: relative; overflow: hidden; page-break-after: always; break-after: page; background: #fff; }
+  .seite:last-child { page-break-after: auto; }
+  .seite--dunkel { background: var(--dunkel); color: #fff; }
+  .seite--rot { background: var(--rot); color: #fff; }
+  .seite--putz { background: var(--putz); }
+  h1, h2, h3 { font-family: var(--display); font-weight: 800; line-height: 0.95; margin: 0 0 0.4em; text-transform: uppercase; letter-spacing: 0; }
+  h1 { font-size: 34pt; }
+  h2 { font-size: 24pt; }
+  h3 { font-size: 13pt; text-transform: none; margin-bottom: 0.2em; }
+  p { margin: 0 0 0.7em; }
+  .kicker { font-family: var(--display); font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; font-size: 9pt; color: var(--rot); margin-bottom: 4mm; }
+  .seite--dunkel .kicker, .seite--rot .kicker { color: var(--himmel); }
+  .fuss { position: absolute; left: 13mm; right: 13mm; bottom: 7mm; display: flex; justify-content: space-between; font-size: 7.5pt; color: var(--zink); }
+  .seite--rot .fuss { color: rgba(255,255,255,0.75); }
+  .seite--dunkel .fuss { color: rgba(255,255,255,0.6); }
+  .logo { height: 16mm; }
+  .logo-box { background: #fff; display: inline-block; padding: 2mm 3mm; }
+  .todo { display: inline-block; font-size: 7.5pt; font-weight: 700; color: #7a3b00; background: #ffe7b8; padding: 0.5mm 1.5mm; }
+  .foto { background: var(--dunkel); position: relative; background-image: radial-gradient(circle at 50% 100%, rgba(0,0,0,0.25) 38%, transparent 40%), radial-gradient(circle at 0% 50%, rgba(0,0,0,0.25) 38%, transparent 40%), radial-gradient(circle at 100% 50%, rgba(0,0,0,0.25) 38%, transparent 40%); background-size: 9mm 9mm; }
+  .foto .todo { position: absolute; left: 2mm; bottom: 2mm; }
+  .sticker { display: inline-block; font-family: var(--display); font-weight: 800; font-size: 11pt; padding: 1.5mm 3mm; background: #fff; color: var(--dunkel); transform: rotate(var(--neig, -2deg)); box-shadow: 1mm 1mm 0 rgba(0,0,0,0.3); margin: 1mm 2mm 2mm 0; }
+  .sticker--rot { background: var(--rot); color: #fff; } .sticker--hell { background: var(--himmel); }
+  .raster-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+  .kachel { padding: 4mm; }
+  .kachel .kick { font-family: var(--display); font-weight: 800; font-size: 20pt; line-height: 0.9; display: block; margin-bottom: 1.5mm; }
+  .kachel h3 { font-size: 11pt; }
+  .kachel p { font-size: 8.5pt; margin: 0; }
+  .k-rot { background: var(--rot); color: #fff; } .k-rot .kick { color: var(--himmel); }
+  .k-hell { background: #fff; box-shadow: 1mm 1mm 0 var(--dunkel); } .k-hell .kick { color: var(--rot); }
+  .k-blau { background: var(--himmel); } .k-blau .kick { color: var(--rot); }
+  .k-dunkel { background: var(--dunkel); color: #fff; } .k-dunkel .kick { color: var(--himmel); }
+  .push { background: #fff; color: #111; border-radius: 3mm; padding: 3mm 4mm; box-shadow: 0 3mm 8mm rgba(0,0,0,0.25); margin-bottom: 3mm; transform: rotate(var(--neig)); }
+  .push small { color: #666; font-size: 7.5pt; display: flex; justify-content: space-between; }
+  .push strong { display: block; font-size: 9.5pt; margin-top: 1mm; }
+  .push .betrag { font-family: var(--display); font-weight: 800; font-size: 20pt; color: #1a7f37; display: block; line-height: 1; margin-top: 1mm; }
+  .zahlen { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3mm; margin: 4mm 0; }
+  .zahlen b { display: block; font-family: var(--display); font-weight: 800; font-size: 20pt; line-height: 1; color: var(--himmel); }
+  .zahlen span { font-size: 8pt; }
+  .haken { list-style: none; padding: 0; margin: 0; }
+  .haken li { position: relative; padding-left: 6mm; margin-bottom: 1.5mm; }
+  .haken li::before { content: ""; position: absolute; left: 0; top: 1.6mm; width: 3mm; height: 1.6mm; border-left: 0.6mm solid var(--rot); border-bottom: 0.6mm solid var(--rot); transform: rotate(-45deg); }
+  .schritte { list-style: none; padding: 0; margin: 0; counter-reset: s; }
+  .schritte li { counter-increment: s; position: relative; padding-left: 12mm; margin-bottom: 4mm; min-height: 9mm; }
+  .schritte li::before { content: counter(s); position: absolute; left: 0; top: 0; width: 9mm; height: 9mm; background: var(--rot); color: #fff; font-family: var(--display); font-weight: 800; font-size: 14pt; display: grid; place-items: center; }
+  .schritte h3 { margin-bottom: 0.5mm; }
+  .schritte p { margin: 0; font-size: 9.5pt; }
+  .frage { border-top: 0.5mm solid var(--dunkel); padding-top: 2mm; margin-bottom: 3.5mm; }
+  .frage h3 { font-size: 11pt; }
+  .frage p { font-size: 9pt; margin: 0; }
+  .zeitstrahl { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2mm; margin: 4mm 0; }
+  .zeitstrahl div { background: var(--putz); padding: 3mm; font-size: 8.5pt; border-top: 1.5mm solid var(--rot); }
+  .zeitstrahl b { display: block; font-family: var(--display); font-size: 11pt; margin-bottom: 1mm; }
+  .weg { display: grid; grid-template-columns: 1fr; gap: 2mm; }
+  .weg div { display: grid; grid-template-columns: 30mm 1fr; gap: 3mm; align-items: start; padding: 3mm 0; border-bottom: 0.3mm solid rgba(255,255,255,0.2); }
+  .weg b { font-family: var(--display); font-weight: 800; font-size: 13pt; color: var(--himmel); line-height: 1; }
+  .weg p { margin: 0; font-size: 9pt; }
+  .kontakt { background: var(--putz); padding: 5mm; margin-top: 4mm; }
+  .kontakt b { font-family: var(--display); font-size: 12pt; display: block; }
+  .klein { font-size: 8pt; color: #555; }
+  .seite--dunkel .klein, .seite--rot .klein { color: rgba(255,255,255,0.7); }
+  .dach { position: absolute; left: -10mm; right: -10mm; bottom: 0; height: 60mm; background-image: radial-gradient(circle at 50% 100%, rgba(255,255,255,0.08) 38%, transparent 40%), radial-gradient(circle at 0% 50%, rgba(255,255,255,0.08) 38%, transparent 40%), radial-gradient(circle at 100% 50%, rgba(255,255,255,0.08) 38%, transparent 40%); background-size: 12mm 12mm; transform: perspective(300mm) rotateX(55deg); transform-origin: bottom; }
+  .dreieck { position: absolute; right: 13mm; bottom: 16mm; width: 0; height: 0; border-left: 28mm solid transparent; border-bottom: 28mm solid var(--rot); }
+</style>
+</head>
+<body>
+
+<!-- 1 Titel -->
+<section class="seite seite--dunkel">
+  <div class="dach"></div>
+  <div class="logo-box"><img class="logo" src="logo.png" alt="KOMM HOCH! Werde Dachdecker:in"></div>
+  <div style="margin-top:38mm">
+    <p class="kicker">Infopaket · Ausbildung im Dachdeckerhandwerk Westfalen</p>
+    <h1 style="font-size:40pt">Dachdecker:in werden.</h1>
+    <h2 style="color:var(--rot);font-size:20pt">Ohne Bewerbungsstress.</h2>
+    <p style="max-width:85mm;margin-top:5mm">Alles, was du über die Ausbildung wissen musst. Und wie du einen Betrieb in deiner Nähe findest, ohne 50 Bewerbungen zu schreiben.</p>
+    <div style="margin-top:6mm">
+      <span class="sticker sticker--rot" style="--neig:-3deg">1.050 € im 1. Jahr</span>
+      <span class="sticker" style="--neig:2deg">Betrieb in deiner Nähe</span>
+      <span class="sticker sticker--hell" style="--neig:-1deg">Mit 16 starten</span>
+    </div>
+  </div>
+  <div class="fuss"><span>Stand Oktober 2026</span><span>dachdecker-ausbildung.de</span></div>
+</section>
+
+<!-- 2 Warum -->
+<section class="seite seite--putz">
+  <p class="kicker">Vier Gründe</p>
+  <h2>Warum Dachdecker:in?</h2>
+  <div class="raster-2" style="margin-top:5mm">
+    <div class="kachel k-rot"><span class="kick">Gesucht.</span><h3>Dich wollen alle.</h3><p>1.100 Dachdeckerbetriebe allein in Westfalen, fast alle suchen Nachwuchs. Nach der Gesellenprüfung hast du einen Job.</p></div>
+    <div class="kachel k-hell"><span class="kick">1.050 €</span><h3>Du verdienst ab Tag eins.</h3><p>Tarif, kein Taschengeld. Eine der höchsten Ausbildungsvergütungen im Handwerk.</p></div>
+    <div class="kachel k-blau"><span class="kick">Hightech.</span><h3>Solar, Gründach, Drohne.</h3><p>Photovoltaik montieren, Häuser dämmen, Dächer begrünen, mit Drohnen vermessen. Das Gegenteil von alt.</p></div>
+    <div class="kachel k-dunkel"><span class="kick">Meister:in.</span><h3>Dein Weg geht weiter.</h3><p>Gesell:in, dann Meister:in, dann eigener Betrieb oder Bauleitung. Die Meisterschule ist in Eslohe.</p></div>
+  </div>
+  <div class="foto" style="height:52mm;margin-top:6mm"><span class="todo">Foto: Azubi auf dem Dach, Querformat</span></div>
+  <div class="fuss"><span>Infopaket Dachdecker:in</span><span>2</span></div>
+</section>
+
+<!-- 3 Gehalt -->
+<section class="seite seite--rot">
+  <p class="kicker">Gehalt</p>
+  <h2>Gehalt statt Taschengeld.</h2>
+  <p>Ausbildungsvergütung nach Tarif, brutto im Monat. Jeden Monat auf deinem Konto, ab dem ersten Lehrjahr. Mit 16 kannst du anfangen.</p>
+  <div style="margin:8mm 4mm 6mm">
+    <div class="push" style="--neig:-1.5deg"><small><span>Deine Bank</span><span>1. Lehrjahr</span></small><strong>Gehalt eingegangen</strong><span class="betrag">+ 1.050,00 €</span></div>
+    <div class="push" style="--neig:1deg"><small><span>Deine Bank</span><span>2. Lehrjahr</span></small><strong>Gehalt eingegangen</strong><span class="betrag">+ 1.200,00 €</span></div>
+    <div class="push" style="--neig:-0.5deg;outline:1mm solid var(--himmel)"><small><span>Deine Bank</span><span>3. Lehrjahr</span></small><strong>Gehalt eingegangen</strong><span class="betrag">+ 1.460,00 €</span></div>
+  </div>
+  <h3 style="font-size:14pt">Als Gesell:in mehr. Mit Meisterbrief dein eigener Laden.</h3>
+  <p class="klein">Tarifvertrag Dachdeckerhandwerk, Stand Oktober 2026. Nicht tarifgebundene Betriebe müssen mindestens die gesetzliche Mindestausbildungsvergütung zahlen, die Innungsbetriebe in Westfalen zahlen Tarif.</p>
+  <div class="fuss"><span>Infopaket Dachdecker:in</span><span>3</span></div>
+</section>
+
+<!-- 4 Ein Tag -->
+<section class="seite">
+  <p class="kicker">Der Beruf</p>
+  <h2>Ein Tag auf dem Dach.</h2>
+  <div class="foto" style="height:48mm;margin-bottom:5mm"><span class="todo">Foto: Team morgens an der Baustelle</span></div>
+  <div class="weg" style="color:var(--tinte)">
+    <div style="border-color:#ddd"><b style="color:var(--rot)">06:45</b><p><strong>Baustelle, Kaffee, Besprechung.</strong> Was steht heute an, wer macht was. Früh raus, dafür bist du um 16 Uhr fertig.</p></div>
+    <div style="border-color:#ddd"><b style="color:var(--rot)">07:30</b><p><strong>Aufs Dach.</strong> Lattung, Dämmung, Ziegel oder Schiefer. Im Sommer Photovoltaik montieren, im Herbst Dachrinnen und Abdichtungen.</p></div>
+    <div style="border-color:#ddd"><b style="color:var(--rot)">12:00</b><p><strong>Pause.</strong> Mit dem Team. Dachdecker:innen arbeiten nie allein, auf dem Dach passt jeder auf jeden auf.</p></div>
+    <div style="border-color:#ddd"><b style="color:var(--rot)">16:00</b><p><strong>Feierabend.</strong> Und da steht ein Dach, das vorher nicht da war. Du siehst, was du gemacht hast.</p></div>
+  </div>
+  <p class="klein" style="margin-top:4mm">Was du können solltest: keine Höhenangst, Lust auf draußen und auf Arbeit mit den Händen. Alles andere bringen wir dir bei.</p>
+  <div class="fuss"><span>Infopaket Dachdecker:in</span><span>4</span></div>
+</section>
+
+<!-- 5 Ablauf -->
+<section class="seite seite--putz">
+  <p class="kicker">Die Ausbildung</p>
+  <h2>Drei Jahre, drei Orte.</h2>
+  <p>Die Ausbildung ist dual. Den größten Teil bist du im Betrieb, dazu kommen Berufsschule und überbetriebliche Lehrgänge in Eslohe.</p>
+  <div class="zeitstrahl">
+    <div><b>Dein Betrieb</b>Rund 70 Prozent der Zeit. Echte Baustellen, echte Kund:innen, dein Team. Hier verdienst du dein Geld.</div>
+    <div><b>Berufsschule</b>Zweimal im Jahr fünf Wochen Block an der Lorenz-Burmann-Schule in Eslohe, im ersten Jahr teils wohnortnah.</div>
+    <div><b>Lehrgänge</b>Überbetriebliche Praxis in den Werkhallen in Eslohe: alles, was im Betrieb gerade nicht ansteht.</div>
+  </div>
+  <h3>Prüfungen</h3>
+  <ul class="haken">
+    <li>Zwischenprüfung gegen Ende des zweiten Lehrjahrs</li>
+    <li>Gesellenprüfung am Ende: praktische Arbeitsaufgabe mit Fachgespräch, dazu drei schriftliche Teile</li>
+    <li>Bei guten Leistungen kannst du die Ausbildung um ein halbes Jahr verkürzen</li>
+  </ul>
+  <h3 style="margin-top:4mm">Start</h3>
+  <p>Meist am 1. August oder 1. September. Mit dem Betrieb geht auch ein anderer Termin. Ausbildungsvertrag und Anmeldung an der Schule übernimmt dein Betrieb.</p>
+  <div class="foto" style="height:38mm;margin-top:3mm"><span class="todo">Foto: Azubis in der Werkhalle</span></div>
+  <div class="fuss"><span>Infopaket Dachdecker:in</span><span>5</span></div>
+</section>
+
+<!-- 6 Eslohe -->
+<section class="seite seite--dunkel">
+  <p class="kicker">Berufsschule</p>
+  <h2 style="font-size:40pt">Eslohe.</h2>
+  <p style="font-family:var(--display);font-weight:700;font-size:13pt;line-height:1.1;color:#c9d0d7">Berufsschule, Werkhalle, Wohnheim. Alles auf einem Berg.</p>
+  <div class="foto" style="height:50mm;margin:4mm 0;background-color:#32414f"><span class="todo">Foto: Werkhalle oder Gelände</span></div>
+  <div class="zahlen">
+    <div><b>2 × 5</b><span>Wochen Block pro Jahr</span></div>
+    <div><b>320</b><span>Betten im Wohnheim</span></div>
+    <div><b>0 km</b><span>bis zur Meisterschule</span></div>
+  </div>
+  <ul class="haken">
+    <li>Eigenes Wohnheim direkt an der Schule, Mensa inklusive, Heimleitung und Sicherheitsdienst vor Ort</li>
+    <li>Werkhallen für die überbetrieblichen Lehrgänge auf demselben Gelände</li>
+    <li>Abends Leute aus ganz Westfalen, Freizeitangebote auf dem Gelände</li>
+  </ul>
+  <p class="klein">Lorenz-Burmann-Schule, Böttenbergstraße 20, 59889 Eslohe. Berufskolleg des Innungsverbands des Dachdeckerhandwerks Westfalen.</p>
+  <div class="fuss"><span>Infopaket Dachdecker:in</span><span>6</span></div>
+</section>
+
+<!-- 7 Abschluss -->
+<section class="seite">
+  <p class="kicker">Voraussetzungen</p>
+  <h2>Kein Abschluss? Kein Problem.</h2>
+  <p>Für die Ausbildung brauchst du keinen bestimmten Schulabschluss. Viele starten mit Hauptschulabschluss, manche ohne. Und in Eslohe kannst du nebenbei nachholen, was dir fehlt.</p>
+  <div class="raster-2" style="margin:5mm 0">
+    <div class="kachel k-hell"><span class="kick" style="font-size:14pt">Hauptschulabschluss</span><p>Wird mit dem Berufsschulabschluss als gleichwertig anerkannt.</p></div>
+    <div class="kachel k-hell"><span class="kick" style="font-size:14pt">Mittlerer Abschluss</span><p>Fachoberschulreife bei Berufsschulnote 3,0, bestandener Gesellenprüfung und Englisch auf Niveau B1.</p></div>
+    <div class="kachel k-hell" style="grid-column:1/-1"><span class="kick" style="font-size:14pt">Gymnasiale Oberstufe</span><p>Ab Note 2,5 bekommst du zusätzlich die Berechtigung zum Besuch der Oberstufe. Falls du später doch noch Abitur machen willst.</p></div>
+  </div>
+  <h3>Was du mitbringen solltest</h3>
+  <ul class="haken">
+    <li>Keine Angst vor Höhe und Wetter</li>
+    <li>Lust auf Arbeit mit den Händen und im Team</li>
+    <li>Pünktlichkeit, das ist auf der Baustelle keine Floskel</li>
+    <li>Mindestalter 16 für den Ausbildungsstart, darunter mit Zustimmung der Eltern</li>
+  </ul>
+  <div class="foto" style="height:34mm;margin-top:4mm"><span class="todo">Foto: Unterricht oder Lerngruppe</span></div>
+  <div class="fuss"><span>Infopaket Dachdecker:in</span><span>7</span></div>
+</section>
+
+<!-- 8 Danach -->
+<section class="seite seite--rot">
+  <p class="kicker">Perspektive</p>
+  <h2>Und nach der Ausbildung?</h2>
+  <p>Dachdecker:in ist kein Beruf, bei dem es nach drei Jahren aufhört. Das sind die Stationen, die vor dir liegen.</p>
+  <div class="weg" style="margin-top:4mm">
+    <div><b>Gesell:in</b><p>Direkt nach der Prüfung. Volle Stelle, Tariflohn, in deinem oder einem anderen Betrieb. Dachdecker:innen werden überall gesucht.</p></div>
+    <div><b>Vorarbeiter:in</b><p>Nach ein paar Jahren führst du eine Kolonne, planst Baustellen und bist Ansprechperson für Kund:innen.</p></div>
+    <div><b>Meister:in</b><p>Die Meisterschule ist direkt in Eslohe. Mit dem Meisterbrief darfst du ausbilden und einen Betrieb führen.</p></div>
+    <div><b>Eigener Betrieb</b><p>Viele Innungsbetriebe suchen Nachfolger:innen. Übernehmen statt gründen, mit Kundschaft und Team.</p></div>
+    <div style="border:0"><b>Weiterbildung</b><p>Energieberatung, Bauleitung, Gebäudetechnik. Mit Meisterbrief kannst du außerdem studieren, auch ohne Abitur.</p></div>
+  </div>
+  <div class="fuss"><span>Infopaket Dachdecker:in</span><span>8</span></div>
+</section>
+
+<!-- 9 Eltern -->
+<section class="seite seite--putz">
+  <p class="kicker">Für Eltern</p>
+  <h2>Ihr Kind will aufs Dach.<br>Gute Entscheidung.</h2>
+  <div style="margin-top:4mm">
+    <div class="frage"><h3>Ist das nicht gefährlich?</h3><p>Absturzsicherung ist Ausbildungsinhalt vom ersten Tag an und Prüfungsstoff. Auf Baustellen gilt Gerüstpflicht. Sicherheit ist hier Handwerk, kein Appell.</p></div>
+    <div class="frage"><h3>Was ist mit dem Schulabschluss?</h3><p>Hauptschulabschluss, Fachoberschulreife und Oberstufen-Berechtigung lassen sich am Berufskolleg in Eslohe parallel zur Ausbildung erwerben.</p></div>
+    <div class="frage"><h3>Wie läuft das mit Eslohe?</h3><p>Zweimal im Jahr fünf Wochen Blockunterricht. Die Azubis wohnen im schuleigenen Wohnheim mit Heimleitung und Sicherheitsdienst. <span class="todo">TODO: Kosten und Kostenträger</span></p></div>
+    <div class="frage"><h3>Hat der Beruf Zukunft?</h3><p>Photovoltaik, Dämmung, Gründächer: Die Energiewende findet auf dem Dach statt. Dächer lassen sich weder verlagern noch automatisieren.</p></div>
+    <div class="frage"><h3>Was verdient mein Kind?</h3><p>Ab dem ersten Lehrjahr 1.050 € brutto nach Tarif, im dritten 1.460 €. Danach Gesellenlohn nach Tarif.</p></div>
+    <div class="frage"><h3>Und danach?</h3><p>1.100 Innungsbetriebe allein in Westfalen, viele suchen Nachfolger:innen. <span class="todo">TODO: Übernahmequote</span></p></div>
+  </div>
+  <div class="fuss"><span>Infopaket Dachdecker:in</span><span>9</span></div>
+</section>
+
+<!-- 10 Nächste Schritte -->
+<section class="seite">
+  <p class="kicker">So geht's weiter</p>
+  <h2>Infopaket gelesen. Und jetzt?</h2>
+  <p>Du musst keine Betriebe abklappern. Wenn du uns dein Okay gegeben hast, läuft es so:</p>
+  <ol class="schritte" style="margin-top:5mm">
+    <li><h3>Wir melden uns.</h3><p>Innerhalb von 48 Stunden per WhatsApp oder Anruf. Kurzes Gespräch: Wo wohnst du, wann willst du starten, was ist dir wichtig.</p></li>
+    <li><h3>Du kriegst Betriebe vorgeschlagen.</h3><p>Zwei, drei Innungsbetriebe in deiner Nähe, die ausbilden. Du entscheidest, wen du kennenlernen willst.</p></li>
+    <li><h3>Probearbeiten, dann Vertrag.</h3><p>Zwei, drei Tage mitgehen und schauen, ob es passt. Wenn ja: unterschreiben. Wenn nicht: nächster Betrieb.</p></li>
+  </ol>
+  <div class="kontakt">
+    <b>Du willst nicht warten?</b>
+    <p style="margin:1mm 0 0">Schreib uns direkt per WhatsApp oder ruf an. <span class="todo">TODO: WhatsApp-Nummer des Verbands</span><br>Telefon 02973 97090 · ausbildung@dachdecker-westfalen.de</p>
+  </div>
+  <p class="klein" style="margin-top:4mm">Ein Praktikum geht auch: Viele Betriebe nehmen Schüler:innen für eine Woche mit aufs Dach. Sag uns Bescheid, wir vermitteln.</p>
+  <div class="fuss"><span>Infopaket Dachdecker:in</span><span>10</span></div>
+</section>
+
+<!-- 11 FAQ -->
+<section class="seite seite--putz">
+  <p class="kicker">Häufige Fragen</p>
+  <h2>Kurz beantwortet.</h2>
+  <div style="margin-top:4mm">
+    <div class="frage"><h3>Wie lange dauert die Ausbildung?</h3><p>Drei Jahre. Bei guten Leistungen lässt sich um ein halbes Jahr verkürzen.</p></div>
+    <div class="frage"><h3>Muss ich nach Eslohe ziehen?</h3><p>Nein. Du arbeitest in einem Betrieb in deiner Nähe. Nur für die Blockwochen bist du in Eslohe und wohnst dann im Wohnheim.</p></div>
+    <div class="frage"><h3>Brauche ich einen Führerschein?</h3><p>Nicht für den Start. Viele Betriebe unterstützen dich später dabei, weil du damit flexibler auf Baustellen kommst.</p></div>
+    <div class="frage"><h3>Was ist im Winter?</h3><p>Dachdecker:innen arbeiten das ganze Jahr. Bei Frost und Sturm gibt es Innenarbeiten, Werkstatt oder Lehrgänge. Dein Gehalt läuft durch.</p></div>
+    <div class="frage"><h3>Kann ich das auch als Frau machen?</h3><p>Ja, und immer mehr tun es. Technik und Werkzeug haben die schwere Arbeit längst verändert. Auf der Kampagnenseite siehst du einige Dachdeckerinnen aus Westfalen.</p></div>
+    <div class="frage"><h3>Ich bin über 25. Zu spät?</h3><p>Nein. Quereinstieg ist möglich, auch mit Vorerfahrung aus anderen Berufen. Sprich uns an, wir finden den passenden Weg.</p></div>
+    <div class="frage"><h3>Was passiert mit meinen Daten?</h3><p>Wir nutzen sie, um dir Infos zu schicken und dich zu Betrieben zu beraten. Weitergabe an einen Betrieb nur, wenn du zustimmst.</p></div>
+  </div>
+  <div class="fuss"><span>Infopaket Dachdecker:in</span><span>11</span></div>
+</section>
+
+<!-- 12 Kontakt -->
+<section class="seite seite--dunkel">
+  <div class="dreieck"></div>
+  <div class="logo-box"><img class="logo" src="logo.png" alt="KOMM HOCH!"></div>
+  <h2 style="margin-top:14mm;font-size:30pt">Bock?</h2>
+  <p>Dann melde dich. Oder warte, bis wir uns melden. Beides führt aufs Dach.</p>
+  <div style="margin-top:8mm">
+    <p><strong style="font-family:var(--display);font-size:13pt">WhatsApp</strong><br><span class="todo">TODO: Nummer des Verbands</span></p>
+    <p><strong style="font-family:var(--display);font-size:13pt">Telefon</strong><br>02973 97090</p>
+    <p><strong style="font-family:var(--display);font-size:13pt">E-Mail</strong><br>ausbildung@dachdecker-westfalen.de</p>
+    <p><strong style="font-family:var(--display);font-size:13pt">Web</strong><br>dachdecker-ausbildung.de · dachdeckerschule.de</p>
+  </div>
+  <p class="klein" style="position:absolute;left:13mm;right:13mm;bottom:14mm">KOMM HOCH! ist eine Initiative des westfälischen Dachdeckerhandwerks. <span class="todo">TODO: Herausgeber final (GFW Dach mbH / Innungsverband), Böttenbergstraße 20, 59889 Eslohe</span><br>Alle Angaben zu Vergütung und Abschlüssen: Stand Oktober 2026, ohne Gewähr.</p>
+</section>
+
+</body>
+</html>

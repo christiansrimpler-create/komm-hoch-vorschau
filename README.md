@@ -32,3 +32,9 @@ auf `/danke/` weitergeleitet.
 - Echte Fotos und Zitate (Platzhalter sind gelb markiert)
 - Consent-Banner, sobald Werbe-Tracking (Meta/TikTok-Pixel) eingebaut wird
 - Build mit `INDEXIERUNG=ja npm run build`, sonst bleibt die Seite auf noindex
+
+## Infopaket (PDF)
+
+`broschuere/infopaket.html` ist die Druckvorlage im A5-Hochformat, `npm run broschuere` rendert sie
+mit Chrome nach `broschuere/infopaket.pdf`. Fotos sind als gelbe Platzhalter markiert; echte Bilder
+als `<img>` in die `.foto`-Container setzen.
