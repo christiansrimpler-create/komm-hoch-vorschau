@@ -63,12 +63,12 @@ gruende:
 ablauf:
   titel: "So geht's weiter"
   schritte:
-    - titel: "Infopaket anfordern"
-      text: "Alles Wichtige als PDF per E-Mail."
-    - titel: "Wir melden uns"
-      text: "Innerhalb von 48 Stunden, per WhatsApp oder Anruf."
-    - titel: "Betrieb kennenlernen"
-      text: "Innungsbetriebe in deiner Nähe, Probearbeiten, Vertrag."
+    - titel: "Wir melden uns."
+      text: "Innerhalb von 48 Stunden per WhatsApp oder Anruf. Kurzes Gespräch: Wo wohnst du, wann willst du starten, was ist dir wichtig."
+    - titel: "Du kriegst Betriebe vorgeschlagen."
+      text: "Zwei, drei Innungsbetriebe in deiner Nähe, die ausbilden. Du entscheidest, wen du kennenlernen willst."
+    - titel: "Probearbeiten, dann Vertrag."
+      text: "Zwei, drei Tage mitgehen und schauen, ob es passt. Wenn ja: unterschreiben. Wenn nicht: nächster Betrieb."
 
 schule:
   titel: "Berufsschule in Eslohe"
