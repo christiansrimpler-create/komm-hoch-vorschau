@@ -91,7 +91,7 @@ bodyClass: "seite-start"
       {% set farben = ["grund--ziegel", "grund--hell", "grund--gelb", "grund--schiefer"] %}
       {% for g in i.gruende.liste %}
       <div class="grund {{ farben[loop.index0] }}" style="--neig:{{ ['-1.2deg','0.8deg','-0.6deg','1.1deg'][loop.index0] }}">
-        <span class="grund__nr">{{ loop.index }}/4</span>
+        <span class="grund__kick" aria-hidden="true">{{ g.kick }}</span>
         <h3>{{ g.titel }}</h3>
         <p>{{ g.text }}</p>
       </div>

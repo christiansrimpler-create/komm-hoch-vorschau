@@ -521,16 +521,17 @@ section { padding-block: clamp(3rem, 8vw, 6rem); }
 /* Gründe als Kacheln */
 .gruende { background: var(--putz); }
 .gruende__liste { gap: 1.25rem; }
-.grund { position: relative; padding: 1.5rem; min-height: 15rem; display: flex; flex-direction: column; justify-content: flex-end; transform: rotate(var(--neig, 0deg)); transition: transform 200ms; }
+.grund { position: relative; padding: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; transform: rotate(var(--neig, 0deg)); transition: transform 200ms; overflow: hidden; }
 .grund:hover { transform: rotate(0deg) scale(1.02); }
 .grund h3 { font-size: clamp(2rem, 5vw, 2.6rem); line-height: 0.95; }
-.grund__nr { position: absolute; top: 1rem; right: 1rem; font-family: var(--display); font-weight: 700; opacity: 0.6; }
+.grund__kick { font-family: var(--display); font-weight: 800; font-size: clamp(4rem, 9vw, 7rem); line-height: 0.8; letter-spacing: -0.03em; margin: 0 0 0.6rem -0.04em; opacity: 0.92; }
+.grund--hell .grund__kick { color: var(--ziegel); } .grund--gelb .grund__kick { color: var(--ziegel); } .grund--ziegel .grund__kick { color: #ffd84d; } .grund--schiefer .grund__kick { color: #ffd84d; }
 .grund--ziegel { background: var(--ziegel); color: #fff; }
 .grund--hell { background: #fff; color: var(--schiefer-tief); box-shadow: 4px 4px 0 var(--schiefer-tief); }
 .grund--gelb { background: #ffd84d; color: var(--schiefer-tief); }
 .grund--schiefer { background: var(--schiefer-tief); color: #fff; }
 .grund--schiefer p, .grund--ziegel p { color: rgba(255,255,255,0.88); }
-@media (min-width: 48em) { .gruende__liste { gap: 1.5rem 2rem; } .grund { padding: 2rem; min-height: 18rem; } }
+@media (min-width: 48em) { .gruende__liste { gap: 1.5rem 2rem; } .grund { padding: 2rem; } }
 
 /* Eslohe auf Schiefer */
 .schule { background: var(--schiefer); color: var(--tinte-hell); overflow: hidden; }
