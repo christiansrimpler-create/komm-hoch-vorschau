@@ -76,7 +76,7 @@
   const reduziert = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const ziele = document.querySelectorAll("[data-zahl]");
   if (!ziele.length || reduziert || !("IntersectionObserver" in window)) return;
-  const fmt = (n) => n.toLocaleString("de-DE") + " €";
+  const fmt = (n, el) => n.toLocaleString("de-DE") + (el.closest(".push") ? "" : " €");
   const io = new IntersectionObserver((eintraege) => {
     eintraege.forEach((e) => {
       if (!e.isIntersecting) return;
@@ -84,13 +84,13 @@
       const ziel = +e.target.dataset.zahl, start = performance.now(), dauer = 1100;
       const tick = (t) => {
         const p = Math.min(1, (t - start) / dauer), k = 1 - Math.pow(1 - p, 3);
-        e.target.textContent = fmt(Math.round(ziel * k));
+        e.target.textContent = fmt(Math.round(ziel * k), e.target);
         if (p < 1) requestAnimationFrame(tick);
       };
       requestAnimationFrame(tick);
     });
   }, { threshold: 0.6 });
-  ziele.forEach((z) => { z.textContent = fmt(0); io.observe(z); });
+  ziele.forEach((z) => { z.textContent = fmt(0, z); io.observe(z); });
 })();
 
 /* Dach-Parallaxe im Hero */
@@ -199,7 +199,7 @@
 
 /* Dachschräge zeichnet sich, sobald sichtbar */
 (function () {
-  const el = document.querySelector("[data-schraege]");
+  const el = document.querySelector("[data-schraege], [data-pushs]");
   if (!el) return;
   if (!("IntersectionObserver" in window)) { el.classList.add("an"); return; }
   const io = new IntersectionObserver((e) => { if (e[0].isIntersecting) { el.classList.add("an"); io.disconnect(); } }, { threshold: 0.4 });

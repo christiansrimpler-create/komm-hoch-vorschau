@@ -42,47 +42,34 @@ bodyClass: "seite-start"
 </div>
 
 <section class="verdienst" aria-labelledby="verdienst-titel">
-  <div class="wrap">
-    <h2 id="verdienst-titel" class="titel">Dein Lohn geht die Schräge hoch.</h2>
-    <p class="verdienst__text">Tarifvergütung Dachdeckerhandwerk, brutto pro Monat, Stand Oktober 2026. Jedes Jahr eine Reihe höher.</p>
-
-    <div class="schraege" data-schraege aria-label="Ausbildungsvergütung nach Lehrjahr, danach Geselle und Meister">
-      <svg class="schraege__svg" viewBox="0 0 800 420" preserveAspectRatio="none" aria-hidden="true">
-        <defs>
-          <pattern id="latten" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(-27.25)">
-            <rect width="40" height="6" fill="rgba(255,255,255,0.07)"/>
-          </pattern>
-          <path id="ziegel" d="M-15,-24 h30 v16 a15,10 0 0 1 -30,0 z"/>
-        </defs>
-        {# Haus: Pultdach, Wände, Tür, Fenster, Schornstein #}
-        <g class="haus">
-          <polygon points="40,380 700,40 700,380" fill="url(#latten)" class="schraege__flaeche"/>
-          <polyline points="40,380 40,300" vector-effect="non-scaling-stroke"/>
-          <polyline points="700,380 700,40" vector-effect="non-scaling-stroke"/>
-          <rect x="560" y="305" width="44" height="75" vector-effect="non-scaling-stroke"/>
-          <rect x="430" y="240" width="48" height="44" vector-effect="non-scaling-stroke"/>
-          <polyline points="430,262 478,262 454,240 454,284" vector-effect="non-scaling-stroke" opacity="0.5"/>
-          <rect class="schornstein" x="636" y="8" width="30" height="70" vector-effect="non-scaling-stroke"/>
-          <rect class="schornstein" x="630" y="2" width="42" height="10" vector-effect="non-scaling-stroke"/>
-        </g>
-        <polyline class="schraege__boden" points="0,380 800,380" vector-effect="non-scaling-stroke"/>
-        <polyline class="schraege__dach" pathLength="1" points="40,380 700,40" vector-effect="non-scaling-stroke"/>
-        {# Ziegelreihe entlang der Schräge, wird von unten nach oben gedeckt #}
-        <g class="ziegelreihe">
-          {%- for k in range(0, 23) -%}
-            {%- set t = (k + 0.5) / 23 -%}
-            <use href="#ziegel" style="--k:{{ k }}" transform="translate({{ (40 + 660 * t) | round(1) }} {{ (380 - 340 * t) | round(1) }}) rotate(-27.25)"/>
-          {%- endfor -%}
-        </g>
-      </svg>
-      <div class="marke" style="--x:19.85%;--y:75.9%;--d:0.55s"><i class="punkt"></i><div class="marke__box"><strong data-zahl="1050">1.050 €</strong><span>1. Lehrjahr</span></div></div>
-      <div class="marke" style="--x:38%;--y:58.1%;--d:0.8s"><i class="punkt"></i><div class="marke__box"><strong data-zahl="1200">1.200 €</strong><span>2. Lehrjahr</span></div></div>
-      <div class="marke" style="--x:56.15%;--y:40.3%;--d:1.05s"><i class="punkt"></i><div class="marke__box"><strong data-zahl="1460">1.460 €</strong><span>3. Lehrjahr</span></div></div>
-      <div class="marke marke--still" style="--x:72.65%;--y:24.1%;--d:1.3s"><i class="punkt"></i><div class="marke__box"><strong>Geselle</strong><span>Tariflohn, volle Stelle</span></div></div>
-      <div class="marke marke--first" style="--x:87.5%;--y:9.5%;--d:1.55s"><i class="punkt punkt--first"></i><div class="marke__box"><strong>Meister</strong><span>eigener Betrieb oder Bauleitung</span></div></div>
+  <div class="wrap verdienst__raster">
+    <div class="verdienst__text">
+      <h2 id="verdienst-titel" class="titel">Jeden Monat.<br>Ab dem ersten.</h2>
+      <p class="verdienst__lauf">Ausbildungsvergütung nach Tarif, brutto. Kein Taschengeld, kein Praktikumsgeld. Dein Lohn, auf deinem Konto.</p>
+      <p class="verdienst__danach">Als Geselle mehr. Als Meister dein eigener Laden.</p>
+      <p class="verdienst__quelle">Tarifvertrag Dachdeckerhandwerk, Stand Oktober 2026</p>
     </div>
-
-    <p class="verdienst__fuss"><span class="sticker sticker--hell" style="--neig:-3deg">+ 410 € in drei Jahren</span> Die Meisterschule ist direkt in Eslohe.</p>
+    <div class="pushs" data-pushs aria-label="Gehaltseingänge in den drei Lehrjahren">
+      <div class="push" style="--neig:-2deg;--d:0s">
+        <span class="push__app"><i></i>Deine Bank</span><time class="push__zeit">1. Lehrjahr</time>
+        <strong class="push__titel">Gehalt eingegangen</strong>
+        <span class="push__text">Dachdeckerbetrieb · Ausbildungsvergütung</span>
+        <span class="push__betrag">+ <span data-zahl="1050">1.050</span>,00 €</span>
+      </div>
+      <div class="push" style="--neig:1.5deg;--d:0.9s">
+        <span class="push__app"><i></i>Deine Bank</span><time class="push__zeit">2. Lehrjahr</time>
+        <strong class="push__titel">Gehalt eingegangen</strong>
+        <span class="push__text">Dachdeckerbetrieb · Ausbildungsvergütung</span>
+        <span class="push__betrag">+ <span data-zahl="1200">1.200</span>,00 €</span>
+      </div>
+      <div class="push push--neu" style="--neig:-1deg;--d:1.8s">
+        <span class="push__app"><i></i>Deine Bank</span><time class="push__zeit">3. Lehrjahr</time>
+        <strong class="push__titel">Gehalt eingegangen</strong>
+        <span class="push__text">Dachdeckerbetrieb · Ausbildungsvergütung</span>
+        <span class="push__betrag">+ <span data-zahl="1460">1.460</span>,00 €</span>
+      </div>
+      <span class="sticker sticker--hell pushs__sticker" style="--neig:4deg">+ 410 € in drei Jahren</span>
+    </div>
   </div>
 </section>
 

@@ -633,3 +633,29 @@ section { padding-block: clamp(3rem, 8vw, 6rem); }
 @keyframes decken { from { opacity: 0; translate: 0 -30px; } to { opacity: 1; translate: 0 0; } }
 .ziegelreihe use:nth-child(6n+2) { fill: #ffd84d; }
 @media (prefers-reduced-motion: reduce) { .ziegelreihe use { opacity: 1; animation: none; } }
+
+/* ===== Gehalt als Banking-Push ===== */
+.verdienst__raster { display: grid; gap: 2.5rem; align-items: center; }
+@media (min-width: 60em) { .verdienst__raster { grid-template-columns: 1fr 1fr; gap: 4rem; } }
+.verdienst__lauf { color: #ffe3db; font-size: 1.15rem; }
+.verdienst__danach { font-family: var(--display); font-weight: 700; font-size: 1.6rem; line-height: 1.05; color: #fff; margin-top: 1.5rem; }
+.verdienst__quelle { font-size: 0.85rem; color: #ffc9bb; margin: 0; }
+.pushs { position: relative; display: grid; gap: 0.9rem; max-width: 24rem; margin-inline: auto; width: 100%; padding-top: 1rem; }
+.push {
+  position: relative; display: grid; grid-template-columns: 1fr auto; gap: 0.15rem 0.75rem;
+  background: rgba(255,255,255,0.96); color: #111; border-radius: 1.1rem; padding: 0.9rem 1rem 1rem;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.3); transform: rotate(var(--neig));
+  opacity: 0; backdrop-filter: blur(10px);
+}
+.an .push { animation: push-rein 600ms var(--d) cubic-bezier(.2,1.1,.3,1) forwards; }
+@keyframes push-rein { from { opacity: 0; transform: translateY(-60px) rotate(var(--neig)) scale(0.96); } to { opacity: 1; transform: translateY(0) rotate(var(--neig)) scale(1); } }
+.push__app { grid-column: 1; display: flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; font-weight: 600; color: #555; text-transform: none; }
+.push__app i { width: 1.1rem; height: 1.1rem; border-radius: 0.3rem; background: var(--schiefer-tief); display: inline-block; }
+.push__zeit { grid-column: 2; font-size: 0.75rem; color: #777; justify-self: end; }
+.push__titel { grid-column: 1 / -1; font-size: 1rem; font-weight: 600; margin-top: 0.2rem; }
+.push__text { grid-column: 1; font-size: 0.85rem; color: #555; }
+.push__betrag { grid-column: 1 / -1; font-family: var(--display); font-weight: 800; font-size: 2.4rem; line-height: 1; color: #1a7f37; margin-top: 0.3rem; font-variant-numeric: tabular-nums; }
+.push--neu { box-shadow: 0 24px 50px rgba(0,0,0,0.4), 0 0 0 3px #ffd84d; }
+.pushs__sticker { position: absolute; right: -0.5rem; bottom: -1.2rem; font-size: 1.1rem; opacity: 0; }
+.an .pushs__sticker { animation: kleben 500ms 2.7s cubic-bezier(.2,1.4,.4,1) both; }
+@media (prefers-reduced-motion: reduce) { .push, .pushs__sticker { opacity: 1; animation: none; } }
