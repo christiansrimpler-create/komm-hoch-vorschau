@@ -591,49 +591,6 @@ section { padding-block: clamp(3rem, 8vw, 6rem); }
 .ablauf .schritt h3 { color: var(--tinte); }
 .ablauf .schritt p { color: var(--tinte-mittel); }
 
-/* ===== Gehalt als Dachschräge ===== */
-.schraege { position: relative; margin: 2.5rem 0 1.5rem; aspect-ratio: 800 / 420; max-width: 54rem; }
-@media (max-width: 47.9em) { .schraege { aspect-ratio: 800 / 560; margin-right: 0.5rem; } }
-.schraege__svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
-.schraege__flaeche { opacity: 0; transition: opacity 600ms 1.2s; }
-.schraege__boden { fill: none; stroke: rgba(255,255,255,0.35); stroke-width: 2; }
-.schraege__dach { fill: none; stroke: #fff; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1.5; stroke-dashoffset: 1.5; }
-.an .schraege__dach { animation: zeichnen 1.6s cubic-bezier(.4,0,.2,1) forwards; }
-.an .schraege__flaeche { opacity: 1; }
-@keyframes zeichnen { to { stroke-dashoffset: 0; } }
-.marke { position: absolute; left: var(--x); top: var(--y); opacity: 0; transform: translate(-50%, -50%) scale(0.6); }
-.an .marke { animation: marke-auf 450ms var(--d) cubic-bezier(.2,1.4,.4,1) forwards; }
-@keyframes marke-auf { to { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
-.punkt { display: block; width: 1.1rem; height: 1.1rem; border-radius: 50%; background: #ffd84d; border: 3px solid var(--ziegel); box-shadow: 0 0 0 4px rgba(255,255,255,0.25); }
-.punkt--first { background: #fff; width: 1.4rem; height: 1.4rem; }
-.marke__box {
-  position: absolute; left: 0.9rem; top: 0.6rem; white-space: nowrap; line-height: 1;
-  background: #fff; color: var(--schiefer-tief); padding: 0.45rem 0.6rem 0.4rem; box-shadow: 3px 3px 0 var(--schiefer-tief);
-}
-.marke__box strong { display: block; font-family: var(--display); font-weight: 800; font-size: clamp(1.25rem, 3.4vw, 2rem); }
-.marke__box span { display: block; font-size: 0.75rem; font-weight: 600; color: var(--tinte-mittel); margin-top: 0.2rem; }
-.marke--still .marke__box { background: var(--schiefer-tief); color: #fff; box-shadow: 3px 3px 0 rgba(0,0,0,0.3); }
-.marke--still .marke__box span { color: #c9d0d7; }
-.marke--first .marke__box { left: auto; right: 0.9rem; top: auto; bottom: 0.9rem; background: #ffd84d; box-shadow: 3px 3px 0 var(--schiefer-tief); }
-@media (max-width: 47.9em) {
-  .marke__box { padding: 0.35rem 0.45rem 0.3rem; }
-  .marke__box span { font-size: 0.65rem; }
-  .marke--still .marke__box span, .marke--first .marke__box span { display: none; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .schraege__dach { stroke-dashoffset: 0; animation: none; } .schraege__flaeche { opacity: 1; } .marke { opacity: 1; transform: translate(-50%, -50%); animation: none; }
-}
-
-/* Haus und Ziegel auf der Gehaltsschräge */
-.haus { fill: rgba(255,255,255,0.06); stroke: rgba(255,255,255,0.7); stroke-width: 2; }
-.haus .schraege__flaeche { stroke: none; }
-.haus .schornstein { fill: var(--schiefer-tief); stroke: #fff; }
-.ziegelreihe use { fill: var(--schiefer-tief); stroke: #fff; stroke-width: 1.5; vector-effect: non-scaling-stroke; opacity: 0; transform-box: fill-box; }
-.an .ziegelreihe use { animation: decken 380ms calc(0.35s + var(--k) * 55ms) cubic-bezier(.2,1.2,.4,1) forwards; }
-@keyframes decken { from { opacity: 0; translate: 0 -30px; } to { opacity: 1; translate: 0 0; } }
-.ziegelreihe use:nth-child(6n+2) { fill: #ffd84d; }
-@media (prefers-reduced-motion: reduce) { .ziegelreihe use { opacity: 1; animation: none; } }
-
 /* ===== Gehalt als Banking-Push ===== */
 .verdienst__raster { display: grid; gap: 2.5rem; align-items: center; }
 @media (min-width: 60em) { .verdienst__raster { grid-template-columns: 1fr 1fr; gap: 4rem; } }
