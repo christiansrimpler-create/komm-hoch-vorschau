@@ -190,8 +190,8 @@
       if (vonIhnen) { tippt.classList.remove("blase--ich"); verlauf.insertBefore(tippt, b); tippt.classList.add("da"); }
       setTimeout(() => {
         tippt.remove(); b.classList.add("da"); k++;
-        setTimeout(naechste, 700);
-      }, vonIhnen ? 900 + Math.min(b.textContent.length * 12, 1400) : 500);
+        setTimeout(naechste, 350);
+      }, vonIhnen ? 450 + Math.min(b.textContent.length * 5, 600) : 300);
     };
     naechste();
   }, { threshold: 0.4 });
