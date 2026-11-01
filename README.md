@@ -49,5 +49,5 @@ Neue Version einspielen:
 ```
 ffmpeg -i original.mp4 -vf scale=1280:-2 -c:v libx264 -preset slow -crf 27 -pix_fmt yuv420p -movflags +faststart -c:a aac -b:a 96k src/assets/video/komm-hoch-1280.mp4
 ffmpeg -i original.mp4 -vf scale=854:-2  -c:v libx264 -preset slow -crf 28 -pix_fmt yuv420p -movflags +faststart -c:a aac -b:a 80k src/assets/video/komm-hoch-854.mp4
-ffmpeg -ss 1.3 -i original.mp4 -frames:v 1 -vf scale=1280:-2 -q:v 4 src/assets/video/komm-hoch-poster.jpg
+ffmpeg -ss 3.4 -i original.mp4 -frames:v 1 -vf scale=1280:-2 -q:v 4 src/assets/video/komm-hoch-poster.jpg
 ```
