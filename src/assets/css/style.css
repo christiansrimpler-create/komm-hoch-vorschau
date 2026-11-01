@@ -660,3 +660,15 @@ section { padding-block: clamp(3rem, 8vw, 6rem); }
   .film__sticker { right: -0.5rem; top: -1.2rem; font-size: 1.5rem; }
 }
 @media (prefers-reduced-motion: reduce) { .film__rahmen { transform: none; } .film__play-knopf::after { display: none; } }
+
+/* Social-Icons */
+.social { list-style: none; margin: 0; padding: 0; display: flex; gap: 0.25rem; }
+.social a { display: grid; place-items: center; width: 2.25rem; height: 2.25rem; border-radius: 50%; color: inherit; transition: background 150ms, color 150ms; }
+.social svg { width: 1.35rem; height: 1.35rem; }
+.social--kopf { margin-right: 0.5rem; padding-right: 1rem; border-right: 1px solid var(--putz-dunkel); }
+.social--kopf a:hover, .social--kopf a:focus-visible { background: var(--ziegel); color: #fff; }
+@media (max-width: 48em) { .social--kopf { display: none; } }
+.social--fuss { margin-top: 1.25rem; gap: 0.5rem; }
+.social--fuss a { background: rgba(255,255,255,0.08); color: #fff; width: 2.75rem; height: 2.75rem; }
+.social--fuss svg { width: 1.5rem; height: 1.5rem; }
+.social--fuss a:hover, .social--fuss a:focus-visible { background: var(--ziegel); }

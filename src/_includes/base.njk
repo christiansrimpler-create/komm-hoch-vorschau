@@ -26,6 +26,7 @@
         <img class="marke__logo" src="{{ '/assets/img/komm-hoch-logo.png' | url }}" alt="KOMM HOCH! Werde Dachdecker:in" width="783" height="348">
       </a>
       <nav class="kopf__nav" aria-label="Seitennavigation">
+        {% set klasse = "social--kopf" %}{% include "social.njk" %}
         <a href="#eltern">Für Eltern</a>
         <a href="#faq">Fragen</a>
         <a class="knopf knopf--klein" href="#formular">Infopaket</a>
@@ -44,6 +45,7 @@
         <p>{{ site.absender.strasse }}, {{ site.absender.ort }}<br>
         <a href="tel:{{ site.absender.telefon | replace(' ', '') }}">{{ site.absender.telefon }}</a> · <a href="mailto:{{ site.absender.email }}">{{ site.absender.email }}</a></p>
         <p>Ein Angebot des {{ site.absender.traeger }}.</p>
+        {% set klasse = "social--fuss" %}{% include "social.njk" %}
       </div>
       <nav aria-label="Rechtliches" class="fuss__nav">
         <a href="{{ '/impressum/' | url }}">Impressum</a>

@@ -19,3 +19,14 @@ absender:
 formular:
   endpoint: ""
   danke: "/danke/"
+
+# Social-Kanäle der Kampagne (Quelle: dachdecker-ausbildung.de, dachdeckerschule.de)
+social:
+  - name: Instagram
+    url: "https://www.instagram.com/jump_in_your_job/"
+  - name: YouTube
+    url: "https://www.youtube.com/@jumpinyourjob993"
+  - name: Facebook
+    url: "https://www.facebook.com/Dachdeckerausbildung"
+  # - name: TikTok          # TODO: Kanal existiert noch nicht (Stand 2026-11-01)
+  #   url: "https://www.tiktok.com/@..."
