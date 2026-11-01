@@ -228,3 +228,50 @@
     });
   });
 })();
+
+// Kampagnen-Clip: lädt erst kurz vor dem Sichtbarwerden, spielt stumm, pausiert außerhalb des Bilds
+(function () {
+  const rahmen = document.querySelector("[data-film]");
+  if (!rahmen) return;
+  const video = rahmen.querySelector("video");
+  const ton = rahmen.querySelector(".film__ton");
+  const play = rahmen.querySelector(".film__play");
+  const reduziert = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let geladen = false;
+  function laden() {
+    if (geladen) return;
+    geladen = true;
+    const klein = Math.min(window.innerWidth, window.screen.width || Infinity) < 700;
+    video.src = klein ? video.dataset.srcKlein : video.dataset.srcGross;
+    video.load();
+  }
+  function starten() {
+    laden();
+    const p = video.play();
+    if (p && p.catch) p.catch(() => { play.hidden = false; });
+  }
+  video.addEventListener("play", () => { play.hidden = true; });
+  play.addEventListener("click", () => {
+    video.muted = false;
+    ton.setAttribute("aria-pressed", "true");
+    starten();
+  });
+  ton.addEventListener("click", () => {
+    video.muted = !video.muted;
+    ton.setAttribute("aria-pressed", String(!video.muted));
+    if (video.paused) starten();
+  });
+  if (reduziert) { play.hidden = false; return; }
+  if (!("IntersectionObserver" in window)) { starten(); return; }
+  const vorab = new IntersectionObserver((e) => {
+    if (e.some((x) => x.isIntersecting)) { laden(); vorab.disconnect(); }
+  }, { rootMargin: "800px 0px" });
+  vorab.observe(rahmen);
+  const io = new IntersectionObserver((e) => {
+    e.forEach((x) => {
+      if (x.isIntersecting) { if (play.hidden) starten(); }
+      else if (!video.paused) video.pause();
+    });
+  }, { threshold: 0.4 });
+  io.observe(rahmen);
+})();

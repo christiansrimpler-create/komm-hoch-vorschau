@@ -41,6 +41,20 @@ bodyClass: "seite-start"
   </div>
 </div>
 
+<section class="film" aria-label="Der Clip zur Kampagne">
+  <div class="wrap film__wrap">
+    <div class="film__rahmen" data-film>
+      <video class="film__video" muted playsinline loop preload="none" width="1280" height="720"
+        poster="{{ '/assets/video/komm-hoch-poster.jpg' | url }}"
+        data-src-gross="{{ '/assets/video/komm-hoch-1280.mp4' | url }}"
+        data-src-klein="{{ '/assets/video/komm-hoch-854.mp4' | url }}"
+        aria-label="Du willst nicht den ganzen Tag drinnen sitzen? Dann komm hoch! Solaranlagen, Drohnen, Geld ab Tag 1, Meisterbrief, eigener Betrieb."></video>
+      <button type="button" class="film__play" hidden><span>Abspielen</span></button>
+      <button type="button" class="film__ton" aria-pressed="false"><span class="film__ton-aus">Ton an</span><span class="film__ton-an">Ton aus</span></button>
+    </div>
+  </div>
+</section>
+
 <section class="gruende" aria-labelledby="gruende-titel">
   <div class="wrap">
     <h2 id="gruende-titel" class="titel">{{ i.gruende.titel }}</h2>

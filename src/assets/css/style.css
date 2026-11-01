@@ -623,3 +623,23 @@ section { padding-block: clamp(3rem, 8vw, 6rem); }
 .wahl--gross { margin-bottom: 0; }
 .wahl--raster { display: grid; grid-template-columns: 1fr 1fr; }
 .wahl--raster .wahl__option span { display: block; text-align: center; width: 100%; }
+
+/* Film */
+.film { background: var(--schiefer-tief); padding-block: 0 clamp(2.5rem, 6vw, 4.5rem); position: relative; z-index: 2; }
+.film__wrap { width: 100%; }
+@media (min-width: 48em) { .film__wrap { width: min(100% - 2 * var(--rand), var(--wrap)); } }
+.film__rahmen { position: relative; background: #000; aspect-ratio: 16 / 9; overflow: hidden; box-shadow: 0 30px 60px -20px rgba(0,0,0,0.6); }
+@media (min-width: 48em) { .film { padding-top: 2.5rem; } .film__rahmen { border-radius: 1rem; } }
+.film__video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.film__ton { position: absolute; right: 0.9rem; bottom: 0.9rem; z-index: 2; border: 0; cursor: pointer; font: 700 0.9rem/1 var(--display); text-transform: uppercase; letter-spacing: 0.04em; color: #fff; background: rgba(22,31,40,0.78); padding: 0.65rem 0.9rem 0.6rem 2.2rem; border-radius: 999px; transition: background 150ms; }
+.film__ton:hover, .film__ton:focus-visible { background: var(--ziegel); outline: none; }
+.film__ton::before { content: ""; position: absolute; left: 0.85rem; top: 50%; width: 0.9rem; height: 0.9rem; transform: translateY(-50%); background: currentColor; clip-path: polygon(0 30%, 30% 30%, 60% 5%, 60% 95%, 30% 70%, 0 70%); }
+.film__ton::after { content: ""; position: absolute; left: 1.55rem; top: 50%; width: 0.55rem; height: 0.55rem; transform: translateY(-50%) rotate(45deg); border-right: 2px solid currentColor; border-top: 2px solid currentColor; border-radius: 0 0.5rem 0 0; opacity: 0; }
+.film__ton[aria-pressed="true"]::after { opacity: 1; }
+.film__ton-an, .film__ton[aria-pressed="true"] .film__ton-aus { display: none; }
+.film__ton[aria-pressed="true"] .film__ton-an { display: inline; }
+.film__play { position: absolute; inset: 0; z-index: 3; width: 100%; border: 0; background: rgba(22,31,40,0.35); cursor: pointer; color: #fff; font: 800 clamp(1.2rem, 3vw, 1.6rem)/1 var(--display); text-transform: uppercase; display: grid; place-items: center; }
+.film__play[hidden] { display: none; }
+.film__play span { display: inline-flex; align-items: center; gap: 0.8rem; background: var(--ziegel); padding: 1rem 1.6rem 0.9rem 1.3rem; border-radius: 999px; }
+.film__play span::before { content: ""; width: 0; height: 0; border-left: 0.9rem solid #fff; border-block: 0.6rem solid transparent; }
+.film__play:hover span, .film__play:focus-visible span { transform: scale(1.04); }

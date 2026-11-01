@@ -38,3 +38,16 @@ auf `/danke/` weitergeleitet.
 `broschuere/infopaket.html` ist die Druckvorlage im A5-Hochformat, `npm run broschuere` rendert sie
 mit Chrome nach `broschuere/infopaket.pdf`. Fotos sind als gelbe Platzhalter markiert; echte Bilder
 als `<img>` in die `.foto`-Container setzen.
+
+## Kampagnen-Clip
+
+Der Clip liegt in `src/assets/video/` (1280er und 854er MP4 plus Poster), beide aus dem Original
+mit ffmpeg gerechnet (H.264, CRF 27/28, AAC 96k). Er startet stumm, sobald er im Bild ist, pausiert
+außerhalb, und bietet einen Ton-Schalter. Bei `prefers-reduced-motion` nur Poster plus Play-Button.
+Neue Version einspielen:
+
+```
+ffmpeg -i original.mp4 -vf scale=1280:-2 -c:v libx264 -preset slow -crf 27 -pix_fmt yuv420p -movflags +faststart -c:a aac -b:a 96k src/assets/video/komm-hoch-1280.mp4
+ffmpeg -i original.mp4 -vf scale=854:-2  -c:v libx264 -preset slow -crf 28 -pix_fmt yuv420p -movflags +faststart -c:a aac -b:a 80k src/assets/video/komm-hoch-854.mp4
+ffmpeg -ss 3.4 -i original.mp4 -frames:v 1 -vf scale=1280:-2 -q:v 4 src/assets/video/komm-hoch-poster.jpg
+```
