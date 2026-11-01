@@ -504,8 +504,9 @@ section { padding-block: clamp(3rem, 8vw, 6rem); }
 .schule__raster { display: grid; gap: 2.5rem; align-items: center; }
 .schule__links { display: grid; gap: 1.25rem; }
 .schule__text p { color: #d9dee3; }
-.polaroid { position: relative; background: #fff; padding: 0.75rem 0.75rem 1rem; transform: rotate(var(--neig)); box-shadow: 0 20px 40px rgba(0,0,0,0.4); max-width: 26rem; margin: 0.5rem auto 0; width: 100%; }
-.bild--polaroid { aspect-ratio: 4 / 3; border-radius: 0; }
+.polaroid { position: relative; background: #fff; padding: 0.75rem 0.75rem 1rem; transform: rotate(var(--neig)); box-shadow: 0 20px 40px rgba(0,0,0,0.4); max-width: 23rem; margin: 0.5rem auto 0; width: 100%; }
+.bild--polaroid { aspect-ratio: 1; border-radius: 0; }
+.bild img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .polaroid__text { margin: 0.75rem 0 0; color: var(--schiefer-tief); font-family: var(--display); font-weight: 700; font-size: 1.2rem; text-align: center; }
 .tape { position: absolute; left: 50%; top: -0.7rem; width: 6rem; height: 1.6rem; background: rgba(144,200,234,0.85); transform: translateX(-50%) rotate(-2deg); }
 .zahlen { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0; }
