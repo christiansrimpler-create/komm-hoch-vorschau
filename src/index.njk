@@ -41,16 +41,24 @@ bodyClass: "seite-start"
   </div>
 </div>
 
-<section class="film" aria-label="Der Clip zur Kampagne">
-  <div class="wrap film__wrap">
-    <div class="film__rahmen" data-film>
-      <video class="film__video" muted playsinline loop preload="none" width="1280" height="720"
-        poster="{{ '/assets/video/komm-hoch-poster.jpg' | url }}"
-        data-src-gross="{{ '/assets/video/komm-hoch-1280.mp4' | url }}"
-        data-src-klein="{{ '/assets/video/komm-hoch-854.mp4' | url }}"
-        aria-label="Du willst nicht den ganzen Tag drinnen sitzen? Dann komm hoch! Solaranlagen, Drohnen, Geld ab Tag 1, Meisterbrief, eigener Betrieb."></video>
-      <button type="button" class="film__play" hidden><span>Abspielen</span></button>
-      <button type="button" class="film__ton" aria-pressed="false"><span class="film__ton-aus">Ton an</span><span class="film__ton-an">Ton aus</span></button>
+<section class="film" aria-labelledby="film-titel">
+  <div class="wrap film__raster">
+    <div class="film__text">
+      <p class="film__kicker">Der Clip zur Kampagne</p>
+      <h2 id="film-titel" class="titel film__titel">Kein Bock<br>zu lesen?<br><em>Dann guck.</em></h2>
+      <p class="film__lauf">30 Sekunden, mit Ton. Danach weißt du, worum es geht.</p>
+    </div>
+    <div class="film__buehne">
+      <div class="film__rahmen" data-film>
+        <video class="film__video" playsinline preload="none" width="1280" height="720"
+          poster="{{ '/assets/video/komm-hoch-poster.jpg' | url }}"
+          data-src-gross="{{ '/assets/video/komm-hoch-1280.mp4' | url }}"
+          data-src-klein="{{ '/assets/video/komm-hoch-854.mp4' | url }}"
+          aria-label="Du willst nicht den ganzen Tag drinnen sitzen? Dann komm hoch! Solaranlagen, Drohnen, Geld ab Tag 1, Meisterbrief, eigener Betrieb."></video>
+        <button type="button" class="film__play" aria-label="Clip abspielen"><span class="film__play-knopf"></span></button>
+        <button type="button" class="film__ton" aria-pressed="true" hidden><span class="film__ton-aus">Ton an</span><span class="film__ton-an">Ton aus</span></button>
+      </div>
+      <span class="sticker sticker--hell film__sticker" style="--neig:6deg" aria-hidden="true">0:30</span>
     </div>
   </div>
 </section>

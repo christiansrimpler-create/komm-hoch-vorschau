@@ -229,14 +229,13 @@
   });
 })();
 
-// Kampagnen-Clip: lädt erst kurz vor dem Sichtbarwerden, spielt stumm, pausiert außerhalb des Bilds
+// Kampagnen-Clip: kein Autoplay, Klick startet mit Ton, zweiter Klick pausiert
 (function () {
   const rahmen = document.querySelector("[data-film]");
   if (!rahmen) return;
   const video = rahmen.querySelector("video");
   const ton = rahmen.querySelector(".film__ton");
   const play = rahmen.querySelector(".film__play");
-  const reduziert = matchMedia("(prefers-reduced-motion: reduce)").matches;
   let geladen = false;
   function laden() {
     if (geladen) return;
@@ -247,31 +246,25 @@
   }
   function starten() {
     laden();
-    const p = video.play();
-    if (p && p.catch) p.catch(() => { play.hidden = false; });
-  }
-  video.addEventListener("play", () => { play.hidden = true; });
-  play.addEventListener("click", () => {
     video.muted = false;
     ton.setAttribute("aria-pressed", "true");
-    starten();
-  });
+    const p = video.play();
+    if (p && p.catch) p.catch(() => {});
+  }
+  play.addEventListener("click", starten);
+  video.addEventListener("click", () => { video.paused ? starten() : video.pause(); });
+  video.addEventListener("play", () => { play.hidden = true; ton.hidden = false; rahmen.classList.add("laeuft"); });
+  video.addEventListener("pause", () => { play.hidden = false; });
+  video.addEventListener("ended", () => { play.hidden = false; rahmen.classList.remove("laeuft"); });
   ton.addEventListener("click", () => {
     video.muted = !video.muted;
     ton.setAttribute("aria-pressed", String(!video.muted));
-    if (video.paused) starten();
   });
-  if (reduziert) { play.hidden = false; return; }
-  if (!("IntersectionObserver" in window)) { starten(); return; }
-  const vorab = new IntersectionObserver((e) => {
-    if (e.some((x) => x.isIntersecting)) { laden(); vorab.disconnect(); }
-  }, { rootMargin: "800px 0px" });
-  vorab.observe(rahmen);
-  const io = new IntersectionObserver((e) => {
-    e.forEach((x) => {
-      if (x.isIntersecting) { if (play.hidden) starten(); }
-      else if (!video.paused) video.pause();
-    });
-  }, { threshold: 0.4 });
-  io.observe(rahmen);
+  // Vorab nur die Metadaten holen, wenn der Clip in die Nähe scrollt
+  if ("IntersectionObserver" in window) {
+    const vorab = new IntersectionObserver((e) => {
+      if (e.some((x) => x.isIntersecting)) { video.preload = "metadata"; laden(); vorab.disconnect(); }
+    }, { rootMargin: "600px 0px" });
+    vorab.observe(rahmen);
+  }
 })();
