@@ -117,6 +117,7 @@
     let aktuell = 0;
     const zeige = (n, richtung) => {
       aktuell = n;
+      if (richtung > 0) form.classList.remove("formular--geprueft");
       schritte.forEach((fs, i) => { fs.hidden = i !== n; fs.classList.toggle("einblenden", i === n && richtung > 0); });
       balken.forEach((b, i) => b.classList.toggle("voll", i <= n));
       nr.textContent = n + 1;
@@ -126,7 +127,7 @@
     const gueltig = (fs) => {
       let ok = true;
       fs.querySelectorAll("input").forEach((el) => { if (!el.hidden && el.offsetParent !== null && !el.checkValidity()) { ok = false; } });
-      form.classList.add("formular--geprueft");
+      form.classList.toggle("formular--geprueft", !ok);
       if (!ok) { const e = fs.querySelector(":invalid"); e && e.focus(); }
       return ok;
     };
@@ -141,6 +142,9 @@
       const kaputt = schritte.findIndex((fs) => [...fs.querySelectorAll("input")].some((el) => el.offsetParent !== null && !el.checkValidity()));
       if (kaputt > -1 && kaputt !== aktuell) { e.stopImmediatePropagation(); e.preventDefault(); zeige(kaputt, -1); }
     }, true);
+    // Absende-Button folgt der Wahl Infopaket/Betrieb
+    const senden = form.querySelector('button[type="submit"]');
+    form.querySelectorAll('[name="ziel"]').forEach((r) => r.addEventListener("change", () => { if (r.checked && r.dataset.button) senden.textContent = r.dataset.button; }));
     zeige(0, 0);
   });
 })();
@@ -171,42 +175,6 @@
   io.observe(chat);
 })();
 
-/* Formular in Schritten */
-(function () {
-  document.querySelectorAll("form.formular").forEach((form) => {
-    const schritte = [...form.querySelectorAll(".fs")];
-    const balken = [...form.querySelectorAll(".fortschritt i")];
-    const nr = form.querySelector("[data-schritt-nr]");
-    let aktuell = 0;
-    const zeige = (n, richtung) => {
-      aktuell = n;
-      schritte.forEach((fs, i) => { fs.hidden = i !== n; fs.classList.toggle("einblenden", i === n && richtung > 0); });
-      balken.forEach((b, i) => b.classList.toggle("voll", i <= n));
-      nr.textContent = n + 1;
-      const erstes = schritte[n].querySelector("input:not([type=radio]):not([type=hidden])");
-      if (erstes && richtung > 0 && matchMedia("(min-width: 60em)").matches) erstes.focus();
-    };
-    const gueltig = (fs) => {
-      let ok = true;
-      fs.querySelectorAll("input").forEach((el) => { if (!el.hidden && el.offsetParent !== null && !el.checkValidity()) { ok = false; } });
-      form.classList.add("formular--geprueft");
-      if (!ok) { const e = fs.querySelector(":invalid"); e && e.focus(); }
-      return ok;
-    };
-    form.querySelectorAll("[data-weiter]").forEach((k) => k.addEventListener("click", () => { if (gueltig(schritte[aktuell])) zeige(aktuell + 1, 1); }));
-    form.querySelectorAll("[data-zurueck]").forEach((k) => k.addEventListener("click", () => zeige(aktuell - 1, -1)));
-    // Enter in Schritt 1/2 = Weiter statt Absenden
-    form.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" && aktuell < schritte.length - 1 && e.target.tagName === "INPUT") { e.preventDefault(); if (gueltig(schritte[aktuell])) zeige(aktuell + 1, 1); }
-    });
-    // Beim Absenden alle Schritte prüfen, ggf. zurückspringen
-    form.addEventListener("submit", (e) => {
-      const kaputt = schritte.findIndex((fs) => [...fs.querySelectorAll("input")].some((el) => el.offsetParent !== null && !el.checkValidity()));
-      if (kaputt > -1 && kaputt !== aktuell) { e.stopImmediatePropagation(); e.preventDefault(); zeige(kaputt, -1); }
-    }, true);
-    zeige(0, 0);
-  });
-})();
 
 
 /* Gehaltsbenachrichtigungen: jede Karte startet, sobald sie den mittleren Bildschirmbereich erreicht */

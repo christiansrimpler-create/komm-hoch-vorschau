@@ -38,15 +38,24 @@ formular:
         label: "Elternteil"
       - wert: "quereinstieg"
         label: "Quereinsteiger:in"
-    abschluss: "Schulabschluss dazu?"
+    abschluss: "Was willst du am Ende in der Hand haben?"
     abschluss_optionen:
       - wert: "nur_ausbildung"
-        label: "Nur die Ausbildung"
+        label: "Gesellenbrief"
       - wert: "mit_abschluss"
-        label: "Ausbildung + Abschluss"
+        label: "Gesellenbrief + Schulabschluss"
       - wert: "offen"
         label: "Weiß ich noch nicht"
         vorgabe: true
+    ziel: "Und jetzt?"
+    ziel_optionen:
+      - wert: "infopaket"
+        label: "Erstmal das Infopaket"
+        button: "Infopaket schicken"
+        vorgabe: true
+      - wert: "betrieb"
+        label: "Direkt einen Betrieb finden"
+        button: "Betrieb finden lassen"
   einwilligung_datenschutz: "Ich habe die <a href=\"/datenschutz/\">Datenschutzhinweise</a> gelesen. Meine Angaben werden zur Zusendung des Infopakets und zur Vermittlung an Ausbildungsbetriebe verwendet."
   einwilligung_kontakt: "Ja, ihr dürft mich per E-Mail, Telefon oder WhatsApp zur Dachdecker-Ausbildung kontaktieren. Ich kann das jederzeit widerrufen."
   unter16_hinweis: "Du bist unter 16? Dann brauchen wir die Einwilligung eines Elternteils. Trag unten einfach die E-Mail-Adresse deiner Eltern ein, wir schicken das Infopaket dorthin."

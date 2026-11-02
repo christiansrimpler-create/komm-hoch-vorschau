@@ -7,10 +7,11 @@
   </div>
 
   <fieldset class="fs" data-fs="1">
-    <legend class="fs__frage">Was willst du?</legend>
-    <div class="wahl wahl--gross" role="group" aria-label="Was willst du?">
-      <label class="wahl__option"><input type="radio" name="ziel" value="infopaket" checked><span>Erstmal das Infopaket</span></label>
-      <label class="wahl__option"><input type="radio" name="ziel" value="betrieb"><span>Direkt einen Betrieb finden</span></label>
+    <legend class="fs__frage">{{ f.felder.abschluss }}</legend>
+    <div class="wahl" role="group" aria-label="{{ f.felder.abschluss }}">
+      {% for o in f.felder.abschluss_optionen %}
+      <label class="wahl__option"><input type="radio" name="abschluss" value="{{ o.wert }}" {% if o.vorgabe %}checked{% endif %}><span>{{ o.label }}</span></label>
+      {% endfor %}
     </div>
     <p class="fs__frage fs__frage--klein">{{ f.felder.start }}</p>
     <div class="wahl wahl--raster" role="group" aria-label="{{ f.felder.start }}">
@@ -34,12 +35,6 @@
       <label class="wahl__option"><input type="radio" name="rolle" value="{{ o.wert }}" {% if loop.first %}checked{% endif %}><span>{{ o.label }}</span></label>
       {% endfor %}
     </div>
-    <p class="fs__frage fs__frage--klein">{{ f.felder.abschluss }}</p>
-    <div class="wahl" role="group" aria-label="{{ f.felder.abschluss }}">
-      {% for o in f.felder.abschluss_optionen %}
-      <label class="wahl__option"><input type="radio" name="abschluss" value="{{ o.wert }}" {% if o.vorgabe %}checked{% endif %}><span>{{ o.label }}</span></label>
-      {% endfor %}
-    </div>
     <div class="fs__knoepfe">
       <button class="knopf knopf--leise" type="button" data-zurueck>Zurück</button>
       <button class="knopf" type="button" data-weiter>Weiter</button>
@@ -47,7 +42,13 @@
   </fieldset>
 
   <fieldset class="fs" data-fs="3" hidden>
-    <legend class="fs__frage">Wohin soll das Infopaket?</legend>
+    <legend class="fs__frage">{{ f.felder.ziel }}</legend>
+    <div class="wahl wahl--gross" role="group" aria-label="{{ f.felder.ziel }}">
+      {% for o in f.felder.ziel_optionen %}
+      <label class="wahl__option"><input type="radio" name="ziel" value="{{ o.wert }}" data-button="{{ o.button }}" {% if o.vorgabe %}checked{% endif %}><span>{{ o.label }}</span></label>
+      {% endfor %}
+    </div>
+    <p class="fs__frage fs__frage--klein">Wohin soll das Infopaket?</p>
     <p class="fs__unter">Kommt als PDF per E-Mail. Sofort.</p>
     <div class="feld-reihe">
       <div class="feld">
