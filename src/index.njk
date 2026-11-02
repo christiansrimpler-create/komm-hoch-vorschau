@@ -165,6 +165,31 @@ bodyClass: "seite-start"
   </div>
 </section>
 
+<section class="wege" id="abschluss" aria-labelledby="wege-titel">
+  <div class="wrap">
+    <div class="wege__kopf">
+      <h2 id="wege-titel" class="titel wege__titel">{{ i.wege.titel | safe }}</h2>
+      <p class="wege__text">{{ i.wege.text }}</p>
+    </div>
+    <div class="wege__raster">
+      {% for w in i.wege.liste %}
+      <article class="weg {{ 'weg--hell' if loop.first else 'weg--dunkel' }}" style="--neig:{{ '-0.8deg' if loop.first else '0.7deg' }}">
+        <span class="weg__kick">{{ w.kick }}</span>
+        <h3 class="weg__titel">{{ w.titel }}</h3>
+        <p>{{ w.text }}</p>
+        <ul class="haken {{ 'haken--hell' if not loop.first }}">
+          {% for pkt in w.punkte %}<li>{{ pkt }}</li>{% endfor %}
+        </ul>
+        <p class="weg__passt">{{ w.passt }}</p>
+        <a class="knopf {{ 'knopf--dunkel' if loop.first }}" href="#formular" data-abschluss="{{ w.wert }}">Diesen Weg im Infopaket</a>
+      </article>
+      {% endfor %}
+      <span class="sticker sticker--rot wege__sticker" style="--neig:-5deg" aria-hidden="true">{{ i.wege.sticker }}</span>
+    </div>
+    <p class="wege__hinweis">{{ i.wege.hinweis }}</p>
+  </div>
+</section>
+
 <section class="stimmen" aria-labelledby="stimmen-titel">
   <div class="wrap">
     <h2 id="stimmen-titel" class="titel">{{ i.stimmen.titel }}</h2>

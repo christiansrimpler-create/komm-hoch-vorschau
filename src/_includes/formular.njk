@@ -34,6 +34,12 @@
       <label class="wahl__option"><input type="radio" name="rolle" value="{{ o.wert }}" {% if loop.first %}checked{% endif %}><span>{{ o.label }}</span></label>
       {% endfor %}
     </div>
+    <p class="fs__frage fs__frage--klein">{{ f.felder.abschluss }}</p>
+    <div class="wahl" role="group" aria-label="{{ f.felder.abschluss }}">
+      {% for o in f.felder.abschluss_optionen %}
+      <label class="wahl__option"><input type="radio" name="abschluss" value="{{ o.wert }}" {% if o.vorgabe %}checked{% endif %}><span>{{ o.label }}</span></label>
+      {% endfor %}
+    </div>
     <div class="fs__knoepfe">
       <button class="knopf knopf--leise" type="button" data-zurueck>Zurück</button>
       <button class="knopf" type="button" data-weiter>Weiter</button>

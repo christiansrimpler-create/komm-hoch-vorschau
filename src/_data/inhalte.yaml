@@ -38,6 +38,15 @@ formular:
         label: "Elternteil"
       - wert: "quereinstieg"
         label: "Quereinsteiger:in"
+    abschluss: "Schulabschluss dazu?"
+    abschluss_optionen:
+      - wert: "nur_ausbildung"
+        label: "Nur die Ausbildung"
+      - wert: "mit_abschluss"
+        label: "Ausbildung + Abschluss"
+      - wert: "offen"
+        label: "Weiß ich noch nicht"
+        vorgabe: true
   einwilligung_datenschutz: "Ich habe die <a href=\"/datenschutz/\">Datenschutzhinweise</a> gelesen. Meine Angaben werden zur Zusendung des Infopakets und zur Vermittlung an Ausbildungsbetriebe verwendet."
   einwilligung_kontakt: "Ja, ihr dürft mich per E-Mail, Telefon oder WhatsApp zur Dachdecker-Ausbildung kontaktieren. Ich kann das jederzeit widerrufen."
   unter16_hinweis: "Du bist unter 16? Dann brauchen wir die Einwilligung eines Elternteils. Trag unten einfach die E-Mail-Adresse deiner Eltern ein, wir schicken das Infopaket dorthin."
@@ -78,6 +87,31 @@ schule:
     - "Schulabschluss nachholen: Hauptschulabschluss, mittlerer Abschluss, sogar Oberstufen-Berechtigung"
     - "Mensa, Freizeitangebote und abends Leute aus ganz Westfalen"
 
+wege:
+  titel: "Mit Abschluss. Ohne Abschluss.<br>Beides geht."
+  text: "Die Ausbildung ist für alle gleich: drei Jahre, Betrieb plus Berufsschule, am Ende der Gesellenbrief. Der Schulabschluss ist das Extra, das du in Eslohe mitnehmen kannst. Oder eben nicht."
+  liste:
+    - kick: "Weg 1"
+      titel: "Nur die Ausbildung."
+      text: "Du arbeitest im Betrieb, gehst wie alle zur Berufsschule und machst nach drei Jahren die Gesellenprüfung. Kein Extra-Unterricht, keine Zusatzprüfung."
+      punkte:
+        - "Gesellenbrief Dachdecker:in"
+        - "Hast du noch keinen Schulabschluss, bekommst du mit dem Berufsschulabschluss automatisch den Hauptschulabschluss dazu"
+        - "Meisterschule steht dir danach genauso offen"
+      passt: "Passt, wenn du arbeiten willst und Schule dir reicht."
+      wert: "nur_ausbildung"
+    - kick: "Weg 2"
+      titel: "Ausbildung plus Abschluss."
+      text: "Gleicher Betrieb, gleiche Berufsschule, gleiche drei Jahre. Zusätzlich holst du in Eslohe den mittleren Schulabschluss, also den Realschulabschluss. Dafür zählen deine Noten in der Berufsschule."
+      punkte:
+        - "Gesellenbrief plus mittlerer Schulabschluss"
+        - "Voraussetzung: Berufsschulnoten im Schnitt 3,0 und ausreichend Englisch"
+        - "Ab Schnitt 2,5 obendrauf die Berechtigung für die gymnasiale Oberstufe"
+      passt: "Passt, wenn du dir Techniker, Fachabi oder Studium offenhalten willst."
+      wert: "mit_abschluss"
+  sticker: "Keinen Tag länger"
+  hinweis: "Du musst dich nicht heute entscheiden. Sag uns im Formular, wohin du tendierst, und das Infopaket erklärt dir beide Wege. Festlegen musst du dich erst in der Berufsschule."
+
 eltern:
   kicker: "Für Eltern"
   titel: "Ihr Kind will aufs Dach.<br>Gute Entscheidung."
@@ -86,7 +120,7 @@ eltern:
     - frage: "Ist das nicht gefährlich?"
       antwort: "Die Arbeit in der Höhe ist Teil des Berufs, deshalb ist Absturzsicherung Ausbildungsinhalt vom ersten Tag an und Prüfungsstoff. Auf Baustellen gilt Gerüstpflicht. Sicherheit ist hier kein Appell, sondern Handwerk."
     - frage: "Was ist mit dem Schulabschluss?"
-      antwort: "Am Berufskolleg in Eslohe kann Ihr Kind parallel zur Ausbildung den Hauptschulabschluss nachholen. Mit Berufsschulnote 3,0 gibt es die Fachoberschulreife, ab 2,5 die Berechtigung zur gymnasialen Oberstufe."
+      antwort: "Ihr Kind hat zwei Wege, beide dauern drei Jahre. Nur die Ausbildung: Gesellenbrief, und ohne vorherigen Abschluss automatisch der Hauptschulabschluss dazu. Ausbildung plus Abschluss: am Berufskolleg in Eslohe gibt es mit Berufsschulnote 3,0 und ausreichend Englisch den mittleren Schulabschluss, ab 2,5 die Berechtigung zur gymnasialen Oberstufe."
     - frage: "Wie läuft das mit Eslohe?"
       antwort: "Zweimal im Jahr fünf Wochen Blockunterricht. Die Azubis wohnen im schuleigenen Wohnheim mit Heimleitung und Sicherheitsdienst, Mensa inklusive. <span class=\"todo\">TODO: Kosten und Kostenträger</span>"
     - frage: "Hat der Beruf Zukunft?"
@@ -117,7 +151,7 @@ faq:
   titel: "Häufige Fragen"
   liste:
     - frage: "Welchen Schulabschluss brauche ich?"
-      antwort: "Keinen bestimmten. Viele Azubis starten mit Hauptschulabschluss, manche ohne. Am Berufskolleg in Eslohe kannst du Abschlüsse während der Ausbildung nachholen."
+      antwort: "Keinen bestimmten. Viele Azubis starten mit Hauptschulabschluss, manche ohne. Du entscheidest selbst, ob du nur die Ausbildung machst oder in Eslohe den mittleren Schulabschluss dazunimmst. Beides dauert drei Jahre."
     - frage: "Wie lange dauert die Ausbildung?"
       antwort: "Drei Jahre. Bei guten Leistungen kannst du die Gesellenprüfung vorziehen. Nach dem zweiten Lehrjahr gibt es eine Zwischenprüfung."
     - frage: "Was verdiene ich?"
