@@ -144,7 +144,13 @@
     }, true);
     // Absende-Button folgt der Wahl Infopaket/Betrieb
     const senden = form.querySelector('button[type="submit"]');
-    form.querySelectorAll('[name="ziel"]').forEach((r) => r.addEventListener("change", () => { if (r.checked && r.dataset.button) senden.textContent = r.dataset.button; }));
+    const zielFrage = form.querySelector("[data-ziel-frage]"), zielUnter = form.querySelector("[data-ziel-unter]");
+    form.querySelectorAll('[name="ziel"]').forEach((r) => r.addEventListener("change", () => {
+      if (!r.checked) return;
+      senden.textContent = r.dataset.button;
+      zielFrage.textContent = r.dataset.frage;
+      zielUnter.textContent = r.dataset.unter;
+    }));
     zeige(0, 0);
   });
 })();

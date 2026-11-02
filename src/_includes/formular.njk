@@ -45,11 +45,11 @@
     <legend class="fs__frage">{{ f.felder.ziel }}</legend>
     <div class="wahl wahl--gross" role="group" aria-label="{{ f.felder.ziel }}">
       {% for o in f.felder.ziel_optionen %}
-      <label class="wahl__option"><input type="radio" name="ziel" value="{{ o.wert }}" data-button="{{ o.button }}" {% if o.vorgabe %}checked{% endif %}><span>{{ o.label }}</span></label>
+      <label class="wahl__option"><input type="radio" name="ziel" value="{{ o.wert }}" data-button="{{ o.button }}" data-frage="{{ o.frage }}" data-unter="{{ o.unter }}" {% if o.vorgabe %}checked{% endif %}><span>{{ o.label }}</span></label>
       {% endfor %}
     </div>
-    <p class="fs__frage fs__frage--klein">Wohin soll das Infopaket?</p>
-    <p class="fs__unter">Kommt als PDF per E-Mail. Sofort.</p>
+    <p class="fs__frage fs__frage--klein" data-ziel-frage>{{ f.felder.ziel_optionen[0].frage }}</p>
+    <p class="fs__unter" data-ziel-unter>{{ f.felder.ziel_optionen[0].unter }}</p>
     <div class="feld-reihe">
       <div class="feld">
         <label for="{{ fid }}-vorname">{{ f.felder.vorname }}</label>
